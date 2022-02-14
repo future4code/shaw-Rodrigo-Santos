@@ -1,0 +1,10 @@
+1 - Strogonoff de frango da mamãe
+2 - Hambúrguer
+3 - Pizza
+4 - Sushi
+5 - Chocolate
+6 - Qualquer sobremesa com biscoito
+7 - Churrasco
+8 - Cachorro quente
+9 - Comida chinesa
+10 - Cerveja
