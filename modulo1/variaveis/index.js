@@ -78,9 +78,3 @@ let multiplicacaoDosNumeros = primeiroNumero * segundoNumero
 
 console.log("O primeiro número somado ao segundo número resulta em:", somaDosNumeros, "." )
 console.log("O primeiro número multiplicado pelo segundo número resulta em:", multiplicacaoDosNumeros, "." )
-
-/*
-
-
-
-
