@@ -64,4 +64,68 @@ console.log("O primeiro numero é igual ao segundo? ", numeroPrimeiro === numero
 console.log("O primeiro numero é divisível pelo segundo? ", numeroPrimeiro % numeroSegundo == 0)
 console.log("O segundo numero é divisível pelo primeiro?  ", numeroSegundo % numeroPrimeiro == 0)
 
-//
+//🏅  Desafios
+
+/*
+
+1 -
+
+a) Calcule e mostre o valor de 77°F em  K, mostrando a unidade no console também.
+
+b) Calcule e mostre o valor de 80°C em °F, mostrando a unidade no console também
+
+c) Calcule e mostre o valor de 30°C em °F e K, mostrando as unidades no console também
+
+d) Altere o último item para que o usuário insira o valor em graus Celsius que ele deseja converter
+
+*/
+
+//a)
+
+let fahParaKelvin = (77 - 32) * (5/9) + 273.15
+console.log (fahParaKelvin, " K")
+
+//b)
+
+let celsiuParaFah = (80) * (9/5) + 32
+console.log(celsiuParaFah, " ºF")
+
+//c)
+
+let celsiuParaFahNovo = 30 * (9/5) + 32 
+
+let fahParaKelvinNovo = (celsiuParaFahNovo - 32) * (5/9) + 273.15
+
+console.log (celsiuParaFahNovo, " ºF", fahParaKelvinNovo, " K" )
+
+//d)
+
+let grausCelsius = Number(prompt("Digite um valor em graus celsius que deseja converter: "))
+
+let celsiuParaFahNovamente = grausCelsius * (9/5) + 32 
+
+let fahParaKelvinNovamente = (celsiuParaFahNovamente - 32) * (5/9) + 273.15
+
+console.log(celsiuParaFahNovamente, " ºF", fahParaKelvinNovamente, " K" )
+
+// 2-
+
+/* 
+Fazer um programa k/h a R$0.05
+Calcule e mostre o valor de uma residencia que gastou 280 k/h
+altere para receber desconto de 15%
+*/
+
+let quilowattHora = 0.05
+console.log(280*quilowattHora, "Valor sem desconto")
+console.log((280*quilowattHora)*0.8, "Valor com desconto de 15%")
+
+//3-
+
+/*  
+
+
+
+
+*/ 
+
