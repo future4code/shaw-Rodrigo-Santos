@@ -32,7 +32,7 @@ f. 9
 SUBI NUM ÔNIBUS EM MIRROCOS 27
 */
 
-//**Exercícios de escrita de código */
+//Exercícios de escrita de código 
 
 //1
 let nomeDoUsuario = prompt("Qual seu nome?")
@@ -66,3 +66,17 @@ console.log("Três tarefas que preciso realizar no dia: ", listaDeTarefas)
 let indiceRealizado = prompt("Me informe uma tarefa que você já realizou hoje: 0, 1 ou 2: ")
 listaDeTarefas.splice(indiceRealizado, 1)
 console.log(listaDeTarefas)
+
+//🏅  Desafios
+
+//1-
+let fraseUsuario = prompt("Me diga uma frase especial")
+let lista = fraseUsuario.split(" ")
+console.log(lista)
+
+//2-
+
+let frutas = ["Banana", "Morango", "Abacaxi", "Laranja", "Ameixa"]
+console.log(frutas.length)
+let indiceDaBanana = frutas.indexOf("Abacaxi")
+console.log(indiceDaBanana)
