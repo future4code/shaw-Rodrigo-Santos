@@ -41,7 +41,7 @@ function imprimeIdade() {
 function calculaIMC(peso, altura) {
   // implemente sua lógica aqui
  
-  return  (peso / altura*altura)
+  return  (peso/(altura*altura))
 
 }
 
@@ -138,16 +138,56 @@ function checaIgualdadeDesconsiderandoCase(string1, string2) {
 function checaRenovacaoRG() {
   // implemente sua lógica aqui
 
+  const anoAtual_ = prompt("Qual é o ano corrente?")
+  const anoNascimento_ = prompt("Qual seu ano de nascimento?")
+  const anoEmissaoID = prompt("Qual o ano de emissão da sua Carteira de Identidade?")
+  const idade_ = anoAtual_ - anoNascimento_
+  const validadeCarteiraID = anoAtual_ - anoEmissaoID
+
+  if (idade_ <= 20 && validadeCarteiraID >= 5) {
+    console.log(true);
+
+  } else if (idade_ > 20  && idade_ <= 50 && validadeCarteiraID >= 10) {
+    console.log(true);
+
+  } else if (idade_ >50 && validadeCarteiraID >= 15) {
+    console.log(true);
+
+  } else {
+    console.log(false)
+  } 
+
 }
 
 // EXERCÍCIO 14
 function checaAnoBissexto(ano) {
   // implemente sua lógica aqui
+/*
+ receba um ano
+ retorne um booleano true ou false que indica se o ano é bissexto
+ anos bissextos;
 
+ multiplos de 400
+ multiplos de 4, exceto se for multiplo de 100 mas naão de 400
+ não são bissextos todos os outros anos
+
+  */
+
+  return (0 == ano % 4) && (0 != ano % 100) || (0 == ano % 400)
 }
 
 // EXERCÍCIO 15
 function checaValidadeInscricaoLabenu() {
   // implemente sua lógica aqui
+ 
+  const deMaior = prompt("Você tem mais de 18 anos?")
+  const ensinoMedio = prompt("Você possui ensino médio completo?")
+  const disponibilidade = prompt("Você possui disponibilidade exclusiva durante os horários do curso?")
 
-}
+  "sim" == true
+  "nao" == false
+
+   let condicoes = (deMaior == "sim" && ensinoMedio == "sim" && disponibilidade == "sim")
+
+   console.log(condicoes);
+}  
