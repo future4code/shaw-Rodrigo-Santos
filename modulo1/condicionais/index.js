@@ -15,29 +15,31 @@ c) Sim irá informar que mensagem não é definida caso digite algum número aba
 
 //Exercícios de escrita de código*******************
 
-//1
+//1***********
 
 let podeDirigir = Number(prompt("Quantos anos você tem?"))
 
 if (podeDirigir >= 18) {
-    console.log("Você pode dirigir");  
+    console.log("Você pode dirigir");
 } else {
-    console.log("Você não pode dirigir."); 
+    console.log("Você não pode dirigir.");
 }
 
-//2
+//2**********
+
 const qualTurnoEstuda = prompt("Qual turno você estuda? Responda com M (matutino) ou V (Vespertino) ou N (Noturno)")
 
 if (qualTurnoEstuda == "M") {
     console.log("Bom Dia!");
-}else if(qualTurnoEstuda == "V"){
-    console.log("Boa Tarde!");  
+} else if (qualTurnoEstuda == "V") {
+    console.log("Boa Tarde!");
 } else {
     console.log("Boa Noite!");
-    
+
 }
 
-//3
+//3************
+
 let qualTurnoEstuda2 = prompt("Qual turno você estuda? Responda com M (matutino) ou V (Vespertino) ou N (Noturno)")
 
 switch (qualTurnoEstuda2) {
@@ -52,7 +54,8 @@ switch (qualTurnoEstuda2) {
         break;
 }
 
-//4
+//4*********
+
 const generoFilme = prompt("Qual o generô do filme?")
 const precoIngresso = Number(prompt("Qual o preço do ingresso?"))
 
@@ -64,7 +67,7 @@ if (generoFilme == "Fantasia" && precoIngresso <= 15) {
 
 //🏅  Desafios
 
-//1
+//1*************
 
 const generoFilme2 = prompt("Qual o generô do filme?")
 const precoIngresso2 = Number(prompt("Qual o preço do ingresso?"))
@@ -72,75 +75,116 @@ const precoIngresso2 = Number(prompt("Qual o preço do ingresso?"))
 if (generoFilme2 == "Fantasia" && precoIngresso2 <= 15) {
     lanche = prompt("Qual será seu lanchinho?")
     console.log("Bom filme!");
-    console.log(`Aproveite o seu ${lanche}` );
+    console.log(`Aproveite o seu ${lanche}`);
 } else {
     console.log("Escolha outro filme :(");
 }
 
-//2
-
-/*
-PERGUNTAR AO USUARIO
-NOME COMPLETO 
-
-TIPO DE JOGO: 
-IN indica internacional; e DO indica doméstico;
-
-ETAPA DO JOGO: 
-SF indica semi-final; DT indica decisão de terceiro lugar; e FI indica final
-
-CATEGORIA:
-1, 2, 3 ou 4;
-
-QUANTIDADE DE INGRESSOS
-
-USAR O PROMPT
-DEVE IMPRIMIR TUDO ISSO ACIMA MAIS
-VALOR DO INGRESSO 
-VALOR TOTAL
-VALOR DO DOMÉSTICO É O MESMO DO IN PORÉM MULTIPLICADO PELO DOLAR 4,10
-EXEMPLO:
-
----Dados da compra--- 
-Nome do cliente:  Soter Padua 
-Tipo do jogo:  Nacional 
-Etapa do jogo:  Final 
-Categoria:  1 
-Quantidade de Ingressos:  10 ingressos 
----Valores--- 
-Valor do ingresso:  R$ 1980
-Valor total:  R$ 19800
-X
-
----Dados da compra--- 
-Nome do cliente:  Soter Padua 
-Tipo do jogo:  Internacional 
-Etapa do jogo:  Final 
-Categoria:  1 
-Quantidade de Ingressos:  10 ingressos 
----Valores--- 
-Valor do ingresso:  U$ 482.92682926829275
-Valor total:  U$ 4829.2682926829275
-
----Dados da compra--- 
-Nome do cliente:  Soter Padua 
-Tipo do jogo:  Internacional 
-Etapa do jogo:  Final 
-Categoria:  1 
-Quantidade de Ingressos:  10 ingressos 
----Valores--- 
-Valor do ingresso:  U$ 482.92682926829275
-Valor total:  U$ 4829.2682926829275
-
+//2***************
 
 const nomeCompleto = prompt("Qual seu nome completo?")
 const tipoJogo = prompt("Qual o tipo do jogo? Caso seja internacional digite IN, caso seja doméstico digite DO.")
 const etapaJogo = prompt("Qual a etapa do jogo? SF indica semi-final; DT indica decisão de terceiro lugar; e FI indica final")
-const categoriaI = prompt("Qual a categoria do ingreso? 1, 2, 3 ou 4;")
+const categoriaI = Number(prompt("Qual a categoria do ingreso? 1, 2, 3 ou 4;"))
 const quantidadeI = prompt("Qual a quantidade de ingressos?")
-let valorIngresso
-*/
+let valorIngresso = 0
 
+switch (etapaJogo) {
+    case "SF":
+        switch (categoriaI) {
+            case 1:
+                valorIngresso = 1320
+                break
+            case 2:
+                valorIngresso = 880
+                break
+            case 3:
+                valorIngresso = 550
+                break
+            case 4:
+                valorIngresso = 220
+                break
+            default:
+                valorIngresso = 0
+                break
+        }
+        break
+    case "DT":
+        switch (categoriaI) {
+            case 1:
+                valorIngresso = 660
+                break
+            case 2:
+                valorIngresso = 440
+                break
+            case 3:
+                valorIngresso = 330
+                break
+            case 4:
+                valorIngresso = 170
+                break
+            default:
+                valorIngresso = 0
+                break
+        }
+        break
+    case "FI":
+        switch (categoriaI) {
+            case 1:
+                valorIngresso = 1980
+                break
+            case 2:
+                valorIngresso = 1320
+                break
+            case 3:
+                valorIngresso = 880
+                break
+            case 4:
+                valorIngresso = 330
+                break
+            default:
+                valorIngresso = 0
+                break
+
+        }
+    default:
+        break
+}
+
+if (tipoJogo === "IN") {
+    valorIngresso = valorIngresso * 4.10
+}
+
+let textoDoJogo
+if (textoDoJogo === "DO") {
+    textoDoJogo = "Domestico"
+
+} else {
+    textoDoJogo = "Internacional"
+}
+
+let textoDaEtapa
+if (textoDaEtapa === "SF") {
+    textoDaEtapa = "Semi-Final"
+
+} else if (textoDaEtapa === "DT") {
+    textoDaEtapa = "Decisão de terceiro lugar"
+
+} else {
+    textoDaEtapa = "Final"
+}
+
+let valorQuantidade = valorIngresso * quantidadeI
+
+console.log("---Dados da compra---")
+console.log(`Nome do cliente: ${nomeCompleto}`);
+console.log(`Tipo do jogo: ${textoDoJogo}`);
+console.log(`Etapa do jogo: ${textoDaEtapa}`);
+console.log(`Categoria: ${categoriaI}`);
+console.log(`Quantidade de Ingressos: ${quantidadeI}`);
+console.log(`---Valores--- `);
+console.log(`Valor do ingresso: ${valorIngresso}`);
+console.log(` Valor total: ${valorQuantidade}`);
 
 
 
