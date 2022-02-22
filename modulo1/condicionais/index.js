@@ -152,7 +152,7 @@ switch (etapaJogo) {
 }
 
 if (tipoJogo === "IN") {
-    valorIngresso = valorIngresso * 4.10
+    valorIngresso = valorIngresso / 4.10
 }
 
 let textoDoJogo
