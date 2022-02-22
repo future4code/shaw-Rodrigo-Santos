@@ -102,39 +102,42 @@ console.log(carrinho);
 
 //🏅  Desafios**********
 
-//1**********
-/*
-const usuario ={
-    nome: "Keith Richards",
-    idade: 200,
-    profissão: "Guitarrista"
+//1******
+const objeto_ = []
+
+const usuario = {
+
+    nome: prompt("Oi, qual seu nome?"),
+    idade: prompt("E qual a sua idade?"),
+    profissão: prompt("Qual a sua profissão?")
 }
 
-console.log(usuario);
-console.log(typeof usuario);
-
-
-function nomeUsuario() {
-   
-    const nome = prompt("Qual seu nome?")
-    const idade = Number(prompt("Qual a sua idade?"))
-    const profissao = prompt("Qual a sua profissão?")
-    
-    let dados = 
-
-    console.log(dados);
+function fazerAFrase(fras1){
+    objeto_.push(fras1)
 }
-//2********* 
-/*
-const filme1 ={
-    anoDeLancamento: 1971,
-    nome: "Laranja Mecânica"
-}
-const filme2 ={
-    anoDeLancamento: 1980,
-    nome: "O Iluminado"
-}
-/*
- O primeiro filme foi lançado antes do segundo? false
+    fazerAFrase(usuario)
+
+    console.log(objeto_);
+    console.log(typeof objeto_);
+
+//2***********
+/* CRIE UMA FUNÇÃO QUE RECEBA DOIS OBJETOS QUE REPRESENTAM FILMES
+DEVEM TER AS PROPIEDADES 
+ANO DE LANÇAMENTO
+NOME
+DEVE RETORNAR UMA MENSAGEM NO MODELO
+O primeiro filme foi lançado antes do segundo? false
 O primeiro filme foi lançado no mesmo ano do segundo? true
-*/
+
+const filmesLouco1 = {
+
+    anoLancamento = 1971,
+    nome = "Laranja Mecânica"
+}
+const filmesLouco2 = {
+
+    anoLancamento = 1980,
+    nome = "O Iluminado"
+}
+
+
