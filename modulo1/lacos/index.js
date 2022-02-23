@@ -59,37 +59,40 @@ for (let index = 0; index < arrayOriginal.length; index++) {
 //c
 console.log("2c)");
 
-function pares(array){
+function pares(array) {
     let novoArray = []
     for (let numeros of array) {
         if (numeros % 2 === 0) {
             novoArray.push(numeros)
         }
-        
+
     }
     console.log(novoArray);
 }
 pares(arrayOriginal)
-  
+
 //d)
+
+console.log("2d)");
 /* criar um array de strings que retorne a mensagem:
 
 "O elemento do índex i é: numero"
 
 imprima
-*/
 
-for (let i = 0; i < arrayOriginal.length; index++) {
-    console.log(arrayOriginal);
-    
+
+function indice(array) {
+    let novoArray = []
+    for (let posicao = 0; posicao < array.length; posicao++) {
+        if (array[i] > maiorNumero) {
+            maiorNumero = arrayOriginal[i]
+    }
+    console.log(novoArray);
+
+
 }
-
-
-
-
-
-
-
+indice(arrayOriginal)
+*/
 
 
 
