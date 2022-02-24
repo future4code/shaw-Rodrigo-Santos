@@ -79,7 +79,10 @@ console.log("2d)");
 "O elemento do índex i é: numero"
 
 imprima
+*/
 
+let frase = [`O elemento do índex ${arrayOriginal} é: ${arrayOriginal[0]}`]
+console.log(frase[0]);
 
 function indice(array) {
     let novoArray = []
@@ -92,7 +95,8 @@ function indice(array) {
 
 }
 indice(arrayOriginal)
-*/
+
+
 
 
 
@@ -111,4 +115,4 @@ function encontrarMaior(array) {
     } console.log(`O maior número é ${maiorNumero}`);
 
 }
-encontrarMaior(arrayOriginal)
+encontrarMaior(arrayOriginal)}
