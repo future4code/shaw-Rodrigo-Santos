@@ -80,4 +80,3 @@ let frutas = ["Banana", "Morango", "Abacaxi", "Laranja", "Ameixa"]
 console.log(frutas.length)
 let indiceDaBanana = frutas.indexOf("Abacaxi")
 console.log(indiceDaBanana)
-
