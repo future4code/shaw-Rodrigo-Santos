@@ -137,8 +137,8 @@ function retornaContasComSaldoAtualizado(contas) {
     contas.forEach((conta) => {
         let totalDeCompras = 0
 
-        conta.compras.forEach((compra)=>{
-            totalDeCompras =  totalDeCompras + compra
+        conta.compras.forEach((compra) => {
+            totalDeCompras = totalDeCompras + compra
         })
 
         conta.saldoTotal = conta.saldoTotal - totalDeCompras
