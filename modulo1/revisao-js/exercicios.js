@@ -27,12 +27,16 @@ function retornaNumerosPares(array) {
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
-    
+    const par = x => x % 2 === 0
+    const pares = array.filter(par)
+    const paresElevados = pares*pares
+    return paresElevados
 }
 
 // EXERCÍCIO 06
 function retornaMaiorNumero(array) {
-
+    var maior = Math.max.apply(null, array );
+    return maior
 }
 
 // EXERCÍCIO 07
