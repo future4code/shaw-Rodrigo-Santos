@@ -22,15 +22,22 @@ function retornaArrayOrdenado(array) {
 function retornaNumerosPares(array) {
     const par = x => x % 2 === 0
     const pares = array.filter(par)
+
     return pares
 }
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
+
     const par = x => x % 2 === 0
+
     const pares = array.filter(par)
-    const paresElevados = pares * pares
-    return paresElevados
+
+    var elevado = pares.map(function (item) {
+        return Math.pow(item, 2)
+    })
+
+    return elevado
 }
 
 // EXERCÍCIO 06
@@ -53,6 +60,14 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
+
+    let numerosPares = [];
+    for (let i = 0; numerosPares.length < n; i++) {
+        if (i % 2 == 0) {
+            numerosPares.push(i);
+        }
+    }
+    return numerosPares;
 
 }
 
@@ -113,7 +128,7 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-    
+
     const saldo = contas.compras((compra) => {
         return soma += parseInt(contas[i])
     })
@@ -122,14 +137,14 @@ function retornaContasComSaldoAtualizado(contas) {
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
-    consultas.sort(function(a, b) {
-        if(a.nome < b.nome) {
-          return -1;
+
+    consultas.sort(function (a, b) {
+        if (a.nome < b.nome) {
+            return -1;
         } else {
-          return true;
+            return true;
         }
-      });
+    });
     return consultas
 
 
