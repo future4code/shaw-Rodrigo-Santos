@@ -1,0 +1,56 @@
+.titulo{
+
+
+    color: aliceblue;
+    margin: 30vw;
+    display: inline;
+    font-size:2cm;
+    font-family: Courier New;
+
+}
+
+body {
+    background-color: black;
+    
+   
+  } 
+
+.link{
+    background-color:rgb(205, 209, 212);
+    display: inline;
+    font-family: Tahoma, Verdana, sans-serif
+}
+
+p{
+    color:aliceblue;
+    font-size: large;
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
+.corpo{
+
+    color:aliceblue;
+    font-size: large;
+    font-family: Tahoma, Verdana, sans-serif;
+
+}
+
+.imagem{
+    padding: 0;
+}
+
+#redes{
+
+    font-size: medium;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 42vw;
+}
+
+.input{
+    margin-left: 10%;
+    
+}
+
+.form-add{
+    margin-left: 10%;
+}
