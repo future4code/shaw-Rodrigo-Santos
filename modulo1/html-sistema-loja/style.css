@@ -1,11 +1,14 @@
 .titulo{
 
-
     color: aliceblue;
-    margin: 30vw;
-    display: inline;
-    font-size:2cm;
-    font-family: Courier New;
+    background: none;
+    text-align: center;
+    border-bottom: 2px;
+    padding: 5px;
+    margin: 10px 0;
+    font-size: 1.8em;
+    font-weight: 600;
+    text-transform: uppercase;
 
 }
 
@@ -16,15 +19,20 @@ body {
   } 
 
 .link{
-    background-color:rgb(205, 209, 212);
-    display: inline;
-    font-family: Tahoma, Verdana, sans-serif
+    background-color:aliceblue;
+    font-family: Tahoma, Verdana, sans-serif;
+    text-align: center;
+    padding: 13px;
+    margin: 10px;
+    text-transform: uppercase;
+
 }
 
 p{
     color:aliceblue;
     font-size: large;
     font-family: Tahoma, Verdana, sans-serif;
+    text-align: center;
 }
 
 .corpo{
@@ -32,18 +40,20 @@ p{
     color:aliceblue;
     font-size: large;
     font-family: Tahoma, Verdana, sans-serif;
+    text-align: center;
 
 }
 
 .imagem{
     padding: 0;
+    text-align: center;
 }
 
 #redes{
 
     font-size: medium;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-left: 42vw;
+    text-align: center;
 }
 
 .input{
@@ -54,3 +64,11 @@ p{
 .form-add{
     margin-left: 10%;
 }
+
+#funcionarios{
+    
+    color:aliceblue;
+    font-family: Tahoma, Verdana, sans-serif;
+
+}
+
