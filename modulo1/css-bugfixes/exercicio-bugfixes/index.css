@@ -69,11 +69,20 @@ div img {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
+    margin-top: 50px;
 }
 
 #container-de-descricao>ol {
-    padding: 15px 0px;
+    padding: 15px 10px;
 }
+
+#container-de-descricao>p {
+    padding: 15px 10px;
+    
+    
+    
+}
+
 
 #container-para-comprar {
     background-color: #e7eb90;
@@ -83,6 +92,7 @@ div img {
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
+    
 }
 
 
@@ -131,4 +141,9 @@ td button {
 
 #botaoComprar{
     display: block;
+}
+
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
 }
