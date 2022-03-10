@@ -19,6 +19,7 @@ h2 {
 input {
     height: 20px;
     width: 500px;
+    border-bottom: 15px black;
 }
 
 button:focus {
@@ -109,6 +110,7 @@ div:last-child {
 table {
     width: 60%;
     text-align: center;
+    
 }
 
 td button {
