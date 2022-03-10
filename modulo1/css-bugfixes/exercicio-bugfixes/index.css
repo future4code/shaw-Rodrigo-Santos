@@ -26,7 +26,7 @@ button:focus {
 }
 
 img {
-    width: 100px;
+    width: 70px;
 }
 
 div>p:first-child {
@@ -52,7 +52,8 @@ div>p:first-child {
 }
 
 .icone {
-    height: 15px;
+    height: 80px;
+    
 }
 
 
@@ -152,6 +153,3 @@ color: rgb(246, 246, 246);
 
 
 
-*{
-    font-family: Arial, Helvetica, sans-serif;
-}
