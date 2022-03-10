@@ -145,6 +145,7 @@ td button {
 
 #botaoComprar{
     display: block;
+    margin-top: 40px;
 }
 
 .botao-comprar:hover{
