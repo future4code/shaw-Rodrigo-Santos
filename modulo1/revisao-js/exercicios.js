@@ -160,7 +160,6 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
     });
     return consultas
 
-
 }
 
 // EXERCÍCIO 15B
