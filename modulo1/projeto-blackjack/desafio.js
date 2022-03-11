@@ -63,5 +63,3 @@ function imprimeResultadoFinal(user, PC) {
 
    }
 
-
-

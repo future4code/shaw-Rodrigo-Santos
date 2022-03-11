@@ -1,0 +1,60 @@
+
+
+* {
+    font-family: "Courier New", Courier, monospace;
+    color:azure;
+    background-color: grey;
+
+}
+
+.link{
+    display: block;
+    font-family: "Courier New", Courier, monospace;
+    border-style: solid;
+    border: 5px solid aliceblue;
+    border-radius: 25px;
+    margin: 20px;
+    padding: 20px;
+     
+}
+
+a:hover{
+    color: blue;
+}
+a:active{
+    color: red;
+}
+
+.titulo{
+    text-align: center;  
+}
+
+.quemSou{
+    
+    text-align: left;
+    padding: 75px 30px;
+     display: block;
+    line-height: 1.8;
+    background-color: rgb(54, 40, 40);
+    color: aliceblue;
+    width:auto;
+    margin: auto;
+    border: 5px solid aliceblue;
+    border-radius: 25px;
+    opacity: 0.5;
+}
+
+.imagem{
+    width:auto;
+    margin:0 auto;
+    position: relative;
+    border: 10px;
+}
+
+.galeria-projetos{
+
+    border-style: dotted;
+}
+
+
+
