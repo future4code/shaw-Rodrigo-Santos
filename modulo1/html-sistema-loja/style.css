@@ -1,0 +1,89 @@
+.titulo{
+
+    color: aliceblue;
+    background: none;
+    text-align: center;
+    border-bottom: 2px;
+    padding: 5px;
+    margin: 10px 0;
+    font-size: 1.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+
+}
+
+body {
+    background-color: black;
+    color: white;
+    background-size: cover;
+    background-repeat: no-repeat;    
+    background-image: url(https://camisadoze.net/wp-content/uploads/2016/04/cover.jpg);
+   
+  } 
+
+.link{
+    background-color:aliceblue;
+    font-family: Tahoma, Verdana, sans-serif;
+    text-align: center;
+    padding: 13px;
+    margin: 10px;
+    text-transform: uppercase;
+
+}
+
+p{
+    color:aliceblue;
+    font-size: large;
+    font-family: Tahoma, Verdana, sans-serif;
+    text-align: center;
+}
+
+.corpo{
+
+    color:aliceblue;
+    font-size: large;
+    font-family: Tahoma, Verdana, sans-serif;
+    text-align: end;
+
+}
+
+.imagem{
+    padding: 0;
+    text-align: center;
+}
+
+#redes{
+
+    font-size: medium;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+.input{
+    margin-left: 10%;
+    
+}
+
+.form-add{
+    margin-left: 10%;
+}
+
+#funcionarios{
+    
+    color:aliceblue;
+    font-family: Tahoma, Verdana, sans-serif;
+
+}
+
+#centro{
+
+    text-align: center;
+    width: 450px;
+    margin: 0 auto;
+}
+
+.corpoEstoque{
+
+    background-color: black;
+    
+}
