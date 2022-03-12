@@ -1,21 +1,42 @@
-
-
 * {
-    font-family: "Courier New", Courier, monospace;
-    color:azure;
-    background-color: grey;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#333;
+    background-color: #e6ecf8;
 
 }
 
-.link{
+.menu {
+    display: inline;
+    padding: 8px;
+    float: left;
+    border-right: 2px solid #bbb;
+    float: left;
+    background-color: #006190;
+    
+    
+}
+
+.menuTop {
+    list-style-type: none;
+  
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #006190;
+    background-color: #006190;
+   
+
+}
+
+.liA {
     display: block;
-    font-family: "Courier New", Courier, monospace;
-    border-style: solid;
-    border: 5px solid aliceblue;
-    border-radius: 25px;
-    margin: 20px;
-    padding: 20px;
-     
+    color:#006190;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+#saudacao{
+    text-align: center;
 }
 
 a:hover{
@@ -25,36 +46,83 @@ a:active{
     color: red;
 }
 
+#galeria-projetos{
+    text-align: center;
+}
+
 .titulo{
     text-align: center;  
+    
 }
 
 .quemSou{
-    
     text-align: left;
-    padding: 75px 30px;
-     display: block;
+    padding: 30px 20px;
+    display: block;
     line-height: 1.8;
-    background-color: rgb(54, 40, 40);
-    color: aliceblue;
+    color: #333;
     width:auto;
-    margin: auto;
-    border: 5px solid aliceblue;
-    border-radius: 25px;
-    opacity: 0.5;
+    margin-top: auto;
+    border-top: 1px solid #333;
+    
+}
+
+.quemSou2{
+    text-align: left;
+    padding: 30px 20px;
+   display: block;
+   line-height: 1.8;
+   background-color: #006190;
+   color:#e6ecf8;
+   width:auto;
+   margin-top: auto;
+   border-top: 1px solid #333;
+   
 }
 
 .imagem{
-    width:auto;
-    margin:0 auto;
-    position: relative;
-    border: 10px;
+    display: block;
+    margin-right: auto;
+    width: 15%;
+    padding: 10px;
+    
 }
 
-.galeria-projetos{
+.tabelas{
+    border-style:groove;
+    border-style: solid;
+    border: 1px solid #333;
+    margin: 20px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
 
-    border-style: dotted;
+#linhaDaTabela{
+    margin-bottom: 1px solid #333;
+
+}
+
+.link{  
+    margin: 20px;
+
+}
+
+.lista{
+    line-height: 1.8;
+    background-color: #006190;
+       
+}
+
+.listaLi{
+    background-color: #006190;
+    color:#e6ecf8;
+
 }
 
 
+.redes{
+    line-height: 1.8;
 
+}
