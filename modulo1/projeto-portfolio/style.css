@@ -1,0 +1,148 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color:#E7DFDD;
+    background-color: #0e0b16;
+
+}
+
+.menu {
+    display: inline;
+    padding: 8px;
+    float: left;
+    border-right: 2px solid #4717F6;
+    float: left;
+    background-color: #0e0b16;
+    
+    
+}
+
+.menuTop {
+    list-style-type: none;
+  
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #0e0b16;
+    background-color: #0e0b16;
+   
+
+}
+
+.liA {
+    display: block;
+    color:#E7DFDD;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+a:hover{
+    color: #4717F6
+}
+a:active{
+    color: #A239CA
+}
+
+#saudacao{
+    text-align: left;
+}
+
+.titulo{
+    text-align: left;
+}
+
+.imagem{
+    display: block;
+    margin-right: auto;
+    width: 15%;
+    padding: 10px;
+    border-radius: 50%;
+    
+}
+
+.quemSou{
+    text-align: left;
+    padding: 30px 20px;
+    display: block;
+    line-height: 1.8;
+    color: #E7DFDD;
+    width:auto;
+    margin-top: auto;
+    border-top: 1px solid #4717F6
+   
+}
+
+.quemSou2{
+    text-align: left;
+    padding: 30px 20px;
+   display: block;
+   line-height: 1.8;
+   background-color: #4717F6;
+   width:auto;
+   margin-top: auto;
+   border-top: 1px solid #4717F6;
+   background-image: url(https://www.whitebearsolutions.com/wp-content/uploads/2019/04/artificial-intelligence-blur-close-up-546819-1-4200x2100.jpg);
+   
+}
+
+#galeria-projetos{
+    text-align: center;
+    border-top: 1px solid #4717F6;
+}
+
+.tabelas{
+    border-style:groove;
+    border-style: solid;
+    border: 1px solid #4717F6;
+    margin: 20px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    background-color:#4717F6
+    
+}
+
+#linhaDaTabela{
+    margin: 1px solid #4717F6;
+}
+
+.link{  
+    margin: 20px;
+
+}
+
+.lista{
+    line-height: 1.8;
+    
+    color: #E7DFDD
+       
+}
+
+.listaLi{
+    
+    color:#E7DFDD;
+        
+}
+
+#habilidades{
+    border-top: 1px solid #4717F6;
+}
+
+.redes{
+    line-height: 1.8;
+   
+}
+
+#formulario{
+    border-top: 1px solid #4717F6;
+    padding: 10px;
+
+}
+
+#mensagem-final{
+    text-align: center;
+}
+
+#botaoEnviar{
+    border-radius: 25px;
+}
