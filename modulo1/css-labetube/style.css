@@ -71,11 +71,12 @@ footer {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  
   background-color: black;
 }
 
 .video{
-    width: 800px;
+    width: 100vw;
 }
 
 .linkVideo:hover{
