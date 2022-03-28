@@ -142,7 +142,7 @@ class App extends React.Component {
       listaDeComponentes = this.state.zap.map((texto) => {
         return (
           <div>
-            <span>{texto.nome}</span>: {texto.mensagem}
+            <spam>{texto.nome}</spam>: {texto.mensagem}
           </div>
         );
       });
