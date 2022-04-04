@@ -18,79 +18,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"punk-rock\" \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
-					"protocol": "https",
-					"host": [
-						"us-central1-labenu-apis",
-						"cloudfunctions",
-						"net"
-					],
-					"path": [
-						"labefy",
-						"playlists"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "creatPlaylist",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "rodrigo-santos-shaw",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"metal crossover\" \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
-					"protocol": "https",
-					"host": [
-						"us-central1-labenu-apis",
-						"cloudfunctions",
-						"net"
-					],
-					"path": [
-						"labefy",
-						"playlists"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "creatPlaylist",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "rodrigo-santos-shaw",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"rock-a-billy\" \r\n}",
+					"raw": "{\r\n    \"name\": \"Black Sabbath\" \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -137,7 +65,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists?=&=&=&=&=",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -147,40 +75,27 @@
 					"path": [
 						"labefy",
 						"playlists"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "addTrackToPlaylist",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "rodrigo-santos-shaw",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
-					"protocol": "https",
-					"host": [
-						"us-central1-labenu-apis",
-						"cloudfunctions",
-						"net"
 					],
-					"path": [
-						"labefy",
-						"playlists",
-						":playlistId",
-						"tracks"
-					],
-					"variable": [
+					"query": [
 						{
-							"key": "playlistId",
-							"value": "89e572f8-44f0-4254-bc65-281f8f3b1b1e"
+							"key": null,
+							"value": ""
+						},
+						{
+							"key": null,
+							"value": ""
+						},
+						{
+							"key": null,
+							"value": ""
+						},
+						{
+							"key": null,
+							"value": ""
+						},
+						{
+							"key": null,
+							"value": ""
 						}
 					]
 				}
@@ -200,7 +115,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Anarchy In The U.K\", \r\n    \"artist\": \"The Sex Pistols\",\r\n    \"url\": \"https://open.spotify.com/track/5moTxUGPZXgGmosl4rIELm?si=33c2ef46a65a4823\"\r\n}",
+					"raw": "{\r\n    \"name\": \"N.I.B.\", \r\n    \"artist\": \"Black Sabbath\",\r\n    \"url\": \"https://open.spotify.com/track/11rf349bLnVHww3RwmwuHF?si=8210717f92b04225\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -224,7 +139,7 @@
 					"variable": [
 						{
 							"key": "playlistId",
-							"value": "89e572f8-44f0-4254-bc65-281f8f3b1b1e"
+							"value": "88b626e8-946f-441a-a3b7-2f55ae59b75b"
 						}
 					]
 				}
@@ -232,10 +147,145 @@
 			"response": []
 		},
 		{
-			"name": "addTrackToPlaylist",
+			"name": "getPlaylistTracks",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "rodrigo-santos-shaw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "88b626e8-946f-441a-a3b7-2f55ae59b75b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchPlaylist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "rodrigo-santos-shaw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=punk-rock",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "punk-rock"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteTrackFromPlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "rodrigo-santos-shaw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks/:trackId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks",
+						":trackId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "88b626e8-946f-441a-a3b7-2f55ae59b75b"
+						},
+						{
+							"key": "trackId",
+							"value": "7fc7bb01-0e20-4447-a78a-dfe1b87d06d4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "rodrigo-santos-shaw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId\n",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId\n"
+					],
+					"variable": [
+						{
+							"key": "playlistId\n",
+							"value": "a8ce5a58-b81a-4f2b-a7df-ed4edbeda428"
+						}
+					]
+				}
 			},
 			"response": []
 		}
