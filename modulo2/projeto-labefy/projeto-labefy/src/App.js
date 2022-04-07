@@ -7,11 +7,11 @@ import DetalhePlay from "./pages/DetalhePlay";
 
 export default class App extends React.Component {
   state = {
-    telaAtula: "criar",
+    telaAtual: "criar",
   };
 
   escolherTela = () => {
-    switch (this.state.telaAtula) {
+    switch (this.state.telaAtual) {
       case "criar":
         return <CriarPlaylist />;
       case "lista":
@@ -19,7 +19,7 @@ export default class App extends React.Component {
       case "detalhe":
         return <DetalhePlay />;
       default:
-        return <CriarPlaylist />;
+        return <div>Erro! Página não encontrada :( </div>;;
     }
   };
 
@@ -30,13 +30,12 @@ export default class App extends React.Component {
   render() {
     return(
 
-      <>
-      <button onClick={()=> this.mudaTela("criar")}>Criar Playlist</button>
-      <button onClick={()=> this.mudaTela("lista")}>Lista de Playlists</button>
-      <button onClick={()=> this.mudaTela("detalhe")}>Detalhes da Playlist</button>
-      {this.escolherTela}
-    
-
+    <>
+      <button onClick={() => this.mudaTela("criar")}>Criar Playlist</button>
+      <button onClick={() => this.mudaTela("lista")}>Lista de Playlists</button>
+      <button onClick={() => this.mudaTela("detalhe")}>Detalhes da Playlist</button>
+      
+      {this.escolherTela()}
     </>
     )
      
