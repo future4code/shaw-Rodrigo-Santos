@@ -96,9 +96,11 @@ class App extends React.Component {
           value={this.state.valorInputFotoPost}
           onChange={this.onChangeInputFotoPost}
           placeholder={"Foto Post"}
+
         />
 
         <button onClick={this.adicionaPost}>Post!</button>
+
       </MainContainer>
     );
   }
