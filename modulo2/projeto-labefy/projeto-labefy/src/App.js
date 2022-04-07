@@ -19,25 +19,27 @@ export default class App extends React.Component {
       case "detalhe":
         return <DetalhePlay />;
       default:
-        return <div>Erro! Página não encontrada :( </div>;;
+        return <CriarPlaylist />;
     }
   };
 
   mudaTela = (nomeTela) => {
-    this.setState({telaAtual: nomeTela})
-  }
+    this.setState({ telaAtual: nomeTela });
+  };
 
   render() {
-    return(
+    return (
+      <>
+        <button onClick={() => this.mudaTela("criar")}>Home</button>
+        <button onClick={() => this.mudaTela("lista")}>
+          Lista de Playlists
+        </button>
+        <button onClick={() => this.mudaTela("detalhe")}>
+          Detalhes da Playlist
+        </button>
 
-    <>
-      <button onClick={() => this.mudaTela("criar")}>Criar Playlist</button>
-      <button onClick={() => this.mudaTela("lista")}>Lista de Playlists</button>
-      <button onClick={() => this.mudaTela("detalhe")}>Detalhes da Playlist</button>
-      
-      {this.escolherTela()}
-    </>
-    )
-     
+        {this.escolherTela()}
+      </>
+    );
   }
 }

@@ -3,12 +3,70 @@ import axios from "axios";
 import styled from "styled-components";
 
 const Tela = styled.div`
-background-color: blue;
-color: white
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50vh;
+  background-color: black;
+  color: white;
+`;
 
-export default class CriarPlaylist extends React.Component {
+const headers = {
+    headers: {
+        Authorization: "rodrigo-santos-shaw",
+      },
+}
+
+class CriarPlaylist extends React.Component {
+  state = {
+    inputName: "",
+  };
+
+  criaPlaylist = () => {
+      const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
+      const body = {
+          name: this.state.inputName
+      };
+
+      axios
+        .post(url, body, headers)
+        .then((res)=>{
+            alert(`A playlist ${body.name} foi criada!`)
+            this.setState({
+                inputName: ""
+            })
+        })
+        .catch((error)=>{
+            alert("Ocorreu um erro na criação da sua playlist, tente novamente")
+        })
+  }
+
+  onChangeNomeValue = (event) => {
+    this.setState({ inputName: event.target.value})
+  }
+
+  
+
   render() {
-    return (<Tela> CRIAR A PLAYLIST </Tela>)
+    return (
+      <Tela>
+        <h1> LABEFY </h1>
+
+        <h2>Crie a sua playlist</h2>
+
+        <div>
+          <input
+            placeholder="Nome da sua nova Playlist"
+            value={this.state.inputName}
+            onChange={this.onChangeNomeValue}
+          />
+        </div>
+
+        <div>
+            <button onClick={this.criaPlaylist}>Criar playlist</button>
+        </div>
+      </Tela>
+    );
   }
 }
+export default CriarPlaylist;
