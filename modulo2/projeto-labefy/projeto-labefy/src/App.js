@@ -5,9 +5,24 @@ import CriarPlaylist from "./pages/CriarPlaylist";
 import ListaPlaylist from "./pages/ListaPlaylist";
 import DetalhePlay from "./pages/DetalhePlay";
 
+const TelaButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  background-color: #121212;
+`
+
 export default class App extends React.Component {
   state = {
     telaAtual: "criar",
+    clickedPlaylistId: "",
+  };
+
+  goToDetalhePlay = (id) => {
+    this.setState({ telaAtual: "detalhe", clickedPlaylistId: id });
+  };
+
+  goToPlaylistPage = () => {
+    this.setState({ telaAtual: "lista", clickedPlaylistId: "" });
   };
 
   escolherTela = () => {
@@ -15,11 +30,11 @@ export default class App extends React.Component {
       case "criar":
         return <CriarPlaylist />;
       case "lista":
-        return <ListaPlaylist />;
+        return <ListaPlaylist goToDetalhePlay={this.goToDetalhePlay} />;
       case "detalhe":
-        return <DetalhePlay />;
+        return <DetalhePlay id={this.state.clickedPlaylistId} goToPlaylistPage={this.goToPlaylistPage} />;
       default:
-        return <CriarPlaylist />;
+        return <CriarPlaylist goToDetalhePlay={this.goToDetalhePlay} />;
     }
   };
 
@@ -29,17 +44,15 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <>
+      <div>
+        <TelaButton>
         <button onClick={() => this.mudaTela("criar")}>Home</button>
-        <button onClick={() => this.mudaTela("lista")}>
-          Lista de Playlists
-        </button>
-        <button onClick={() => this.mudaTela("detalhe")}>
-          Detalhes da Playlist
-        </button>
+        <button onClick={() => this.mudaTela("lista")}>Lista de Playlists</button>
+        <button onClick={() => this.mudaTela("detalhe")}>Detalhes da Playlist</button>
 
+        </TelaButton>
         {this.escolherTela()}
-      </>
+      </div>
     );
   }
 }
