@@ -11,15 +11,17 @@ export default function App() {
     axios
       .get("https://pokeapi.co/api/v2/pokemon/?limit=151")
       .then((response) => {
-        setPokeList({ pokeList: response.data.results });
+        setPokeList(response.data.results);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  console.log(pokeList.length);
+
   const changePokeName = (event) => {
-    setPokeName({ pokeName: event.target.value });
+    setPokeName(event.target.value);
   };
 
   useEffect(()=>{
@@ -30,7 +32,7 @@ export default function App() {
     <div className="App">
       <select onChange={changePokeName}>
         <option value={""}>Nenhum</option>
-        {pokeList.map((pokemon) => {
+        {pokeList.map(pokemon => {
           return (
             <option key={pokemon.name} value={pokemon.name}>
               {pokemon.name}
