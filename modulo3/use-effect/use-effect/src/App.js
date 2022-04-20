@@ -24,15 +24,15 @@ export default function App() {
     setPokeName(event.target.value);
   };
 
-  useEffect(()=>{
-    getPokemonName()
-  }, [])
+  useEffect(() => {
+    getPokemonName();
+  }, []);
 
   return (
     <div className="App">
       <select onChange={changePokeName}>
         <option value={""}>Nenhum</option>
-        {pokeList.map(pokemon => {
+        {pokeList.map((pokemon) => {
           return (
             <option key={pokemon.name} value={pokemon.name}>
               {pokemon.name}

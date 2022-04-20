@@ -8,7 +8,7 @@ export default function PokeCard(props) {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
       .then((response) => {
-        setPokemon( response.data );
+        setPokemon(response.data);
       })
       .catch((err) => {
         console.log(err);
