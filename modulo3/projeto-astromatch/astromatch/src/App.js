@@ -92,7 +92,6 @@ export default function App() {
       .then((res) => {
         console.log(res.data);
         setListaMatch(res.data.matches);
-        alert("Deu match ❤")
         getProfileToChoose();
       })
       .catch((err) => console.log(err.response));
