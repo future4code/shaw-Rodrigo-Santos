@@ -9,6 +9,7 @@ const MainApp = styled.div`
   flex-direction: column;
   margin: auto;
   background-color: black  ;
+  background-image: url("https://theme.zdassets.com/theme_assets/302164/8e05540d6f7ea752f80938c848f3ed79b548b959.png");
   
 `;
 
