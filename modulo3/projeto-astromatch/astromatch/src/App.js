@@ -4,16 +4,12 @@ import TelaInicial from "./Pages/TelaInicial/TelaInicial";
 import TelaMatch from "./Pages/TelaMatch/TelaMatch";
 import styled from "styled-components";
 
-const MainSyle = styled.div`
+const MainApp = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* background-image: linear-gradient(45deg,#fd267a,#ff6036); */
-  height: 100vh;
- /*  background-image: url(https://api.mssngpeces.com/wp-content/uploads/2022/03/tinder-gradient.jpg); */
- background-color: yellow;
+  margin: auto;
+  background-color: black  ;
   
- 
 `;
 
 export default function App() {
@@ -96,6 +92,7 @@ export default function App() {
       .then((res) => {
         console.log(res.data);
         setListaMatch(res.data.matches);
+        alert("Deu match ❤")
         getProfileToChoose();
       })
       .catch((err) => console.log(err.response));
@@ -135,6 +132,7 @@ export default function App() {
       .put(url, header)
       .then((res) => {
         console.log(res.data);
+        alert("A lista de matchs foi deletada com sucesso =)")
         setListaMatch(res.data);
       })
       .catch((err) => console.log(err.data));
@@ -142,29 +140,20 @@ export default function App() {
 
   return (
     <>
-      <MainSyle>
-        <header>
-          <h1>AstroMatch</h1>
-          
-        </header>
+      <center>
 
-        <main>
-        {escolherTela()}
-       
-        </main>
+      <MainApp>
+        <main>{escolherTela()}</main>
 
         <footer>
-          <>
-            <button onClick={() => clearList()}>
-              {" "}
-              Limpar swipes e matches
-            </button>
-            <h6>
-              By Rodrigo Vieira
-            </h6>
-          </>
+          <button onClick={() => clearList()}>
+            Limpar matches
+          </button>
+          <h6>By Rodrigo Vieira</h6>
         </footer>
-      </MainSyle>
+      </MainApp>
+
+      </center>
     </>
   );
 }

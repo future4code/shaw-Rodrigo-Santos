@@ -1,100 +1,101 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import styled from "styled-components";
+import logo from "../../Assets/logo.png"
 
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  align-items: center;
-  height: 80vh;
-  width: 50vh;
-  background-color: #eae8eb;
-  text-align: center;
- 
-  border-radius: 8px;
+  justify-content: space-between;
+  height: 98vh;
+  width: 30vw;
+  border-radius: 16px;
   margin: 5px;
-  box-shadow: 0px 0px 3px 0px #555;
+  box-shadow: 2px 2px 5px 0px #555;
   font-weight: bold;
-  
-  img {
-    width: 100%;
-    height: 60%;
-  
-    /* border-radius: 8px 8px 0 0; */
+  font-family: "Poppins", sans-serif;
+  background-color: white;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+`;
+
+const ImgStyle = styled.img`
+  width: 100%;
+  height: 60vh;
+`;
+
+const ImgLogo = styled.img`
+  height: 100%;
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    height: 8vh;
   }
 `;
 
 const CardHeader = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color: blue;
+  height: 8%;
 `;
 
-const BotoesCardMain = styled.div`
-  display: flex;
-  padding: 3%;
-  background-color: green
-`;
-
-const BotaoCard = styled.button`
-  border-radius: 30px;
-  padding: 1%;
-  margin: 10%;
-  height: 5vh;
-  width: 8vh;
-  border: none;
-  background-color: white;
-  :hover {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-`;
-
-const BotaoHead = styled.button`
-  border: 1px solid rgba(54, 54, 54, 0.6);
-  font-weight: 600;
-  position: relative;
-  outline: none;
-  border-radius: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const GoToButton = styled.button`
+  align-self: center;
+  width: 6em;
+  height: 2em;
+  margin: 4px;
+  background-color: #f27244;
+  text-transform: uppercase;
   cursor: pointer;
-  opacity: 1;
-  background-color: pink;
+  font-weight: 600;
+  font-size: 1em;
+  border: 0;
+  border-radius: 10px;
+  transition: all 0.3s;
+  box-shadow: 2px 2px 5px 0px #555;
+`;
+
+const LikeButton = styled.button`
+  align-self: center;
+  width: 4em;
+  height: 4em;
+  margin-top: 4px;
+  background-color: #f27244;
+  cursor: pointer;
+  border: 0;
+  border-radius: 45px;
+  transition: all 0.3s;
+  box-shadow: 2px 2px 5px 0px #555;
+  margin: 4%;
   :hover {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
   }
-`
+`;
+
+
 
 export default function TelaInicial(props) {
   return (
     <div>
       <CardContainer>
         <CardHeader>
-          <BotaoHead onClick={props.goToMatch}> Ir para matches </BotaoHead>
-          <h3>AstroMatch</h3>
-          
+          <ImgLogo src={logo}/>
+          <GoToButton onClick={props.goToMatch}> matches </GoToButton>
         </CardHeader>
 
         <div>
-
-        <img src={props.perfil.photo} />
-        <p><strong>{props.perfil.name}</strong></p>
-        <p><strong>Idade: {props.perfil.age}</strong></p>
-        <p>Bio: {props.perfil.bio}</p>
-
+          <ImgStyle src={props.perfil.photo} />
+          <p>
+            <strong>{props.perfil.name}</strong>
+          </p>
+          <p>
+            <strong>Idade: {props.perfil.age}</strong>
+          </p>
+          <p>Bio: {props.perfil.bio}</p>
+          <center>
+            <LikeButton onClick={props.choosePersonTrue}>❤</LikeButton>
+            <LikeButton onClick={props.choosePersonFalse}>X</LikeButton>
+          </center>
         </div>
-       
-        <BotoesCardMain>
-          <BotaoCard onClick={props.choosePersonTrue}>❤</BotaoCard>
-          <BotaoCard onClick={props.choosePersonFalse}>X</BotaoCard>
-        </BotoesCardMain>
       </CardContainer>
     </div>
   );
