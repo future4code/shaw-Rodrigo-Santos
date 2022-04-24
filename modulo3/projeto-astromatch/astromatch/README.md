@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+![logo](https://user-images.githubusercontent.com/93896739/164999985-7b51c45f-00b3-4cb8-95eb-1f3c562f1af7.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# :page_facing_up: ASTROMATCH
+Projeto proposto pela instituição Labenu.
+<br>
+<br>
 
-In the project directory, you can run:
 
-### `npm start`
+# Projeto de Fixação: Astromatch
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Olá, pessoal!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Pois bem, o Astrodev deixou de legado para vocês um projeto com o objetivo de fazer um clone do Tinder: o Astromatch. 
 
-### `npm test`
+Com o que te ensinamos anteriormente, você já seria capaz de fazer esse projeto. Entretanto, a prática de outras ferramentas é muito importante. Isso te dá mais vivência e experiência, permitindo que você comece criar uma visão mais abrangente sobre o Frontend como um todo. Por causa disso, vamos pedir para que você implemente o projeto, tentando usar ao máximo os conhecimentos adquiridos durante essa semana, a saber: Hooks (*useState e/ou* *useEffect)*
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Estamos fornecendo uma API específica para esse projeto, cuja documentação se encontra no link abaixo:
 
-### `npm run build`
+[Astro Match](https://documenter.getpostman.com/view/7549981/SW12yx56?version=latest)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## :heavy_check_mark: O que funciona
+*
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## :x: O que não funciona
+* Responsividade
 
-### `npm run eject`
+## :link: Link Surge 
+* https://workable-meat.surge.sh
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## :camera: Imagens
+![image](https://user-images.githubusercontent.com/93896739/164999867-aa06f450-ec22-46da-9ab8-c3af4762c674.png)
+![image](https://user-images.githubusercontent.com/93896739/164999893-45144dba-4479-4496-b7b8-687813e845c6.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## :black_nib: Autor
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| [<img src="https://avatars.githubusercontent.com/u/93896739?v=4" width=115><br><sub>Rodrigo Santos</sub>](https://github.com/Pods89) |
