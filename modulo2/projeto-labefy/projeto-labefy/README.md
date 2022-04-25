@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+Spotify (Labefy)
+Projeto proposto pela instituição Labenu.
+<br>
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Projeto de Fixação: Labefy
 
-In the project directory, you can run:
+Olá, astronautas! Estão prontos(as) para mais um projeto de fixação? Pois bem, hoje vamos finalizar os conceitos mais importantes sobre HTTP e HTTPS. Para isso, vamos retornar para a API que vocês usaram no início da semana: Labefy. 
 
-### `npm start`
+A ideia central deste projeto é realizar uma integração com a API Labefy, que permite o gerenciamento básico de playlists de músicas. O link da documentação dela encontra-se em:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[Labefy](https://documenter.getpostman.com/view/7549981/SztBc8eT?version=latest)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### O que funciona
+Site onde é possível criar playlists, postar músicas e acessar as mesmas nos moldes do Spotify
 
-### `npm test`
+### O que não funciona
+- DESCREVA O QUE NÃO FUNCIONA NO SEU PROJETO
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Link Surge 
+quickest-club.surge.sh
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Imagens
+![image](https://user-images.githubusercontent.com/93896739/162639268-747defc9-3f80-405a-8fa4-80033d9028e0.png)
+![image](https://user-images.githubusercontent.com/93896739/162639273-63ae34b9-330b-46cf-b7d4-938cdfc4865f.png)
+![image](https://user-images.githubusercontent.com/93896739/162639289-806cf859-2d24-441e-9aaf-2c243d612fa2.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## :black_nib: Autor
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| [<img src="https://avatars.githubusercontent.com/u/93896739?v=4" width=115><br><sub>Rodrigo Santos</sub>](https://github.com/Pods89) |
