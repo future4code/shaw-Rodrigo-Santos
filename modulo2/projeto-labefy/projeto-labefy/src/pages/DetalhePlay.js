@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
-import ListaPlaylist from "./ListaPlaylist";
 import AdicionaMusica from "../components/AdicionaMusica";
 
 const Tela = styled.div`

@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import styled from "styled-components";
 import CriarPlaylist from "./pages/CriarPlaylist";
 import ListaPlaylist from "./pages/ListaPlaylist";
