@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 
 
-export default function CreateTripPage() {
+export default function Error() {
   
 
   return (
     <>
-   <h1>CreateTripPage</h1>
+   <h1>TripDetailsPage</h1>
     </>
   );
 }

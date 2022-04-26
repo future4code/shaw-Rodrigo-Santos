@@ -4,12 +4,14 @@ import styled from "styled-components";
 
 
 
-export default function CreateTripPage() {
+export default function Footer() {
   
 
   return (
     <>
-   <h1>CreateTripPage</h1>
+   <h1>LOGO</h1>
+   <h2>FOOTER</h2>
+   <menubar>Menu</menubar>
     </>
   );
 }
