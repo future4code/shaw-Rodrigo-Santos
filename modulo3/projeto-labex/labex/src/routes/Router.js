@@ -7,7 +7,7 @@ import ListTripsPage from "../pages/ListTripsPage/ListTripsPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import TripDetailsPage from "../pages/TripDetailsPage/TripDetailsPage";
 import Error from "../pages/ErrorPage/Error";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 export const Router = () => {
   return (
