@@ -19,9 +19,7 @@ const CardsFather = styled.div`
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-
-
-`
+`;
 
 const CardViagemUser = styled.div`
   border: 1px solid white;
@@ -30,7 +28,7 @@ const CardViagemUser = styled.div`
   width: 30vh;
   background-color: white;
   color: black;
-`
+`;
 
 const Nav = styled.div`
   button {
@@ -63,41 +61,41 @@ export default function ListTripsPage() {
   return (
     <center>
       <TripsList>
-      <h1>ListTripsPage</h1>
-      <Nav>
-      <button onClick={() => goBack(navigate)}>Voltar</button>
-      <button onClick={() => goToApplicationFormPage(navigate)}>Increver-se</button>
-      </Nav>
-      <h2>Lista  de viagens</h2>
-      <CardsFather>
-      <CardViagemUser>
-        CARD COM VIAGEM
-        <p>Nome:</p>
-        <p>Descrição:</p>
-        <p>Planeta:</p>
-        <p>Duração:</p>
-        <p>Data:</p>
-        </CardViagemUser>
-        <CardViagemUser>
-        CARD COM VIAGEM
-        <p>Nome:</p>
-        <p>Descrição:</p>
-        <p>Planeta:</p>
-        <p>Duração:</p>
-        <p>Data:</p>
-        </CardViagemUser>
-        <CardViagemUser>
-        CARD COM VIAGEM
-        <p>Nome:</p>
-        <p>Descrição:</p>
-        <p>Planeta:</p>
-        <p>Duração:</p>
-        <p>Data:</p>
-        </CardViagemUser>
-      </CardsFather>
+        <h1>ListTripsPage</h1>
+        <Nav>
+          <button onClick={() => goBack(navigate)}>Voltar</button>
+          <button onClick={() => goToApplicationFormPage(navigate)}>
+            Increver-se
+          </button>
+        </Nav>
+        <h2>Lista de viagens</h2>
+        <CardsFather>
+          <CardViagemUser>
+            CARD COM VIAGEM
+            <p>Nome:</p>
+            <p>Descrição:</p>
+            <p>Planeta:</p>
+            <p>Duração:</p>
+            <p>Data:</p>
+          </CardViagemUser>
+          <CardViagemUser>
+            CARD COM VIAGEM
+            <p>Nome:</p>
+            <p>Descrição:</p>
+            <p>Planeta:</p>
+            <p>Duração:</p>
+            <p>Data:</p>
+          </CardViagemUser>
+          <CardViagemUser>
+            CARD COM VIAGEM
+            <p>Nome:</p>
+            <p>Descrição:</p>
+            <p>Planeta:</p>
+            <p>Duração:</p>
+            <p>Data:</p>
+          </CardViagemUser>
+        </CardsFather>
       </TripsList>
-   
-
     </center>
   );
 }

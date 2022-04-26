@@ -17,3 +17,7 @@ export const goToAdminHomePage = (navigate) => {
 export const goToApplicationFormPage = (navigate) => {
   navigate("/form");
 };
+
+export const goToCreatTripPage = (navigate) => {
+  navigate("/creatTrip");
+};

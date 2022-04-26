@@ -28,6 +28,9 @@ const FotoLogo = styled.div`
 `;
 
 const Nav = styled.div`
+  margin-top: 35%;
+  margin-right: 50%;
+  margin-left: 48px;
   button {
     margin: 16px;
     color: #161616;
@@ -59,8 +62,6 @@ export default function HomePage() {
     <HomeLayout>
       <FotoLogo>
         <h2>Bem vindo</h2>
-      </FotoLogo>
-      <center>
         <Nav>
           <button onClick={() => goToListsTripsPage(navigate)}>
             Ver viagens
@@ -70,7 +71,10 @@ export default function HomePage() {
             Administar viagens
           </button>
         </Nav>
-      </center>
+      </FotoLogo>
+      
+        
+     
     </HomeLayout>
   );
 }
