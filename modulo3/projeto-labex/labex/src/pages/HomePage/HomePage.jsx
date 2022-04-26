@@ -4,6 +4,10 @@ import styled from "styled-components";
 import homeBack from "../../assets/homecover.png";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
+import {
+  goToListsTripsPage,
+  goToAdminHomePage,
+} from "../../routes/coordinator";
 
 const HomeLayout = styled.div`
   display: flex;
@@ -23,21 +27,50 @@ const FotoLogo = styled.div`
   height: 100vh;
 `;
 
+const Nav = styled.div`
+  button {
+    margin: 16px;
+    color: #161616;
+    font-size: 32px;
+    font-weight: 500;
+    padding: 16px 12px;
+    /* border: #fff; */
+    border-radius: 6px;
+    /* background: ; */
+    width: auto;
+    transition: all 0.5s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+  }
+  button:hover {
+    /* background: #7869bf; */
+    background: #f44926;
+    color: white;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+`;
 
 export default function HomePage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const goToListsTripsPage = () => {
-    navigate("/listTrip")
-  }
   return (
     <HomeLayout>
       <FotoLogo>
         <h2>Bem vindo</h2>
       </FotoLogo>
-      <div>
-        <button onClick={goToListsTripsPage}>Ver viagens</button>
-      </div>
+      <center>
+        <Nav>
+          <button onClick={() => goToListsTripsPage(navigate)}>
+            Ver viagens
+          </button>
+
+          <button onClick={() => goToAdminHomePage(navigate)}>
+            Administar viagens
+          </button>
+        </Nav>
+      </center>
     </HomeLayout>
   );
 }
