@@ -10,7 +10,7 @@ const CreateStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
+  height: 76vh;
 
   @media (max-width: 480px) {
     height: 76%;
@@ -19,13 +19,14 @@ const CreateStyle = styled.div`
 
 const Input = styled.input`
   font-size: 12px;
-  border: solid 1px black;
+  border: #fff;
   border-radius: 10px;
   color: black;
   padding: 7px 10px;
   font-weight: bold;
   margin: 1rem;
   width: 30vh;
+  background-color: rgba(232,240,254,255);
 `;
 
 const InputsFather = styled.div`
@@ -41,7 +42,7 @@ const Nav = styled.div`
     font-size: 32px;
     font-weight: 500;
     padding: 16px 12px;
-    /* border: #fff; */
+    border: #fff;
     border-radius: 6px;
     /* background: ; */
     width: auto;
@@ -51,9 +52,8 @@ const Nav = styled.div`
     cursor: pointer;
   }
   button:hover {
-    /* background: #7869bf; */
-    background: #f44926;
-    color: white;
+    background: #f7d36a;
+    color: black;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
@@ -73,7 +73,7 @@ export default function CreateTripPage() {
     }
   }, []);
 
-  const { form, onChange } = useForm({
+  const { form, onChange, cleanFields } = useForm({
     name: "",
     planet: "",
     date: "",
@@ -108,7 +108,18 @@ export default function CreateTripPage() {
         console.log(err.res.message);
         alert(err.res.message);
       });
+
+    cleanFields();
   };
+
+  //Data atual ou futura
+  const today = new Date();
+  const minDate =
+    today.getFullYear() +
+    "-" +
+    ("0" + (today.getMonth() + 1)) +
+    "-" +
+    ("0" + today.getDate());
 
   return (
     <center>
@@ -127,6 +138,8 @@ export default function CreateTripPage() {
               /* onChange={(e) => setForm(e.target.value)} */
               onChange={onChange}
               required
+              pattern={"^.{5,}$"}
+              tittle={"O nome deve ter no mínimo 5 letras"}
             />
             <Input
               name="planet"
@@ -145,6 +158,8 @@ export default function CreateTripPage() {
               value={form.date}
               onChange={onChange}
               required
+              min={minDate}
+
             />
             <Input
               name="durationInDays"
@@ -154,6 +169,7 @@ export default function CreateTripPage() {
               value={form.durationInDays}
               onChange={onChange}
               required
+              min={50}
             />
             <Input
               name="description"
@@ -163,6 +179,8 @@ export default function CreateTripPage() {
               value={form.description}
               onChange={onChange}
               required
+              pattern={"^.{30,}$"}
+              title={"No mínimo 30 caracteres"}
             />
           </InputsFather>
           <Nav>

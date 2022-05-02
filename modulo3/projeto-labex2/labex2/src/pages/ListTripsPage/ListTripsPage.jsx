@@ -8,7 +8,7 @@ const TripsList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 76vh;
+   height: 76vh; 
 
   @media (max-width: 500px) {
     height: 76%;
@@ -23,11 +23,12 @@ const CardsFather = styled.div`
 `;
 
 const CardViagemUser = styled.div`
-  border: 1px solid white;
-  border-radius: 10px;
-  margin: 2%;
   width: 30vh;
   border: 1px solid black;
+  margin: 2%;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  box-shadow: 0px 0px 16px 0px rgb(0 0 0 / 16%);
 `;
 
 const Nav = styled.div`
@@ -37,7 +38,7 @@ const Nav = styled.div`
     font-size: 32px;
     font-weight: 500;
     padding: 16px 12px;
-    /* border: #fff; */
+    border: #fff;
     border-radius: 6px;
     /* background: ; */
     width: auto;
@@ -48,13 +49,31 @@ const Nav = styled.div`
   }
   button:hover {
     /* background: #7869bf; */
-    background: #f44926;
-    color: white;
+    background: #f7d36a;
+    color: black;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
   }
 `;
+
+const BotaoDel = styled.button`
+  display: flex;
+  justify-content: center;
+  margin: 3%;
+  border: #fff;
+  border-radius: 8px;
+  width: 30%;
+  
+  cursor: pointer;
+
+  :hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+`
 
 export default function ListTripsPage() {
   const navigate = useNavigate();
@@ -87,9 +106,9 @@ export default function ListTripsPage() {
           <p>Planeta: {trip.planet}</p>
           <p>{trip.description}</p>
           <p>Data: {trip.date}</p>
-          <button
+          <BotaoDel
             onClick={() => goToApplicationFormPage(navigate, trip.id)}
-          >Inscrever</button>
+          >Inscrever</BotaoDel>
         </CardViagemUser>
       );
     });

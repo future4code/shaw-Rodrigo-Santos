@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { goBack, goToApplicationFormPage } from "../../routes/coordinator";
 import useForm from "../../hooks/useForm";
+import { countrys } from "../../constants/countrys";
 
 const ApplicMain = styled.div`
   height: 80vh;
@@ -15,8 +16,9 @@ const Nav = styled.div`
     font-size: 32px;
     font-weight: 500;
     padding: 16px 12px;
-    /* border: #fff; */
+    border: #fff;
     border-radius: 6px;
+    margin: 1vh;
     /* background: ; */
     width: auto;
     transition: all 0.5s;
@@ -25,9 +27,8 @@ const Nav = styled.div`
     cursor: pointer;
   }
   button:hover {
-    /* background: #7869bf; */
-    background: #f44926;
-    color: white;
+    background: #f7d36a;
+    color: black;;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
@@ -36,13 +37,26 @@ const Nav = styled.div`
 
 const Input = styled.input`
   font-size: 12px;
-  border: solid 1px black;
+  border: #fff;
   border-radius: 10px;
   color: black;
   padding: 7px 10px;
   font-weight: bold;
   margin: 1rem;
   width: 30vh;
+  background-color: rgba(232,240,254,255);
+`;
+
+const SelectStyle = styled.select`
+    font-size: 12px;
+  border: #fff;
+  border-radius: 10px;
+  color: black;
+  padding: 7px 10px;
+  font-weight: bold;
+  margin: 1rem;
+  width: 30vh;
+  background-color: rgba(232,240,254,255);
 `;
 
 const InputsFather = styled.div`
@@ -58,7 +72,7 @@ export default function ApplicationFormPage() {
   const [body, setBody] = useState({});
 
   //chamando o custom hook useForm:
-  const { form, onChange } = useForm({
+  const { form, onChange, cleanFields } = useForm({
     name: "",
     age: "",
     applicationText: "",
@@ -66,7 +80,7 @@ export default function ApplicationFormPage() {
     country: "",
   });
   console.log(params);
-  
+
   const upDateBody = (event) => {
     //evita de atualizar a tela após o submeter do formulário(bloquear o evento padrão)
     event.preventDefault();
@@ -77,7 +91,9 @@ export default function ApplicationFormPage() {
   const applyToTrip = () => {
     axios
       .post(
-        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/rodrigo/trips/${params.id}/apply`,body)
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/rodrigo/trips/${params.id}/apply`,
+        body
+      )
       .then((res) => {
         console.log("cadastrado com sucesso", res.data);
         alert("cadastrado com sucesso", res.data.message);
@@ -98,6 +114,8 @@ export default function ApplicationFormPage() {
       )
       .then((res) => {
         setTrips(res.data.trips);
+        console.log(form);
+        cleanFields();
       })
       .catch((err) => {
         console.log(err.res);
@@ -109,19 +127,21 @@ export default function ApplicationFormPage() {
     pegaTrips();
   }, []);
 
-  const tripChoice = trips.map((trip) => {
+  
+
+  /*   const tripChoice = trips.map((trip) => {
     return (
       <option key={trip.id} onChange={(e) => setTrips(e.target.value)}>
         {trip.name} id= {trip.id}
       </option>
     );
-  });
+  }); */
 
   return (
     <center>
-      <h1>Inscrever-se para uma viagem</h1>
+      <h1>Preencha seus dados e se increva para a viagem</h1>
       <ApplicMain>
-        <h2>Escolha uma viagem</h2>
+        {/* <h2>Escolha uma viagem</h2> */}
 
         <form onSubmit={upDateBody}>
           {/* <select>{tripChoice}</select> */}
@@ -137,6 +157,8 @@ export default function ApplicationFormPage() {
               /* onChange={(e) => setForm(e.target.value)} */
               onChange={onChange}
               required
+              pattern={"^.{3,}$"}
+              tittle={"Seu nome deve ter no mínimo 3 letras"}
             />
             <Input
               name="age"
@@ -155,6 +177,8 @@ export default function ApplicationFormPage() {
               value={form.applicationText}
               onChange={onChange}
               required
+              pattern={"^.{30,}$"}
+              tittle={"Seu texto deve ter no mínimo 30 carcteres"}
             />
             <Input
               name="profession"
@@ -164,16 +188,30 @@ export default function ApplicationFormPage() {
               value={form.profession}
               onChange={onChange}
               required
+              pattern={"^.{10,}$"}
+              tittle={"Sua profissão deve ter no mínimo 10 caracteres"}
             />
-            <Input
+
+            <SelectStyle
               name="country"
               type="select"
-              size="50"
               placeholder="Países"
               value={form.country}
               onChange={onChange}
               required
-            />
+            >
+              <option value="" disabled>
+                
+                Escolha um país
+              </option>
+              {countrys.map((country) => {
+                return (
+                  <option value={country} key={country}>
+                    {country}
+                  </option>
+                );
+              })}
+            </SelectStyle>
           </InputsFather>
           <Nav>
             <button>Inscrever</button>

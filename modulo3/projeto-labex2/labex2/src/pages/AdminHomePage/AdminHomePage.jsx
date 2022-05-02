@@ -9,12 +9,14 @@ import {
 } from "../../routes/coordinator";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
 import { useState, useEffect } from "react";
+import { FaBeer, FaTrashAlt } from 'react-icons/fa';
 
 const AdmStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 80vh;
+  
 
   @media (max-width: 800px) {
     height: 76%;
@@ -34,10 +36,12 @@ const CardViagemUser = styled.div`
   justify-content: space-between;
   height: 30vh;
   width: 40vh;
-  border: 1px solid black;
+  border: 2px solid transparent;
   border-radius: 16px;
+  box-shadow: 0px 0px 16px 0px rgb(0 0 0 / 16%);
   margin: 1vh;
   font-weight: bold;
+  
   
   @media (max-width: 375px) {
     height: 76%;
@@ -51,7 +55,7 @@ const Nav = styled.div`
     font-size: 32px;
     font-weight: 500;
     padding: 16px 12px;
-    /* border: #fff; */
+    border: #fff;
     border-radius: 6px;
     /* background: ; */
     width: auto;
@@ -61,9 +65,8 @@ const Nav = styled.div`
     cursor: pointer;
   }
   button:hover {
-    /* background: #7869bf; */
-    background: #f44926;
-    color: white;
+    background: #f7d36a;
+    color: black;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
@@ -81,9 +84,10 @@ const BotaoDel = styled.button`
   align-self: center;
   justify-content: center;
   margin: 3%;
-  border: 1px solid black;
+  border: #fff;
   border-radius: 8px;
-  width: 15%;
+  width: 20%;
+  
   cursor: pointer;
 
   :hover {
@@ -91,8 +95,6 @@ const BotaoDel = styled.button`
     -ms-transform: scale(1.1);
     transform: scale(1.1);
   }
-
-  
 
 `
 
@@ -109,14 +111,13 @@ export default function AdminHomePage() {
         "https://us-central1-labenu-apis.cloudfunctions.net/labeX/rodrigo/trips"
       )
       .then((res) => {
-        console.log("sucesso", res.data);
+        /* console.log("sucesso", res.data); */
         setTrips(res.data.trips);
       })
       .catch((err) => {
         console.log(err.res);
       });
   };
-
 
   const deleteTrip = (id) => {
     const token = localStorage.getItem("token");
@@ -140,15 +141,15 @@ export default function AdminHomePage() {
     return (
       <CardViagemUser
         key={trip.id}
-       
       >
+      
         <p>{trip.name}</p>
         <p>Planeta: {trip.planet}</p>
         <p>{trip.description}</p>
         <p>Data: {trip.date}</p>
         <BotoesAdm>
         <BotaoDel  onClick={() => goToDetails(navigate, trip.id)}>Acessar</BotaoDel>
-        <BotaoDel onClick={()=> deleteTrip(trip.id)}>X</BotaoDel>
+        <BotaoDel onClick={()=> deleteTrip(trip.id)}> <FaTrashAlt/> </BotaoDel>
         </BotoesAdm>
       </CardViagemUser>
     );
@@ -159,7 +160,6 @@ export default function AdminHomePage() {
       pegaTrips();
     }, [todasTrips]);
     
-
   return (
     <center>
       <AdmStyle>

@@ -9,7 +9,7 @@ export default function Error() {
 
   return (
     <>
-   <h1>TripDetailsPage</h1>
+   <h1>Erro =(</h1>
     </>
   );
 }

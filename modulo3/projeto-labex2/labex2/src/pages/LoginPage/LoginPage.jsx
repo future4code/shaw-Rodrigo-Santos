@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { goBack } from "../../routes/coordinator";
 
 const LoginStyle = styled.div`
@@ -9,22 +9,21 @@ const LoginStyle = styled.div`
   flex-direction: column;
   align-items: center;
   height: 80vh;
-  
-  @media(max-width: 480px) {
-   
+
+  @media (max-width: 480px) {
   }
-  
 `;
 
 const Input = styled.input`
-  font-size: 12px;
-  border: solid 1px black;
+ font-size: 12px;
+  border: #fff;
   border-radius: 10px;
   color: black;
   padding: 7px 10px;
   font-weight: bold;
   margin: 1rem;
   width: 30vh;
+  background-color: rgba(232,240,254,255);
 `;
 
 const InputsFather = styled.div`
@@ -40,7 +39,7 @@ const Nav = styled.div`
     font-size: 32px;
     font-weight: 500;
     padding: 16px 12px;
-    /* border: #fff; */
+    border: #fff;
     border-radius: 6px;
     /* background: ; */
     width: auto;
@@ -50,9 +49,8 @@ const Nav = styled.div`
     cursor: pointer;
   }
   button:hover {
-    /* background: #7869bf; */
-    background: #f44926;
-    color: white;
+    background: #f7d36a;
+    color: black;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
@@ -63,7 +61,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -88,8 +86,7 @@ export default function LoginPage() {
       .then((response) => {
         console.log(`Deu certo, token:`, response.data.token);
         localStorage.setItem("token", response.data.token);
-        navigate("/adminHome", {replace:true})
-        
+        navigate("/adminHome", { replace: true });
       })
       .catch((error) => {
         console.log("Deu erro", error.response);
@@ -99,24 +96,27 @@ export default function LoginPage() {
   return (
     <center>
       <LoginStyle>
-     <InputsFather>
-     <Input
-        placeholder="email"
-        type="email"
-        value={email}
-        onChange={onChangeEmail}
-      />
-      <Input
-        placeholder="password"
-        type="password"
-        value={password}
-        onChange={onChangePassword}
-      />
-     </InputsFather>
-      <Nav>
-      <button onClick={onSubmitLogin}> Entrar </button>
-      <button onClick={() => goBack(navigate)}>Voltar</button>
-      </Nav>
+        <InputsFather>
+          <Input
+            placeholder="email"
+            type="email"
+            value={email}
+            onChange={onChangeEmail}
+            required
+            pattern={"/^[a-z0-9.]+@[a-z0-9]+.[a-z]+.([a-z]+)?$/i"}
+            tittle={"Digite um email válido"}
+          />
+          <Input
+            placeholder="password"
+            type="password"
+            value={password}
+            onChange={onChangePassword}
+          />
+        </InputsFather>
+        <Nav>
+          <button onClick={onSubmitLogin}> Entrar </button>
+          <button onClick={() => goBack(navigate)}>Voltar</button>
+        </Nav>
       </LoginStyle>
     </center>
   );

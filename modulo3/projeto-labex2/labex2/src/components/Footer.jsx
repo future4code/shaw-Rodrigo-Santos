@@ -8,13 +8,13 @@ const FooterLayout = styled.div`
   flex-direction: row;
   background-color: #294864;
   color: white;
+  height: 12vh;
 `;
 
 const Imglogo =  styled.img`
   height: 12vh;
 
 `
-
 
 export default function Footer() {
   

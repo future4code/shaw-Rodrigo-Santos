@@ -8,22 +8,25 @@ const HeaderLayout = styled.div`
   flex-direction: row;
   background-color: #294864;
   color: white;
-`;
-
-const Imglogo =  styled.img`
   height: 12vh;
 
-`
+`;
 
+const Imglogo = styled.img`
+  height: 12vh;
+`;
+
+const HeaderStyle = styled.div`
+  display: flex;
+`;
 
 export default function Header() {
-  
-
   return (
     <HeaderLayout>
-   <Imglogo src={logo}/>
-   <h2>LABEX</h2>
-   
+      <Imglogo src={logo} />
+      <HeaderStyle>
+        <h2>LabeX</h2>
+      </HeaderStyle>
     </HeaderLayout>
   );
 }

@@ -39,7 +39,7 @@ const Nav = styled.div`
     font-size: 5vw;
     font-weight: 500;
     padding: 16px 12px;
-    /* border: #fff; */
+    border: #fff;
     border-radius: 6px;
     /* background: ; */
     width: auto;
@@ -49,8 +49,8 @@ const Nav = styled.div`
   }
   button:hover {
     /* background: #7869bf; */
-    background: #f44926;
-    color: white;
+    background: #f7d36a;
+    color: black;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
