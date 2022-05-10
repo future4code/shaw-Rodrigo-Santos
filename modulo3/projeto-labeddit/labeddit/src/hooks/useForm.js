@@ -10,10 +10,10 @@ const useForm = (initialState) => {
     setForm({ ...form, [name]: value });
   };
 
-  const cleanFields = () => {
+  const clear = () => {
     setForm(initialState);
   };
 
-  return { form, onChange, cleanFields };
+  return { form, onChange, clear };
 };
 export default useForm;

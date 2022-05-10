@@ -5,6 +5,7 @@ import LoginForm from "./LoginForm";
 import { useNavigate } from "react-router-dom";
 import { goToSignUp } from "../../routes/coordinator";
 
+
 const LoginPage = () => {
   const navigate = useNavigate();
 

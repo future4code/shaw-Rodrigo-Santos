@@ -1,40 +1,41 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
+import { login } from "../../services/user";
 
 
 const LoginForm = () => {
   const { form, onChange, clear } = useForm({ email: "", password: "" });
-  
+  const navigate = useNavigate()
+
   const onSubimitForm = (event) => {
-    console.log(form);
     event.preventDefault();
+    login(form, clear, navigate);
   };
 
   return (
-    
-        <form onSubmit={onSubimitForm}>
-          <input
-            name="email"
-            value={form.email}
-            onChange={onChange}
-            type={"email"}
-            size="30"
-            placeholder="E-mail*"
-            required
-          />
-          <input
-            name="password"
-            value={form.password}
-            onChange={onChange}
-            type="password"
-            size="30"
-            placeholder="Senha*"
-            required
-          />
+    <form onSubmit={onSubimitForm}>
+      <input
+        name="email"
+        value={form.email}
+        onChange={onChange}
+        type={"email"}
+        size="30"
+        placeholder="E-mail*"
+        required
+      />
+      <input
+        name="password"
+        value={form.password}
+        onChange={onChange}
+        type="password"
+        size="30"
+        placeholder="Senha*"
+        required
+      />
 
-          <button>Continuar</button>
-        </form>
-        
+      <button>Continuar</button>
+    </form>
   );
 };
 
