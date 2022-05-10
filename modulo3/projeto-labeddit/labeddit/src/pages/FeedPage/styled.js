@@ -75,4 +75,7 @@ export const NewPostFather = styled.div`
   border-radius: 12px;
 `;
 
+export const MainCard = styled.div`
+  cursor: pointer;
+`
 

@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/urls";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
 import useRequestData from "../../hooks/useRequestData";
+import { goToPostPage } from "../../routes/coordinator";
 import {
   CardFeedStyle,
   EnviadoPorStyle,
@@ -9,21 +11,23 @@ import {
   BotaoLike,
   ButtonsFather,
   NewPostFather,
+  MainCard,
 } from "./styled";
 
 const FeedPage = () => {
   useProtectedPage();
   const feed = useRequestData([], `${BASE_URL}/posts`);
-  console.log(feed);
+  const navigate = useNavigate();
 
-  const onClickCard = () => {};
+  const onClickCard = (id) => {
+    goToPostPage(navigate, id);
+  };
 
   const feedCards = feed.map((postFeed) => {
     return (
-      <div>
-        {/* < button onClick={onClickCard}> */}
+      <MainCard onClick={() => onClickCard(postFeed.id)}>
         <CardFeedStyle key={postFeed.id}>
-          <EnviadoPorStyle>Enviado por: {postFeed.userId}</EnviadoPorStyle>
+          <EnviadoPorStyle>Enviado por: {postFeed.id}</EnviadoPorStyle>
           <TextoFeedPage>
             <h3>{postFeed.title}</h3>
             <p>{postFeed.body}</p>
@@ -32,10 +36,8 @@ const FeedPage = () => {
             <BotaoLike>{postFeed.voteSum}</BotaoLike>
             <BotaoLike>{postFeed.userVote}</BotaoLike>
           </ButtonsFather>
-          <button onClick={onClickCard}>Ver post</button>
         </CardFeedStyle>
-       {/*  </button> */}
-      </div>
+      </MainCard>
     );
   });
 
