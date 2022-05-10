@@ -5,8 +5,7 @@ import LoginForm from "./LoginForm";
 import { useNavigate } from "react-router-dom";
 import { goToSignUp } from "../../routes/coordinator";
 
-
-const LoginPage = () => {
+const LoginPage = ({ setRightButtonText }) => {
   const navigate = useNavigate();
 
   return (
@@ -15,7 +14,7 @@ const LoginPage = () => {
         <LogoStyle src={logo} />
       </div>
       <InputsContainer>
-        <LoginForm />
+        <LoginForm setRightButtonText={setRightButtonText} />
         <button onClick={() => goToSignUp(navigate)}>Crie uma conta!</button>
       </InputsContainer>
     </center>

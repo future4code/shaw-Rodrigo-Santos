@@ -1,12 +1,19 @@
 import { Checkbox } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
+import { useUnprotectedProtectedPage } from "../../hooks/useUnprotectedPage";
+import { signUp } from "../../services/user";
 
-const SignUpForm = () => {
+const SignUpForm = ({setRightButtonText}) => {
   const { form, onChange, clear } = useForm({ username: "", email: "", password: "" });
+  const navigate = useNavigate()
+  useUnprotectedProtectedPage()
+
   const onSubimitForm = (event) => {
     console.log(form);
     event.preventDefault();
+    signUp(form, clear, navigate, setRightButtonText )
   };
 
   return (

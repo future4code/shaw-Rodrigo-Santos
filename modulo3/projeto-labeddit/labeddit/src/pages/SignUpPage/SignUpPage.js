@@ -1,13 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useUnprotectedProtectedPage } from "../../hooks/useUnprotectedPage";
 import SignUpForm from "./SingUpForm";
 
-const SignUpPage = () => {
-  const navigate = useNavigate();
+const SignUpPage = ({ setRightButtonText }) => {
+  useUnprotectedProtectedPage();
+
   return (
     <div>
       <h1>Olá, boas vindas ao LabEddit ;)</h1>
-      <SignUpForm/>
+      <SignUpForm setRightButtonText={setRightButtonText} />
     </div>
   );
 };
