@@ -2,7 +2,8 @@ import axios from "axios";
 import { BASE_URL } from "../constants/urls";
 import { goToFeedPage } from "../routes/coordinator";
 
-export const login = (body, clear, navigate, setRightButtonText) => {
+export const login = (body, clear, navigate, setRightButtonText, setIsLoading) => {
+  setIsLoading(true)
   axios
     .post(`${BASE_URL}/users/login`, body)
     .then((res) => {
@@ -11,10 +12,12 @@ export const login = (body, clear, navigate, setRightButtonText) => {
       clear();
       goToFeedPage(navigate);
       setRightButtonText("Logout");
+      setIsLoading(false)
     })
     .catch((err) => {
       console.log("Deu erro", err);
       alert(err.response.data.message);
+      setIsLoading(false)
     });
 };
 

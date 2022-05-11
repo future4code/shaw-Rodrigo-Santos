@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/urls";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
 import useRequestData from "../../hooks/useRequestData";
 import { goToPostPage } from "../../routes/coordinator";
+import { postCreatePost } from "../../services/posts";
+import useForm from "../../hooks/useForm";
+import { CircularProgress } from "@mui/material";
+import Loading from "../../components/Loading/Loading";
 import {
   CardFeedStyle,
   EnviadoPorStyle,
@@ -12,12 +16,19 @@ import {
   ButtonsFather,
   NewPostFather,
   MainCard,
+  PostButton,
+  ButtonLetter,
+  InputStyle,
+  DivDosForm,
+  InputStyleTitle
 } from "./styled";
 
 const FeedPage = () => {
   useProtectedPage();
-  const feed = useRequestData([], `${BASE_URL}/posts`);
   const navigate = useNavigate();
+  const feed = useRequestData([], `${BASE_URL}/posts`);
+  const { form, onChange, clear } = useForm({ title: "", body: "" });
+  const [isLoading, setIsLoading] = useState(false);
 
   const onClickCard = (id) => {
     goToPostPage(navigate, id);
@@ -41,16 +52,39 @@ const FeedPage = () => {
     );
   });
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    postCreatePost(form, clear, setIsLoading);
+  };
+
   return (
     <div>
       <NewPostFather>
-        <input />
-        <button>Postar</button>
+        <form onSubmit={onSubmit}>
+          <DivDosForm>
+            <InputStyleTitle
+              type="text"
+              name="title"
+              value={form.title}
+              onChange={onChange}
+              placeholder="Título..."
+            />
+            <InputStyle
+              type="text"
+              name="body"
+              value={form.body}
+              onChange={onChange}
+              placeholder="Escreva seu post..."
+            />
+            <PostButton>
+              {isLoading ? <CircularProgress color={"inherit"} /> : <ButtonLetter>Postar</ButtonLetter>}
+            </PostButton>
+          </DivDosForm>
+        </form>
       </NewPostFather>
       <h1>FeedPage</h1>
       {feedCards}
     </div>
   );
 };
-
 export default FeedPage;
