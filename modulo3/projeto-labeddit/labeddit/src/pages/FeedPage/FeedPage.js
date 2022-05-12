@@ -6,7 +6,7 @@ import useRequestData from "../../hooks/useRequestData";
 import { goToPostPage } from "../../routes/coordinator";
 import { postCreatePost } from "../../services/posts";
 import useForm from "../../hooks/useForm";
-import { ButtonBase, CircularProgress } from "@mui/material";
+import {CircularProgress } from "@mui/material";
 import { creatPostVote, putChangePostVote } from "../../services/likes";
 import {
   CardFeedStyle,
@@ -26,7 +26,7 @@ import {
 const FeedPage = () => {
   useProtectedPage();
   const navigate = useNavigate();
-  const feed = useRequestData([], `${BASE_URL}/posts`);
+  const [feed, getFeed] = useRequestData([], `${BASE_URL}/posts`);
   const { form, onChange, clear } = useForm({ title: "", body: "" });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,12 +36,12 @@ const FeedPage = () => {
   };
 
   const onClickCreatPostVote = (id) => {
-    creatPostVote(id);
+    creatPostVote(id, getFeed);
     console.log(id);
   };
 
   const onClickputChangePostVote = (id) => {
-    putChangePostVote(id);
+    putChangePostVote(id, getFeed);
     console.log(id);
   };
 
@@ -51,16 +51,14 @@ const FeedPage = () => {
     return (
       <MainCard>
         <CardFeedStyle key={postFeed.id}>
-          <EnviadoPorStyle>Enviado por: {postFeed.id}</EnviadoPorStyle>
+          <EnviadoPorStyle>Enviado por: {postFeed.username}</EnviadoPorStyle>
           <TextoFeedPage>
             <h3>{postFeed.title}</h3>
             <p>{postFeed.body}</p>
           </TextoFeedPage>
           <ButtonsFather>
-            <BotaoLike onClick={() => onClickCreatPostVote(postFeed.id)}>LIKE</BotaoLike>
-            <p>{postFeed.voteSum}</p>
-            <BotaoLike onClick={()=> onClickputChangePostVote(postFeed.id)}>DESLIKE</BotaoLike>
-            <p>{postFeed.userVote} </p>
+            <BotaoLike onClick={() => onClickCreatPostVote(postFeed.id)}><div>LIKE{postFeed.voteSum}</div></BotaoLike>
+            <BotaoLike onClick={()=> onClickputChangePostVote(postFeed.id)}>DESLIKE{postFeed.userVote} </BotaoLike>
             <BotaoLike onClick={() => onClickCard(postFeed.id)}>Post</BotaoLike>
           </ButtonsFather>
         </CardFeedStyle>
@@ -70,7 +68,7 @@ const FeedPage = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    postCreatePost(form, clear, setIsLoading);
+    postCreatePost(form, clear, setIsLoading, getFeed );
   };
 
   return (
@@ -102,7 +100,6 @@ const FeedPage = () => {
           </DivDosForm>
         </form>
       </NewPostFather>
-      <h1>FeedPage</h1>
       {feedCards}
     </div>
   );

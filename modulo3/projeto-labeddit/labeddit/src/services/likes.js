@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "../constants/urls";
 
-export const creatPostVote = (id) => {
+export const creatPostVote = (id, getFeed) => {
   const body = {
     direction: 1,
   };
@@ -14,13 +14,14 @@ export const creatPostVote = (id) => {
     .then((res) => {
       console.log(res);
       alert(res.data);
+      getFeed()
     })
     .catch((err) => {
       alert(err.response.data.message);
     });
 };
 
-export const creatCommentVote = (id) => {
+export const creatCommentVote = (id, getFeed) => {
   const body = {
     direction: 1,
   };
@@ -33,13 +34,14 @@ export const creatCommentVote = (id) => {
     .then((res) => {
       console.log(res);
       alert(res.data);
+      getFeed()
     })
     .catch((err) => {
       alert(err.response.data.message);
     });
 };
 
-export const putChangePostVote = (id) => {
+export const putChangePostVote = (id, getFeed) => {
   const body = {
     direction: -1,
   };
@@ -52,13 +54,14 @@ export const putChangePostVote = (id) => {
     .then((res) => {
       console.log(res);
       alert("Deslike");
+      getFeed()
     })
     .catch((err) => {
       alert(err.response.data.message);
     });
 };
 
-export const putChangeCommentVote = (id) => {
+export const putChangeCommentVote = (id, getFeed) => {
   const body = {
     direction: -1,
   };
@@ -71,6 +74,7 @@ export const putChangeCommentVote = (id) => {
     .then((res) => {
       console.log(res);
       alert("Deslike");
+      getFeed()
     })
     .catch((err) => {
       alert(err.response.data.message);

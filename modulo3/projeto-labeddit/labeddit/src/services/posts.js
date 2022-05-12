@@ -1,8 +1,8 @@
 import axios from "axios";
 import { BASE_URL } from "../constants/urls";
 
-export const postCreatePost = (body, clear, setIsLoading) => {
-  setIsLoading(true)
+export const postCreatePost = (body, clear, setIsLoading, getComment) => {
+  setIsLoading(true);
   axios
     .post(`${BASE_URL}/posts`, body, {
       headers: {
@@ -13,15 +13,16 @@ export const postCreatePost = (body, clear, setIsLoading) => {
       console.log(res);
       alert(res.data);
       clear();
-      setIsLoading(false)
+      getComment();
+      setIsLoading(false);
     })
     .catch((err) => {
       alert(err.response.data.message);
-      setIsLoading(false)
+      setIsLoading(false);
     });
 };
 
-export const postCreateComent = (body, clear, params) => {
+export const postCreateComent = (body, clear, params, getComment) => {
   axios
     .post(`${BASE_URL}/posts/${params.id}/comments`, body, {
       headers: {
@@ -32,10 +33,9 @@ export const postCreateComent = (body, clear, params) => {
       console.log(res);
       alert(res.data);
       clear();
+      getComment();
     })
     .catch((err) => {
       alert(err.response.data.message);
     });
 };
-
-

@@ -4,6 +4,7 @@ import useForm from "../../hooks/useForm";
 import { useUnprotectedProtectedPage } from "../../hooks/useUnprotectedPage";
 import { login } from "../../services/user";
 import { CircularProgress } from "@mui/material";
+import { InputStyle, PostButton, ButtonLetter } from "./styled";
 
 const LoginForm = ({ setRightButtonText }) => {
   const { form, onChange, clear } = useForm({ email: "", password: "" });
@@ -19,8 +20,9 @@ const LoginForm = ({ setRightButtonText }) => {
   };
 
   return (
-    <form onSubmit={onSubimitForm}>
-      <input
+    <center>
+      <form onSubmit={onSubimitForm}>
+      <InputStyle
         name="email"
         value={form.email}
         onChange={onChange}
@@ -29,7 +31,7 @@ const LoginForm = ({ setRightButtonText }) => {
         placeholder="E-mail*"
         required
       />
-      <input
+      <InputStyle
         name="password"
         value={form.password}
         onChange={onChange}
@@ -39,10 +41,11 @@ const LoginForm = ({ setRightButtonText }) => {
         required
       />
       {/* Ternário nescessário para renderizar o loading */}
-      <button>
-        {isLoading ? <CircularProgress color={"inherit"} /> : <>Continuar</>}
-      </button>
+      <PostButton>
+        <ButtonLetter>{isLoading ? <CircularProgress color={"inherit"} /> : <>Continuar</>}</ButtonLetter>
+      </PostButton>
     </form>
+    </center>
   );
 };
 

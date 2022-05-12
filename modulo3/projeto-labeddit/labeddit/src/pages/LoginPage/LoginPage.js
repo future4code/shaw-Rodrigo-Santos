@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/images/login-logo.png";
-import { LogoStyle, InputsContainer } from "./styled";
+import { LogoStyle, InputsContainer, SignUpButton, SigButtonLetter  } from "./styled";
 import LoginForm from "./LoginForm";
 import { useNavigate } from "react-router-dom";
 import { goToSignUp } from "../../routes/coordinator";
@@ -15,7 +15,7 @@ const LoginPage = ({ setRightButtonText }) => {
       </div>
       <InputsContainer>
         <LoginForm setRightButtonText={setRightButtonText} />
-        <button onClick={() => goToSignUp(navigate)}>Crie uma conta!</button>
+        <SignUpButton onClick={() => goToSignUp(navigate)}><SigButtonLetter>Crie uma conta!</SigButtonLetter></SignUpButton>
       </InputsContainer>
     </center>
   );

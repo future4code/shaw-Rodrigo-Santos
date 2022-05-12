@@ -5,11 +5,7 @@ import useRequestData from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls";
 import useForm from "../../hooks/useForm";
 import { postCreateComent } from "../../services/posts";
-import Loading from "../../components/Loading/Loading";
-import {
-  creatCommentVote,
-  putChangeCommentVote,
-} from "../../services/likes";
+import { creatCommentVote, putChangeCommentVote } from "../../services/likes";
 
 const PostPage = () => {
   useProtectedPage();
@@ -19,36 +15,40 @@ const PostPage = () => {
   const { form, onChange, clear } = useForm({ body: "" });
 
   //Requisição da API que obtém todos os comentários
-  const getComments = useRequestData(
+  const [comments, getComment] = useRequestData(
     [{}],
     `${BASE_URL}/posts/${params.id}/comments`
   );
 
   const onClickCreatCommentVote = (id) => {
-    creatCommentVote(id);
+    creatCommentVote(id, getComment);
     console.log(id);
   };
 
   const onClickPutputChangeCommentVote = (id) => {
-    putChangeCommentVote(id);
+    putChangeCommentVote(id, getComment);
     console.log(id);
   };
 
   //Map da requisição acima, ele vai renderizar os comentários 1 a 1
-  const mapGetPostComents = getComments.map((coment) => {
+  const mapGetPostComents = comments.map((coment) => {
     return (
       <div key={coment.id}>
         <p> comentado por... {coment.username}</p>
         <p> {coment.body} </p>
-        <button onClick={()=> onClickCreatCommentVote(coment.id) }> Dar Like</button>
-        <button onClick={()=> onClickPutputChangeCommentVote(coment.id) }> Dar Deslike</button>
+        <button onClick={() => onClickCreatCommentVote(coment.id)}>
+          Dar Like
+        </button>
+        <button onClick={() => onClickPutputChangeCommentVote(coment.id)}>
+          Dar Deslike
+        </button>
         <p> likes: {coment.voteSum}</p>
       </div>
     );
   });
 
   //Requisição dos posts, puxa todos os posts disponíveis, porém queremos apenas o selecionado ao clicar no card do feed
-  const getPost = useRequestData([], `${BASE_URL}/posts`);
+  const [getPost] = useRequestData([], `${BASE_URL}/posts`);
 
   //Filter da requisição acima, esse filter vai garantir que só o post que tenha o ID igual ao ID passado por params seja renderizado
   const filterGetPost = getPost.filter((post) => {
@@ -59,10 +59,8 @@ const PostPage = () => {
   //Temos também a requisição de POST que posta novos comentários ná página
   const onSubmit = (event) => {
     event.preventDefault();
-    postCreateComent(form, clear, params);
+    postCreateComent(form, clear, params, getComment);
   };
-
- 
 
   return (
     <div>
