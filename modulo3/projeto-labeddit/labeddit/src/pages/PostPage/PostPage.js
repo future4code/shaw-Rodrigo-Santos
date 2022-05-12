@@ -6,6 +6,10 @@ import { BASE_URL } from "../../constants/urls";
 import useForm from "../../hooks/useForm";
 import { postCreateComent } from "../../services/posts";
 import Loading from "../../components/Loading/Loading";
+import {
+  creatCommentVote,
+  putChangeCommentVote,
+} from "../../services/likes";
 
 const PostPage = () => {
   useProtectedPage();
@@ -20,10 +24,27 @@ const PostPage = () => {
     `${BASE_URL}/posts/${params.id}/comments`
   );
 
+  const onClickCreatCommentVote = (id) => {
+    creatCommentVote(id);
+    console.log(id);
+  };
+
+  const onClickPutputChangeCommentVote = (id) => {
+    putChangeCommentVote(id);
+    console.log(id);
+  };
+
   //Map da requisição acima, ele vai renderizar os comentários 1 a 1
   const mapGetPostComents = getComments.map((coment) => {
-    return <p key={coment.id}> {coment.body} </p>
-                     
+    return (
+      <div key={coment.id}>
+        <p> comentado por... {coment.username}</p>
+        <p> {coment.body} </p>
+        <button onClick={()=> onClickCreatCommentVote(coment.id) }> Dar Like</button>
+        <button onClick={()=> onClickPutputChangeCommentVote(coment.id) }> Dar Deslike</button>
+        <p> likes: {coment.voteSum}</p>
+      </div>
+    );
   });
 
   //Requisição dos posts, puxa todos os posts disponíveis, porém queremos apenas o selecionado ao clicar no card do feed
@@ -40,6 +61,8 @@ const PostPage = () => {
     event.preventDefault();
     postCreateComent(form, clear, params);
   };
+
+ 
 
   return (
     <div>

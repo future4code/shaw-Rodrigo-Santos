@@ -6,8 +6,8 @@ import useRequestData from "../../hooks/useRequestData";
 import { goToPostPage } from "../../routes/coordinator";
 import { postCreatePost } from "../../services/posts";
 import useForm from "../../hooks/useForm";
-import { CircularProgress } from "@mui/material";
-import Loading from "../../components/Loading/Loading";
+import { ButtonBase, CircularProgress } from "@mui/material";
+import { creatPostVote, putChangePostVote } from "../../services/likes";
 import {
   CardFeedStyle,
   EnviadoPorStyle,
@@ -20,7 +20,7 @@ import {
   ButtonLetter,
   InputStyle,
   DivDosForm,
-  InputStyleTitle
+  InputStyleTitle,
 } from "./styled";
 
 const FeedPage = () => {
@@ -32,11 +32,24 @@ const FeedPage = () => {
 
   const onClickCard = (id) => {
     goToPostPage(navigate, id);
+    console.log(id);
   };
+
+  const onClickCreatPostVote = (id) => {
+    creatPostVote(id);
+    console.log(id);
+  };
+
+  const onClickputChangePostVote = (id) => {
+    putChangePostVote(id);
+    console.log(id);
+  };
+
+  
 
   const feedCards = feed.map((postFeed) => {
     return (
-      <MainCard onClick={() => onClickCard(postFeed.id)}>
+      <MainCard>
         <CardFeedStyle key={postFeed.id}>
           <EnviadoPorStyle>Enviado por: {postFeed.id}</EnviadoPorStyle>
           <TextoFeedPage>
@@ -44,8 +57,11 @@ const FeedPage = () => {
             <p>{postFeed.body}</p>
           </TextoFeedPage>
           <ButtonsFather>
-            <BotaoLike>{postFeed.voteSum}</BotaoLike>
-            <BotaoLike>{postFeed.userVote}</BotaoLike>
+            <BotaoLike onClick={() => onClickCreatPostVote(postFeed.id)}>LIKE</BotaoLike>
+            <p>{postFeed.voteSum}</p>
+            <BotaoLike onClick={()=> onClickputChangePostVote(postFeed.id)}>DESLIKE</BotaoLike>
+            <p>{postFeed.userVote} </p>
+            <BotaoLike onClick={() => onClickCard(postFeed.id)}>Post</BotaoLike>
           </ButtonsFather>
         </CardFeedStyle>
       </MainCard>
@@ -77,7 +93,11 @@ const FeedPage = () => {
               placeholder="Escreva seu post..."
             />
             <PostButton>
-              {isLoading ? <CircularProgress color={"inherit"} /> : <ButtonLetter>Postar</ButtonLetter>}
+              {isLoading ? (
+                <CircularProgress color={"inherit"} />
+              ) : (
+                <ButtonLetter>Postar</ButtonLetter>
+              )}
             </PostButton>
           </DivDosForm>
         </form>

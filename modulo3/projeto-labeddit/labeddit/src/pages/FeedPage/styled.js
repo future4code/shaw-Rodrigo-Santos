@@ -44,11 +44,16 @@ export const BotaoLike = styled.button`
   padding: 9px 10px;
   gap: 18px;
   margin: 2%;
-  width: 10%;
-  height: 4vh;
+  width: 50%;
+  height: 6vh;
   background: #fbfbfb;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
+  cursor: pointer;
+  
+  &:hoover{
+    background-color: aquamarine;
+  }
 `;
 
 export const ButtonsFather = styled.div`
@@ -56,7 +61,7 @@ export const ButtonsFather = styled.div`
 `;
 
 export const MainCard = styled.div`
-  cursor: pointer;
+  
 `;
 
 //Style do Post
