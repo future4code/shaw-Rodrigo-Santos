@@ -6,24 +6,23 @@ const useRequestData = (initialData, url) => {
 
   const getData = () => {
     axios
-    .get(url, {
-      headers: {
-        Authorization: localStorage.getItem(`token`),
-      },
-    })
-    .then((res) => {
-      setData(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-      alert(`Ocorreu um erro, tente novamente`);
-    });
-  }
+      .get(url, {
+        headers: {
+          Authorization: localStorage.getItem(`token`),
+        },
+      })
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(`Ocorreu um erro, tente novamente`);
+      });
+  };
 
   useEffect(() => {
-    getData()
-    
+    getData();
   }, [url]);
-  return [data, getData]
+  return [data, getData];
 };
-export default useRequestData
+export default useRequestData;

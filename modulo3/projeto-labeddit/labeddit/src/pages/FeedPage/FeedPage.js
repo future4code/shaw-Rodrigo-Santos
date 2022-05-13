@@ -7,6 +7,7 @@ import { goToPostPage } from "../../routes/coordinator";
 import { postCreatePost } from "../../services/posts";
 import useForm from "../../hooks/useForm";
 import {CircularProgress } from "@mui/material";
+import { ThumbDownAltRounded, ThumbUpOffAltRounded } from "@mui/icons-material";
 import { creatPostVote, putChangePostVote } from "../../services/likes";
 import {
   CardFeedStyle,
@@ -45,8 +46,6 @@ const FeedPage = () => {
     console.log(id);
   };
 
-  
-
   const feedCards = feed.map((postFeed) => {
     return (
       <MainCard>
@@ -57,8 +56,9 @@ const FeedPage = () => {
             <p>{postFeed.body}</p>
           </TextoFeedPage>
           <ButtonsFather>
-            <BotaoLike onClick={() => onClickCreatPostVote(postFeed.id)}><div>LIKE{postFeed.voteSum}</div></BotaoLike>
-            <BotaoLike onClick={()=> onClickputChangePostVote(postFeed.id)}>DESLIKE{postFeed.userVote} </BotaoLike>
+            <BotaoLike onClick={() => onClickCreatPostVote(postFeed.id)}><div> <ThumbUpOffAltRounded/> {postFeed.voteSum}</div></BotaoLike>
+            <BotaoLike onClick={()=> onClickputChangePostVote(postFeed.id)}> <ThumbDownAltRounded/
+            >{postFeed.userVote} </BotaoLike>
             <BotaoLike onClick={() => onClickCard(postFeed.id)}>Post</BotaoLike>
           </ButtonsFather>
         </CardFeedStyle>
@@ -92,7 +92,7 @@ const FeedPage = () => {
             />
             <PostButton>
               {isLoading ? (
-                <CircularProgress color={"inherit"} />
+                <CircularProgress color={"white"} />
               ) : (
                 <ButtonLetter>Postar</ButtonLetter>
               )}

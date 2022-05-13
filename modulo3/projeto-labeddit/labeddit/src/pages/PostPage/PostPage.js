@@ -6,6 +6,9 @@ import { BASE_URL } from "../../constants/urls";
 import useForm from "../../hooks/useForm";
 import { postCreateComent } from "../../services/posts";
 import { creatCommentVote, putChangeCommentVote } from "../../services/likes";
+import { InputFather, InputStyle, DivDosForm, EnviadoPorStyle, BotaoLike, CommentsFather, PostButton, ButtonLetter } from "./styled";
+import { ThumbDownAltRounded, ThumbUpOffAltRounded } from "@mui/icons-material";
+
 
 const PostPage = () => {
   useProtectedPage();
@@ -33,17 +36,19 @@ const PostPage = () => {
   //Map da requisição acima, ele vai renderizar os comentários 1 a 1
   const mapGetPostComents = comments.map((coment) => {
     return (
-      <div key={coment.id}>
-        <p> comentado por... {coment.username}</p>
+      <InputFather key={coment.id}>
+        <EnviadoPorStyle> Enviado por: {coment.username}</EnviadoPorStyle>
         <p> {coment.body} </p>
-        <button onClick={() => onClickCreatCommentVote(coment.id)}>
-          Dar Like
-        </button>
-        <button onClick={() => onClickPutputChangeCommentVote(coment.id)}>
-          Dar Deslike
-        </button>
-        <p> likes: {coment.voteSum}</p>
-      </div>
+        <CommentsFather>
+        <BotaoLike onClick={() => onClickCreatCommentVote(coment.id)}>
+         <ThumbUpOffAltRounded/>
+        </BotaoLike>
+        <BotaoLike onClick={() => onClickPutputChangeCommentVote(coment.id)}>
+        <ThumbDownAltRounded/>
+        </BotaoLike>
+        <BotaoLike> likes: {coment.voteSum}</BotaoLike>
+        </CommentsFather>
+      </InputFather>
     );
   });
 
@@ -63,21 +68,21 @@ const PostPage = () => {
   };
 
   return (
-    <div>
-      <div>
-        <h2>
-          {filterGetPost && filterGetPost[0] && filterGetPost[0].username}
-        </h2>
-        <h2>{filterGetPost && filterGetPost[0] && filterGetPost[0].title}</h2>
-        <h2>{filterGetPost && filterGetPost[0] && filterGetPost[0].body}</h2>
-      </div>
+    <>
+      <InputFather>
+        <h3>{filterGetPost && filterGetPost[0] && filterGetPost[0].username}</h3>
+        <h4>{filterGetPost && filterGetPost[0] && filterGetPost[0].title}</h4>
+        <h5>{filterGetPost && filterGetPost[0] && filterGetPost[0].body}</h5>
+      </InputFather>
 
+      <DivDosForm>
       <form onSubmit={onSubmit}>
-        <input type="text" name="body" value={form.body} onChange={onChange} />
-        <button>Enviar Comentário</button>
+        <InputStyle type="text" name="body" value={form.body} onChange={onChange} placeholder={"Adicionar comentário"} />
+        <PostButton><ButtonLetter>Responder</ButtonLetter></PostButton>
       </form>
+      </DivDosForm>
       {mapGetPostComents}
-    </div>
+    </>
   );
 };
 
