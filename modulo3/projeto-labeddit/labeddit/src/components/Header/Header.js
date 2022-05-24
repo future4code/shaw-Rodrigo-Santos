@@ -1,18 +1,36 @@
 import React from "react";
-import { HeaderMain } from "./styled";
-import { goToLogin } from "../../routes/coordinator";
+import { HeaderMain, LogoStyle, ButtonStyle } from "./styled";
+import { goToLogin, goToBack, goToFeedPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
+import logo from "../../assets/images/logo.png";
 
-const Header = () => {
-    const navigate = useNavigate
-    return(
-        <HeaderMain>
-            <button><img src= "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.iconscout.com%2Ficon%2Ffree%2Fpng-256%2Freddit-4062838-3357724.png&imgrefurl=https%3A%2F%2Ficonscout.com%2Ficon%2Freddit-4062838&tbnid=EU7zAenrZWVvwM&vet=12ahUKEwjgnrqAtNP3AhWHMrkGHa-gBn0QMygPegUIARDdAQ..i&docid=UkQN1ydmOS9A2M&w=256&h=256&q=logo%20reddit%20button&client=opera-gx&ved=2ahUKEwjgnrqAtNP3AhWHMrkGHa-gBn0QMygPegUIARDdAQ"/></button>
-            <button onClick={() => goToLogin(navigate)}>Login</button>
-           
+const Header = ({ rightButtonText, setRightButtonText }) => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
-        </HeaderMain>
-    )
-}
+  const logout = () => {
+    localStorage.removeItem("token");
+  };
 
-export default Header
+  const rightButtonAction = () => {
+    if (token) {
+      logout();
+      setRightButtonText("Login");
+      goToLogin(navigate);
+    } else {
+      goToLogin(navigate);
+    }
+  };
+
+  return (
+    <HeaderMain>
+      <ButtonStyle onClick={() => goToFeedPage(navigate)}>
+        <LogoStyle src={logo} alt="logomarca" />
+      </ButtonStyle>
+      <ButtonStyle onClick={rightButtonAction}>{rightButtonText}</ButtonStyle>
+      {/* <button onClick={() => goToBack(navigate)}>Voltar</button> */}
+    </HeaderMain>
+  );
+};
+
+export default Header;

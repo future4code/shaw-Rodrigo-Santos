@@ -1,11 +1,15 @@
 import React from "react";
+import { useUnprotectedProtectedPage } from "../../hooks/useUnprotectedPage";
+import SignUpForm from "./SingUpForm";
 
-const SignUpPage = () => {
-    return(
-        <div>
-            <h1>SignUpPage</h1>
-        </div>
-    )
-}
+const SignUpPage = ({ setRightButtonText }) => {
+  useUnprotectedProtectedPage();
 
-export default SignUpPage
+  return (
+    <div>
+      <SignUpForm setRightButtonText={setRightButtonText} />
+    </div>
+  );
+};
+
+export default SignUpPage;
