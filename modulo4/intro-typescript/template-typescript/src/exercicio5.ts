@@ -13,5 +13,5 @@ function checaRenovacaoRG(
   return cond1 || cond2 || cond3;
 }
 
-console.log(checaRenovacaoRG(2022, 1989, 2009));
+console.log(checaRenovacaoRG(2022, 1989, 2009)); 
 
