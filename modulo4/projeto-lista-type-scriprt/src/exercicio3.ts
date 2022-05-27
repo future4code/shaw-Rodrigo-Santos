@@ -6,14 +6,24 @@ enum GENERO {
   TERROR = "terror",
 }
 
- type Filme = { 
-    nome: string; 
-    ano: number;
-    genero: string; 
-    pontuação?: number 
-}; 
+type Filme = {
+  nome: string;
+  ano: number;
+  genero: string;
+  pontuação?: number | string;
+};
 
-function filmes(nome:string, ano: number, genero:GENERO,pontuação?:number):Filme{
-    return{ nome: nome, ano:ano, genero:genero, pontuação:pontuação}
+function filmes(
+  nome: string,
+  ano: number,
+  genero: GENERO,
+  pontuação?: number
+): Filme {
+  return {
+    nome: nome,
+    ano: ano,
+    genero: genero,
+    pontuação: pontuação? pontuação : "Sem pontuação"
+  };
 }
-console.table(filmes("Forest Gump", 1950, GENERO.DRAMA, 9.9))
+console.table(filmes("Forest Gump", 1950, GENERO.DRAMA));
