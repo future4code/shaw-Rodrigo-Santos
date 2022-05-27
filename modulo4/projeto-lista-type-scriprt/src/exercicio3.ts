@@ -23,7 +23,7 @@ function filmes(
     nome: nome,
     ano: ano,
     genero: genero,
-    pontuação: pontuação? pontuação : "Sem pontuação"
+    pontuação: pontuação ? pontuação : "Sem pontuação",
   };
 }
 console.table(filmes("Forest Gump", 1950, GENERO.DRAMA));

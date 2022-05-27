@@ -21,12 +21,10 @@ const pessoas: Pessoa[] = [
   { nome: "Paola", salário: 3500, setor: Setor.MARKETING, presencial: true },
 ];
 
-function pessoasDoMkt (pessoas: Pessoa[], setorInformado: string) : Pessoa[] {
-    return pessoas.filter(
-        (pessoa) =>{
-            return pessoa.setor === setorInformado
-        }
-    )
+function pessoasDoMkt(pessoas: Pessoa[], setorInformado: string): Pessoa[] {
+  return pessoas.filter((pessoa) => {
+    return pessoa.setor === setorInformado;
+  });
 }
 
-console.table(pessoasDoMkt(pessoas, Setor.MARKETING))
+console.table(pessoasDoMkt(pessoas, Setor.MARKETING));
