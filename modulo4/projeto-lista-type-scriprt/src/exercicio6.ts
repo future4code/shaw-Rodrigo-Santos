@@ -13,19 +13,22 @@ const clientes: Cliente[] = [
   { cliente: "Soter", saldoTotal: 1200, debitos: [] },
 ];
 
-const saldoAtualizado = ( clientes: Cliente[]): Cliente[] =>{
+const saldoAtualizado = (clientes: Cliente[]): Cliente[] => {
+  return clientes
+    .map((cliente: Cliente): Cliente => {
+      const debitoSoma: number =
+        cliente.debitos.length > 0
+          ? cliente.debitos.reduce((acc: number, cur: number) => acc + cur, 0)
+          : 0;
+      const attSaldo: number = cliente.saldoTotal - debitoSoma;
 
-   return clientes.map((cliente:Cliente):Cliente=>{
-    const debitoSoma:number = cliente.debitos.length>0 ? cliente.debitos.reduce((acc:number, cur:number)=>acc+cur, 0):0 
-    const attSaldo:number = cliente.saldoTotal - debitoSoma
-
-    return{...cliente, saldoTotal:attSaldo,debitos:[]}
-
-   }).filter((clientMap:Cliente):boolean=>{
-     return clientMap.saldoTotal<0
-   })
-}
-console.table(saldoAtualizado(clientes))
+      return { ...cliente, saldoTotal: attSaldo, debitos: [] };
+    })
+    .filter((clientMap: Cliente): boolean => {
+      return clientMap.saldoTotal < 0;
+    });
+};
+console.table(saldoAtualizado(clientes));
 
 /* const emprestimo = clientes.filter((item)=>{
   let somaTotal = 0
