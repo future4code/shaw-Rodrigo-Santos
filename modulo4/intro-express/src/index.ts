@@ -23,7 +23,7 @@ type BuscaPost = {
   id: string | number;
   title: string;
   body: string;
-  userId: string | number;
+  
 };
 
 //2
@@ -52,13 +52,13 @@ const usuarios: TipoUsuarios[] = [
         id: "post1",
         title: "Saoriiiii",
         body: "Athenaaaaaa",
-        userId: 1,
+        
       },
       {
         id: "post2",
         title: "Me dê sua força pegasusssssss",
         body: "Meteoro de trovão!!!!!!!!!",
-        userId: 1,
+       
       },
     ],
   },
@@ -87,9 +87,9 @@ const usuarios: TipoUsuarios[] = [
     posts: [
         {
             id: "post3",
-            title: "Shun seu fresco!!!",
-            body: "Vira homi",
-            userId: 4,
+            title: "Shun não vai pra ilha da rainha da morte !!!",
+            body: "Ikiiiiiiiiiiiiiiii",
+            
           },
     ],
   },
@@ -120,17 +120,24 @@ app.get("/usuarios/posts", (req, res) => {
 
   //8
 
-  app.get("/usuarios/posts/", (req, res) => {
+  app.get("/usuarios/:id/posts", (req, res) => {
 
-    const usuarios1 = usuarios.map((user)=>{
+    const postsById = usuarios.filter((usuario)=>{
+        if(usuario.id === Number(req.params.id)){
+            return usuario.posts
+        }
+    }).flat(1)
+
+    res.send(postsById)
+
+  /*   const usuarios1 = usuarios.map((user)=>{
         return user
     }).flat(1)
   
     const posts = usuarios1.map((usuario)=>{
         return usuario.posts
-    }).flat(1)
+    }).flat(1)*/
 
-    res.send(posts)
   });
 
 
