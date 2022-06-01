@@ -86,7 +86,6 @@ app.put("/editarAfazeres/:id", (req, res) => {
 app.delete("/deletarAfazeres/:id", (req, res) => {
   const idDoAfazer = Number(req.params.id);
   
-
   const indexArray = arrayUser.findIndex((afazer) => afazer.id == idDoAfazer);
 
   if (indexArray === -1)
