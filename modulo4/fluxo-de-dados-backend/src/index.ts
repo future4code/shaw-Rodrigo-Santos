@@ -28,7 +28,7 @@ app.post("/cadastro-novo-produto", (req, res) => {
     if (price <= 0) {
       throw new Error("Preço precisa ser maior que 0");
     }
-    if (req.body.name !== String || req.body.name !== Number) {
+    if (req.body.name !== String || req.body.price !== Number) {
       throw new Error("Parâmetro de nome ou preço não aceito");
     }
     if (!name) {
@@ -42,7 +42,7 @@ app.post("/cadastro-novo-produto", (req, res) => {
 
     res.send(products);
   } catch (error: any) {
-      
+
     switch (error.message) {
       case "Nome não encontrado":
         res.status(422);
