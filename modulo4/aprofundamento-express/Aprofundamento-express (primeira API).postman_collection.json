@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "3ec6416a-4140-4d3c-9852-68d8cd707930",
+		"name": "Aprofundamento-express (primeira API)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20353474"
+	},
+	"item": [
+		{
+			"name": "GET PING",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/ping",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"ping"
+					]
+				},
+				"description": "Pega o ping e define se o servidor está funcionando"
+			},
+			"response": []
+		},
+		{
+			"name": "GET AFAZERES TRUE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/afazeresTrue",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"afazeresTrue"
+					]
+				},
+				"description": "Filtra os afazeres que estão true"
+			},
+			"response": []
+		},
+		{
+			"name": "POST CRIAR AFAZER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 232344,\r\n    \"id\": 232311111,\r\n    \"name\": \"Raspar a perna\",\r\n    \"completed\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/criarAfazer",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"criarAfazer"
+					]
+				},
+				"description": "Criar um novo afazer"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT EDITAR AFAZER",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"completed\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/editarAfazeres/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"editarAfazeres",
+						"1"
+					]
+				},
+				"description": "Editar afazeres de completado para não completado e vice versa"
+			},
+			"response": []
+		},
+		{
+			"name": "DEL DELETAR AFAZERES",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/deletarAfazeres/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"deletarAfazeres",
+						"1"
+					]
+				},
+				"description": "Deleta os afazeres selecionados"
+			},
+			"response": []
+		},
+		{
+			"name": "GET PEGAR TAREFAS POR USUÁRIO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/pegaTarefas/35",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"pegaTarefas",
+						"35"
+					]
+				},
+				"description": "Pega as tarefas do usuários por ID"
+			},
+			"response": []
+		}
+	]
+}
