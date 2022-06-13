@@ -1,0 +1,49 @@
+GET http://localhost:3003/Actor/name/Al Pacino
+
+#######
+
+GET http://localhost:3003/Actor/gender/female
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###
+POST  http://localhost:3003/actor
+Content-Type:  application/json
+
+{
+    "name": "Martin",
+    "genreFilm": "lovee",
+    "salary": 400000
+}
+###
+PUT  http://localhost:3003/actor/7
+Content-Type:  application/json
+
+{
+    "name": "Pablo",
+    "salary": 4000000
+}
+
+###
+DELETE  http://localhost:3003/actor/1
