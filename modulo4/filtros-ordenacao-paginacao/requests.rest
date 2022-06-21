@@ -1,0 +1,10 @@
+get http://localhost:3003/all-staff
+
+##############
+
+get http://localhost:3003/staff?name=Chijo
+
+#############
+
+get http://localhost:3003/staff-by-order?sort=type&order=asc
+
