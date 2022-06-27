@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "22297868-7c81-4038-934b-8cd8db2fc4a0",
+		"name": "Bank System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20353474"
+	},
+	"item": [
+		{
+			"name": "POST CREATE NEW USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Mina\",\r\n    \"CPF\": 1234257222822904,\r\n    \"birthDate\": \"06/04/2020\",\r\n    \"balance\": 300,\r\n    \"statement\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Post com todos os requisitos"
+			},
+			"response": []
+		},
+		{
+			"name": "GET TODOS USUÁRIOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"users"
+					]
+				},
+				"description": "GET que pega todos os usuários"
+			},
+			"response": []
+		}
+	]
+}
