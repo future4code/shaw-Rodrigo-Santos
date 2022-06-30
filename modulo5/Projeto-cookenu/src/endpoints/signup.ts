@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { UserDataBase } from "../data/UserDataBase";
 import { IdGenerator } from "../services/idGenerator";
+import { HashManager } from "../services/HashManager";
+import { User } from "../entities/User";
 
 export async function signup(req: Request, res: Response) {
   try {
@@ -21,6 +23,12 @@ export async function signup(req: Request, res: Response) {
 
     const idGenerator = new IdGenerator();
     const id = idGenerator.generate();
+
+    const hashManager = new HashManager();
+    const hashPassword = await hashManager.hash(password);
+
+    const newUser = new User(id, name, email, hashPassword);
+    await userDataBase.createUser(newUser);
 
     if (password.length < 6) {
       res.status(422).send("A senha deve ter no mínimo 6 caracteres");

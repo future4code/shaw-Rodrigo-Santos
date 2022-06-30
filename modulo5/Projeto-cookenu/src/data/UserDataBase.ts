@@ -1,9 +1,27 @@
 import { BaseDataBase } from "./BaseDataBase";
 import { User } from "../entities/User";
 
-//serve para verificar se o usuários já existe no nosso banco de dados
+
 
 export class UserDataBase extends BaseDataBase {
+
+  //criando o usuário no banco de dados
+  public async createUser(user: User){
+    try {
+      await BaseDataBase.connection(`lbn_user`).insert({
+        id: user.getId(),
+        name: user.getName(),
+        email: user.getEmail(),
+        password: user.getPassword()
+      })
+      
+    } catch (error: any) {
+      throw new Error(error.sqlMessage || error.message);
+      
+    }
+  }
+
+  //serve para verificar se o usuários já existe no nosso banco de dados
   public async findUserByEmail(email: string): Promise<User> {
     try {
       const user = await BaseDataBase.connection(`lbn_user`)
