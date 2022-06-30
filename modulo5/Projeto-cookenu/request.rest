@@ -2,8 +2,21 @@ POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-    "name": "Jhon Lennon",
-    "email": "fab42@gmail.com",
+    "name": "Jhon Lennon2",
+    "email": "fab421@gmail.com",
     "password": "123456",
     "role": "ADMIN"
 }
+
+#######
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   
+    "email": "fab4_batera@gmail.com",
+    "password": "123456"
+}
+    
+

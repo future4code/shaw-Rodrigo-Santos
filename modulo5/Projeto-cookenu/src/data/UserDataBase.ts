@@ -7,6 +7,8 @@ export class UserDataBase extends BaseDataBase {
 
   //criando o usuário no banco de dados
   public async createUser(user: User){
+    console.log(user);
+    
     try {
       await BaseDataBase.connection("cookenu_user").insert({
         id: user.getId(),
@@ -16,8 +18,7 @@ export class UserDataBase extends BaseDataBase {
       })
       
     } catch (error: any) {
-      throw new Error(error.sqlMessage || error.message);
-      
+      throw new Error(error.sqlMessage || error.message);  
     }
   }
 

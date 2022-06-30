@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { UserDataBase } from "../data/UserDataBase";
 import { HashManager } from "../services/HashManager";
-import { User } from "../entities/User"
 import { Authenticator } from "../services/Authenticator";
 
 export async function login(req: Request, res: Response) {
@@ -15,7 +14,7 @@ export async function login(req: Request, res: Response) {
     }
 
     const userDataBase = new UserDataBase();
-    const user = userDataBase.findUserByEmail(email);
+    const user = await userDataBase.findUserByEmail(email);
 
     if (!user) {
       res.status(409).send("Esse email não está cadastrado!");
