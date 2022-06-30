@@ -4,13 +4,14 @@ import { User } from "../entities/User";
 //serve para verificar se o usuários já existe no nosso banco de dados
 
 export class UserDataBase extends BaseDataBase {
-  public async findUserByEmail(email: string): User {
+  public async findUserByEmail(email: string): Promise<User> {
     try {
       const user = await BaseDataBase.connection(`lbn_user`)
         .select(`*`)
         .where({ email });
 
- 
+      return User.toUserModel(user[0]);
+
     } catch (error: any) {
       throw new Error(error.sqlMessage || error.message);
     }
