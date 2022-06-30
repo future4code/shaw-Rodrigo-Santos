@@ -6,12 +6,12 @@ import { User } from "../entities/User";
 
 export async function signup(req: Request, res: Response) {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !role) {
       res
         .status(422)
-        .send("Insira corretamente os dados de `name`, `email` e `password`");
+        .send("Insira corretamente os dados de `name`, `email`, `password` e `role`");
     }
 
     const userDataBase = new UserDataBase();
@@ -27,13 +27,12 @@ export async function signup(req: Request, res: Response) {
     const hashManager = new HashManager();
     const hashPassword = await hashManager.hash(password);
 
-    const newUser = new User(id, name, email, hashPassword);
+    const newUser = new User(id, name, email, hashPassword, role);
     await userDataBase.createUser(newUser);
 
     if (password.length < 6) {
       res.status(422).send("A senha deve ter no mínimo 6 caracteres");
     }
-    
   } catch (error: any) {
     res.status(400).send(error.message);
   }
