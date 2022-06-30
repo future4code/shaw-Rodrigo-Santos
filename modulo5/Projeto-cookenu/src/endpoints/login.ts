@@ -17,7 +17,8 @@ export async function login(req: Request, res: Response) {
     const user = await userDataBase.findUserByEmail(email);
 
     if (!user) {
-      res.status(409).send("Esse email não está cadastrado!");
+      res.statusCode = 409
+      throw new Error("Esse email não está cadastrado!");
     }
 
     const hashManager = new HashManager();
@@ -27,18 +28,23 @@ export async function login(req: Request, res: Response) {
     );
 
     if (!passwordIsCorrect) {
-      res.status(401).send("Senha ou email incorretos!");
+      res.statusCode = 401
+      throw new Error("Senha ou email incorretos!");
     }
 
     if (password.length < 6) {
-      res.status(422).send("A senha deve ter no mínimo 6 caracteres");
+      res.statusCode = 422
+      throw new Error("A senha deve ter no mínimo 6 caracteres");
     }
 
     const authenticator = new Authenticator();
-    const token = authenticator.generate({ id: user.getId(), role: user.getRole() });
+    const token = authenticator.generate({
+      id: user.getId(),
+      role: user.getRole(),
+    });
 
     res.status(200).send({ message: "Usuário logado com sucesso!", token });
   } catch (error: any) {
-    res.status(400).send(error.message);
+    res.send(error.message);
   }
 }

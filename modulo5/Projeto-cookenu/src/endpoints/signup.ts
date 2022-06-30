@@ -10,9 +10,6 @@ export async function signup(req: Request, res: Response) {
     const { name, email, password, role } = req.body;
 
     if (!name || !email || !password || !role) {
-   /*    res
-        .status(422)
-        .send("Insira corretamente os dados de `name`, `email`, `password` e `role`"); */
         res.statusCode = 422
         throw new Error("Insira corretamente os dados de `name`, `email`, `password` e `role`");
         
@@ -22,7 +19,6 @@ export async function signup(req: Request, res: Response) {
     const user = await userDataBase.findUserByEmail(email);
 
     if (user) {
-      /* res.status(409).send("Esse email já está cadastrado!"); */
       res.statusCode = 409
       throw new Error("Esse email já está cadastrado!");
     }
@@ -34,7 +30,6 @@ export async function signup(req: Request, res: Response) {
     const hashPassword = await hashManager.hash(password);
 
     if (password.length < 6) {
-      /* res.status(422).send("A senha deve ter no mínimo 6 caracteres"); */
       res.statusCode = 422
       throw new Error("A senha deve ter no mínimo 6 caracteres");
       
@@ -42,9 +37,7 @@ export async function signup(req: Request, res: Response) {
 
     const newUser = new User(id, name, email, hashPassword, role);
     await userDataBase.createUser(newUser);
-    console.log(newUser);
     
-
     const authenticator = new Authenticator()
     const token = authenticator.generate({id, role})
 
