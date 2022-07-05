@@ -1,0 +1,27 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "Paul McCartney",
+    "email": "fab4_bass@gmail.com",
+    "password": "123456",
+    "role": "ADMIN"
+}
+
+#######
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   
+    "email": "fab4_bass@gmail.com",
+    "password": "123456"
+}
+
+######
+
+GET http://localhost:3003/user/get
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBlNGM5MDgzLWY5ZDUtNDRlMC04YTBjLWY2MWU5NGRmYWY0ZSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTY2MjI3ODUsImV4cCI6MTY1NjYyMjc4NX0.1si_aZEVErW80RiDYwL2GbYAa6BocFpIjJZf6JoO8Ys"
+
+
