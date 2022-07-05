@@ -1,26 +1,17 @@
 import * as jwt from "jsonwebtoken";
-import { AuthenticationData } from "../types/authData";
+import { authenticationData } from "../types/authData";
 
 export class Authenticator {
+  generateToken(info: authenticationData): string {
+    const token = jwt.sign({ id: info.id }, process.env.JWT_KEY as string, {
+      expiresIn: process.env.JWT_EXPIRATION_TIME,
+    });
+    return token;
+  }
 
-    generateToken(info: AuthenticationData): string{
+  getTokenData(token: string): authenticationData {
+    const payload = jwt.verify(token, process.env.JWT_KEY as string);
 
-        const token = jwt.sign(
-            {id: info.id },
-            process.env.JWT_KEY as string,
-            {expiresIn: process.env.JWT_EXPIRATION_TIME}
-        )
-        return token;
-    }
-
-    getTokenData(token: string): AuthenticationData {
-
-        const payload = jwt.verify(
-            token,
-            process.env.JWT_KEY as string
-        );
-
-        return payload as AuthenticationData
-
-    }
+    return payload as authenticationData;
+  }
 }
