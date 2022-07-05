@@ -1,7 +1,9 @@
-/* import { Request, Response } from "express";
+import { Request, Response } from "express";
 
-export default class userController{
-    signup = async(req: Request, res: Response) => {
+export default class UserController {
+  signup = async (req: Request, res: Response) => {
+    const { name, email, password } = req.body;
 
-    }
-} */
+    
+  };
+}
