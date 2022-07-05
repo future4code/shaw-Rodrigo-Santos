@@ -6,8 +6,7 @@ import { IdGenerator } from "../services/idGenerator";
 import { signupInputDTO } from "../types/SignupInputDTO";
 
 export class UserBusiness {
-
-    //injeção de dependência, assim obrigamos a entregar os 4 objetos
+  //injeção de dependência, assim obrigamos a entregar os 4 objetos
   constructor(
     private userData: UserData,
     private idGenerator: IdGenerator,
