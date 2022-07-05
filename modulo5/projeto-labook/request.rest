@@ -1,0 +1,11 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "Paul McCartney",
+    "email": "fab4_bass@gmail.com",
+    "password": "123456"
+   
+}
+
+#######
