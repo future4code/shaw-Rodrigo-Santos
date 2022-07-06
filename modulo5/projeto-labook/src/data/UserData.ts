@@ -2,7 +2,7 @@ import { User } from "../model/User";
 import { FindByEmailResponse } from "../types/findByEmailResponse";
 import { BaseDataBase } from "./BaseDataBase";
 
-export class UserData extends BaseDataBase {
+export default class UserData extends BaseDataBase {
   protected TABLE_NAME = "labook_users";
 
   insert = async (user: User) => {

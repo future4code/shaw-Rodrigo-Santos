@@ -1,9 +1,9 @@
-import { UserData } from "../data/UserData";
+import UserData  from "../data/UserData";
 import { User } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
-import { IdGenerator } from "../services/idGenerator";
-import { signupInputDTO } from "../types/SignupInputDTO";
+import { IdGenerator } from "../services/IdGenerator";
+import { signupInputDTO } from "../types/signupInputDTO"
 
 export class UserBusiness {
   //injeção de dependência, assim obrigamos a entregar os 4 objetos
@@ -38,7 +38,7 @@ export class UserBusiness {
     await this.userData.insert(user);
 
     //criar o token
-    const token = this.authenticator.generateToken({ id });
+    const token = this.authenticator.generateToken({id});
 
     //retornar o token
     return token;

@@ -3,9 +3,8 @@ Content-Type: application/json
 
 {
     "name": "Paul McCartney",
-    "email": "fab4_bass@gmail.com",
+    "email": "fab4_bass5@gmail.com",
     "password": "123456"
-   
 }
 
 #######

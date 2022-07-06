@@ -1,10 +1,10 @@
 import { UserBusiness } from "./business/UserBusiness";
 import { app } from "./controller/app";
 import UserController from "./controller/UserController";
-import { UserData } from "./data/UserData";
+import UserData  from "./data/UserData";
 import { Authenticator } from "./services/Authenticator";
 import { HashManager } from "./services/HashManager";
-import { IdGenerator } from "./services/idGenerator";
+import { IdGenerator } from "./services/IdGenerator";
 
 const userBusiness = new UserBusiness(
   new UserData(),
@@ -16,3 +16,5 @@ const userBusiness = new UserBusiness(
 const userController = new UserController(userBusiness);
 
 app.post("/user/signup", userController.signup);
+
+//parei no 2:22:47 do vídeo Arquitetura 2
