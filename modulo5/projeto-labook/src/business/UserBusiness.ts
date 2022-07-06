@@ -58,12 +58,6 @@ export class UserBusiness {
       throw new Error("Email já cadastrado");
     }
 
-    //fazer uma id pro usuário
-    const id = this.idGenerator.generate();
-
-    //hashear o password (criptografar)
-    const hashedPassword = await this.hashManager.hash(password);
-
     //verificar se o password está correto
     const isPasswordCorrect = await this.hashManager.compare(
       password,
@@ -74,7 +68,7 @@ export class UserBusiness {
     }
 
     //criar o token
-    const token = this.authenticator.generateToken({ id });
+    const token = this.authenticator.generateToken({ id: registeredUserLogin.id });
 
     //retornar o token
     return token;

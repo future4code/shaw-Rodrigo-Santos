@@ -44,7 +44,6 @@ export default class PostBusiness {
     await this.postData.insert(post);
 
     //retornar o post
-
     return post;
   };
 }
