@@ -2,9 +2,17 @@ POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-    "name": "Paul McCartney",
-    "email": "fab4_bass5@gmail.com",
+    "name": "Lemmy Killminster",
+    "email": "motorhead5@gmail.com",
     "password": "123456"
 }
 
 #######
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "motorhead5@gmail.com",
+    "password": "123456"
+}

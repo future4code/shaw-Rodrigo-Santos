@@ -16,5 +16,5 @@ const userBusiness = new UserBusiness(
 const userController = new UserController(userBusiness);
 
 app.post("/user/signup", userController.signup);
+app.post('/user/login', userController.login)
 
-//parei no 2:22:47 do vídeo Arquitetura 2

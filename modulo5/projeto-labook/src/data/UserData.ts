@@ -15,7 +15,7 @@ export default class UserData extends BaseDataBase {
         throw new Error("Erro ao buscar usuário no banco!");
       }
     }
-  };
+  };  
 
   findByEmail = async (email: string) => {
     try {
@@ -35,3 +35,5 @@ export default class UserData extends BaseDataBase {
     }
   };
 }
+
+
