@@ -9,10 +9,22 @@ Content-Type: application/json
 
 #######
 
+# @name login
 POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
     "email": "motorhead5@gmail.com",
     "password": "123456"
+}
+
+########
+POST http://localhost:3003/post/create
+Authorization: {{login.response.body.token}}
+Content-Type: application/json
+
+{
+    "photo": "https://www.wine.com.br/winepedia/curiosidades/belo-horizonte-122-anos-o-aniversario-da-cidade-onde-esta-a-wine-bh/",
+    "description": "Uma bela foto da cidade de Belo Horizonte, ipê rosa na praça da Liberdade.",
+    "type": "normal"
 }
