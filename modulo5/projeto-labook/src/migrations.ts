@@ -1,6 +1,21 @@
-/* import { BaseDataBase } from "../src/data/BaseDataBase";
+import knex, { Knex } from "knex";
+import dotenv from "dotenv";
 
-this.connection
+dotenv.config();
+
+const connection: Knex = knex({
+     client: "mysql",
+     connection: {
+       host: process.env.DB_HOST,
+       port: 3306,
+       user: process.env.DB_USER,
+       password: process.env.DB_PASS,
+       database: process.env.DB_NAME,
+       multipleStatements: true
+     },
+   });
+ 
+connection
    .raw(`
       CREATE TABLE IF NOT EXISTS labook_users(
          id VARCHAR(255) PRIMARY KEY,
@@ -20,4 +35,4 @@ this.connection
       )
    `)
    .then(console.log)
-   .catch(console.log) */
+   .catch(console.log)
