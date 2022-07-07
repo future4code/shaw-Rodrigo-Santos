@@ -46,4 +46,32 @@ export default class PostBusiness {
     //retornar o post
     return post;
   };
+
+  getPostById = async (id: string, token: string) => {
+    //conferir se o token existe
+    const tokenData = this.authenticator.getTokenData(token);
+    if (!tokenData) {
+      throw new Error("Token não enviado ou expirado");
+    }
+
+    //buscar o post no banco
+    const post = await this.postData.getById(id);
+
+    //retornar o post
+    return post;
+  };
+
+  getPosts = async (token: string) => {
+    //conferir se o token existe
+    const tokenData = this.authenticator.getTokenData(token);
+    if (!tokenData) {
+      throw new Error("Token não enviado ou expirado");
+    }
+
+    //buscar os posts no banco
+    const posts = await this.postData.getAll();
+
+    //retornar os posts
+    return posts;
+  };
 }

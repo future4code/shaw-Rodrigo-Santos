@@ -28,5 +28,6 @@ const postController = new PostController(postBusiness);
 
 app.post("/user/signup", userController.signup);
 app.post("/user/login", userController.login);
-app.post("/post/create", postController.createPost);
-/* app.get("/post/get") */
+app.post("/post/create", postController.postCreator);
+app.get("/post/list", postController.postList);
+app.get("/post/:id", postController.postById);
