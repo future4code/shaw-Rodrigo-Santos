@@ -41,26 +41,25 @@ export default class PostData extends BaseDataBase {
 
   getAll = async (): Promise<Post[]> => {
     try {
-      const result = await this.connection(this.TABLE_NAME).select("*");
+      const result = await this.connection(this.TABLE_NAME)
+        .select("*")
+        .orderBy("created_at", "desc")
+        .limit(10);
 
-      const resultPost = result
-        .map((post: Post) => {
-          return new Post(
-            post.id,
-            post.photo,
-            post.description,
-            post.type,
-            post.created_at,
-            post.author_id
-          );
-        })
-        .sort((a: Post, b: Post) => {
-          return b.created_at.localeCompare(a.created_at);
-        })
-        .slice(0, 10);
+      console.log(result);
 
-        return resultPost;
-        
+      const resultPost = result.map((post: Post) => {
+        return new Post(
+          post.id,
+          post.photo,
+          post.description,
+          post.type,
+          post.created_at,
+          post.author_id
+        );
+      });
+
+      return resultPost;
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);

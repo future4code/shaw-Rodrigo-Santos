@@ -44,8 +44,9 @@ export default class PostController {
   };
 
   postList = async (req: Request, res: Response) => {
-    const token = req.headers.authorrization as string;
-
+    const token = req.headers.authorization as string;
+    console.log(token);
+    
     try {
       const posts = await this.postBusiness.getPosts(token);
       res.status(200).send({ posts });
