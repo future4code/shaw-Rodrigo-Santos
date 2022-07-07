@@ -50,6 +50,7 @@ export default class PostBusiness {
   getPostById = async (id: string, token: string) => {
     //conferir se o token existe
     const tokenData = this.authenticator.getTokenData(token);
+
     if (!tokenData) {
       throw new Error("Token não enviado ou expirado");
     }
@@ -64,6 +65,7 @@ export default class PostBusiness {
   getPosts = async (token: string) => {
     //conferir se o token existe
     const tokenData = this.authenticator.getTokenData(token);
+
     if (!tokenData) {
       throw new Error("Token não enviado ou expirado");
     }
@@ -73,5 +75,5 @@ export default class PostBusiness {
 
     //retornar os posts
     return posts;
-  };
+  }
 }

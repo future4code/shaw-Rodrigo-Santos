@@ -38,4 +38,3 @@ GET http://localhost:3003/post/list
 Authorization: {{ login.response.body.token }}
 
 
-
