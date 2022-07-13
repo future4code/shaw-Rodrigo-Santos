@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import userBusiness from "../business/UserBusiness";
-
-export class UserController {
+import UserBusiness from "../business/UserBusiness";
+ 
+export default class UserController {
 
    public async signup(req: Request, res: Response) {
       try {
          const { name, role, email, password } = req.body
-         const result = await userBusiness.signup(
+         const result = await UserBusiness.signup(
             name,
             email,
             password,
@@ -31,4 +31,3 @@ export class UserController {
    }
 }
 
-export default new UserController()
