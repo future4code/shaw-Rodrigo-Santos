@@ -39,7 +39,7 @@ const Login = () => {
       .then((res) => {
         setEmail("");
         setPassword("");
-        setErrEmail("");
+        setErrEmail(""); 
         setErrEmail("");
         setCheckErrEmail(false);
         setCheckErrPass(false);
