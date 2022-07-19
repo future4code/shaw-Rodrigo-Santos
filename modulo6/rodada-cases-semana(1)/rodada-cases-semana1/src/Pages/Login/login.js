@@ -75,7 +75,6 @@ const Login = () => {
           onChange={(event) => setEmail(event.target.value)}
           required
         />
-
         <DivPassword>
           <InputMaterial
             error={checkErrPass}
