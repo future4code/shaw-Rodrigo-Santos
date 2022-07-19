@@ -1,8 +1,12 @@
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { VisibilityRounded, VisibilityOffRounded } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { useForm } from "../../Hooks/useForm";
 import { ButtonStyled, DivPassword, InputMaterial, Main } from "./styled";
+import axios from "axios";
+import { BASE_URL } from "../../Constants/url";
+import { goToSignUpAdress } from "../../Routes/coordinator";
 
 const SignUp = () => {
   const { form, onChange, clean } = useForm({
@@ -16,23 +20,8 @@ const SignUp = () => {
   const [errPass, setErrPass] = useState("");
   const [checkErrPass, setCheckErrPass] = useState(false);
   const [password, setPassword] = useState("");
-  //Para confirmar
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [showPass, setShowPass] = useState(false);
   const [showCheckPass, setShowCheckPass] = useState(false);
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleClickedShowCheckPassword = () => {
-    setShowCheckPass(!showCheckPass);
-  };
-
-  const onSubimitForm = (event) => {
-    event.preventDefault();
-    console.log(form);
-  };
 
   //Máscara de cpf regex para CPF
   const cpfMask = (value) => {
@@ -44,6 +33,43 @@ const SignUp = () => {
       .replace(/(-\d{2})\d+?$/, "$1");
   };
 
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleClickedShowCheckPassword = () => {
+    setShowCheckPass(!showCheckPass);
+  };
+
+  const onSubimitForm = (event) => {
+    event.preventDefault();
+
+    if (form.password === confirmPassword) {
+      setCheckErrPass(false);
+    } else {
+      setCheckErrPass(true);
+    }
+
+    signUp(form, clean, Navigate);
+  };
+
+  //CHAMANDO O ENDPOINT
+  const signUp = (body, clean, navigate) => {
+    axios
+      .post(`${BASE_URL}/signUp`, body)
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        alert("Cadastro realizado com sucesso");
+        clean();
+        goToSignUpAdress(navigate);
+      })
+      .catch((err) => {
+        console.log("Erro", err.response);
+        alert("Erro no cadastro!", err.data);
+      });
+  };
+
   return (
     <Main>
       <p>Cadastrar</p>
@@ -52,10 +78,12 @@ const SignUp = () => {
           id="outlined-basic"
           label={"Nome"}
           type={"text"}
+          name="name"
           placeholder={"Digite seu nome"}
           variant="outlined"
           value={form.name}
           onChange={onChange}
+          required
         />
         <InputMaterial
           id="outlined-basic"
@@ -104,36 +132,38 @@ const SignUp = () => {
             onClick={handleClickShowPassword}
             edge="end"
           >
-            {showPassword ? <VisibilityOff /> : <Visibility />}
+            {showPassword ? <VisibilityOffRounded /> : <VisibilityRounded />}
           </IconButton>
         </DivPassword>
 
         <DivPassword>
           <InputMaterial
             // campo de confirmação
-            // error={checkErrPass}
-            // helperText={checkErrPass ? errPass : ""}
+            error={checkErrPass}
+            helperText={
+              checkErrPass ? "Deve ser a mesma senha da anterior" : ""
+            }
             id="outlined-adornment-password"
-            label="Password"
-            name={password}
+            label="Confirme password"
+            name={confirm}
             type={showPassword ? "password" : "text"}
             variant="outlined"
-            placeholder="Mínimo 6 caracters"
+            placeholder="Confirmar"
             value={confirmPassword}
             onChange={(event) => setConfirmPassword(event.target.value)}
             inputProps={{
               minLength: 6,
-              title: "A senha deve conter no mínimo 6 caracters",
+              title: "A senha deve ser a mesma que a anterior",
             }}
             required
           />
 
           <IconButton
             aria-label="toggle password visibility"
-            onClick={handleClickShowPassword}
+            onClick={handleClickedShowCheckPassword}
             edge="end"
           >
-            {showPassword ? <VisibilityOff /> : <Visibility />}
+            {showPassword ? <VisibilityOffRounded /> : <VisibilityRounded />}
           </IconButton>
         </DivPassword>
 
@@ -143,3 +173,4 @@ const SignUp = () => {
   );
 };
 export default SignUp;
+
