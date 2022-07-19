@@ -1,7 +1,7 @@
-import { VisibilityRounded, VisibilityOffRounded } from "@mui/icons-material";
+import { VisibilityRounded, VisibilityOff } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "../../Hooks/useForm";
 import { ButtonStyled, DivPassword, InputMaterial, Main } from "./styled";
 import axios from "axios";
@@ -22,6 +22,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showCheckPass, setShowCheckPass] = useState(false);
+
+  const navigate = useNavigate()
 
   //Máscara de cpf regex para CPF
   const cpfMask = (value) => {
@@ -50,22 +52,22 @@ const SignUp = () => {
       setCheckErrPass(true);
     }
 
-    signUp(form, clean, Navigate);
+    signUp(form, clean);
   };
 
   //CHAMANDO O ENDPOINT
-  const signUp = (body, clean, navigate) => {
+  const signUp = (body, clean) => {
+    console.log(body);
     axios
       .post(`${BASE_URL}/signUp`, body)
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
         alert("Cadastro realizado com sucesso");
-        clean();
         goToSignUpAdress(navigate);
       })
       .catch((err) => {
-        console.log("Erro", err.response);
+        console.log("Erro", err);
         alert("Erro no cadastro!", err.data);
       });
   };
@@ -107,19 +109,18 @@ const SignUp = () => {
           onChange={onChange}
           required
         />
-
         <DivPassword>
           <InputMaterial
             error={checkErrPass}
             helperText={checkErrPass ? errPass : ""}
             id="outlined-adornment-password"
             label="Password"
-            name={password}
+            name={"password"}
             type={showPassword ? "password" : "text"}
             variant="outlined"
             placeholder="Mínimo 6 caracters"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            value={form.password}
+            onChange={onChange}
             inputProps={{
               minLength: 6,
               title: "A senha deve conter no mínimo 6 caracters",
@@ -135,10 +136,8 @@ const SignUp = () => {
             {showPassword ? <VisibilityOffRounded /> : <VisibilityRounded />}
           </IconButton>
         </DivPassword>
-
         <DivPassword>
           <InputMaterial
-            // campo de confirmação
             error={checkErrPass}
             helperText={
               checkErrPass ? "Deve ser a mesma senha da anterior" : ""
@@ -173,4 +172,3 @@ const SignUp = () => {
   );
 };
 export default SignUp;
-
