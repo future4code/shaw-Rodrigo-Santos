@@ -13,3 +13,5 @@ export const goToSignUp = (navigate) => {
 export const goToSignUpAdress = (navigate) => {
     navigate("/signUp/adress")
 }
+
+
