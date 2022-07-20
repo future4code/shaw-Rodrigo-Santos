@@ -23,7 +23,7 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showCheckPass, setShowCheckPass] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   //Máscara de cpf regex para CPF
   const cpfMask = (value) => {
@@ -68,7 +68,9 @@ const SignUp = () => {
       })
       .catch((err) => {
         console.log("Erro", err);
-        alert("Erro no cadastro!", err.data);
+        alert(err.response.data.message);
+        clean();
+        setConfirmPassword("");
       });
   };
 
