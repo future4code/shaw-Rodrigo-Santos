@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CardRestaurant from "../../Components/CardRestaurant/CardRestaurant";
-import { ContainerCardRestaurant } from "../../Components/CardRestaurant/styled";
 import Header from "../../Components/Header/Header";
 import { BASE_URL } from "../../Constants/url";
 import { useProtectedPage } from "../../Hooks/useProtectedPage";
@@ -18,6 +17,9 @@ const Feed = () => {
   useProtectedPage();
 
   const [restaurants, setRestaurants] = useState([]);
+  const [categoryRestaurants, setCategoryRestaurants] = useState([]);
+
+  const [inputText, setInputText] = useState("");
 
   const getRestaurants = () => {
     axios
@@ -28,7 +30,8 @@ const Feed = () => {
       })
       .then((res) => {
         console.log(res.data);
-        setRestaurants(res.data.restaurants);
+        setRestaurants(res.data.restaurants)
+        filterCategory(res.data.restaurants)
       })
       .catch((err) => {
         console.log(err);
@@ -38,33 +41,41 @@ const Feed = () => {
     getRestaurants();
   }, []);
 
+  const filterCategory = (restaurants) => {
+    const arrayAux = []
+    restaurants && restaurants.map((res)=>{
+      arrayAux.push(res.category) 
+    })
+    const takeOutRepeat = [...new Set(arrayAux)]
+    setCategoryRestaurants(takeOutRepeat)
+  }
+
+  const filterRestaurant = restaurants.filter((restaurant) => 
+      inputText
+        ? restaurant.name.toLowerCase().includes(inputText.toLowerCase())
+        : true
+    )
+    .map((restaurant) => {
+      return <CardRestaurant restaurant={restaurant} />;
+    });
+
   return (
     <ContainerFeed>
       <Header title={"UaiFood"} />
 
       <BoxInputSearch>
-        <InputSearch />
+        <InputSearch
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+        />
       </BoxInputSearch>
       <Menu>
-        <MenuItem select={true} >Burger</MenuItem>
-        <MenuItem select={false}>Asiática</MenuItem>
-        <MenuItem select={false}>Massas</MenuItem>
-        <MenuItem select={false}>Pizzas</MenuItem>
-        <MenuItem select={false}>Saudável</MenuItem>
-        <MenuItem select={false}>Salgados</MenuItem>
-        <MenuItem select={false}>Doces</MenuItem>
-        <MenuItem select={false}>Bebidas</MenuItem>
-        <MenuItem select={false}>Sobremesas</MenuItem>
-        <MenuItem select={false}>Lanches</MenuItem>
-        <MenuItem select={false}>Pães</MenuItem>
-        <MenuItem select={false}>Bolos</MenuItem>
-        <MenuItem select={false}>Doces</MenuItem>
-      </Menu>
-      <CardsRestaurant>
-        {restaurants.map((restaurant) => {
-          return <CardRestaurant restaurant={restaurant} />;
+        {categoryRestaurants.map((category) =>{
+          return <MenuItem select={false}>{category}</MenuItem>
         })}
-      </CardsRestaurant>
+     
+      </Menu>
+      <CardsRestaurant>{filterRestaurant}</CardsRestaurant>
     </ContainerFeed>
   );
 };
