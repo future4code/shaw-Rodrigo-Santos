@@ -5,7 +5,14 @@ import { ContainerCardRestaurant } from "../../Components/CardRestaurant/styled"
 import Header from "../../Components/Header/Header";
 import { BASE_URL } from "../../Constants/url";
 import { useProtectedPage } from "../../Hooks/useProtectedPage";
-import { CardsRestaurant, ContainerFeed, InputSearch } from "./styled";
+import {
+  BoxInputSearch,
+  CardsRestaurant,
+  ContainerFeed,
+  InputSearch,
+  Menu,
+  MenuItem,
+} from "./styled";
 
 const Feed = () => {
   useProtectedPage();
@@ -34,8 +41,26 @@ const Feed = () => {
   return (
     <ContainerFeed>
       <Header title={"UaiFood"} />
-      <CardsRestaurant>
+
+      <BoxInputSearch>
         <InputSearch />
+      </BoxInputSearch>
+      <Menu>
+        <MenuItem select={true} >Burger</MenuItem>
+        <MenuItem select={false}>Asiática</MenuItem>
+        <MenuItem select={false}>Massas</MenuItem>
+        <MenuItem select={false}>Pizzas</MenuItem>
+        <MenuItem select={false}>Saudável</MenuItem>
+        <MenuItem select={false}>Salgados</MenuItem>
+        <MenuItem select={false}>Doces</MenuItem>
+        <MenuItem select={false}>Bebidas</MenuItem>
+        <MenuItem select={false}>Sobremesas</MenuItem>
+        <MenuItem select={false}>Lanches</MenuItem>
+        <MenuItem select={false}>Pães</MenuItem>
+        <MenuItem select={false}>Bolos</MenuItem>
+        <MenuItem select={false}>Doces</MenuItem>
+      </Menu>
+      <CardsRestaurant>
         {restaurants.map((restaurant) => {
           return <CardRestaurant restaurant={restaurant} />;
         })}
