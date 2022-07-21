@@ -18,6 +18,7 @@ const Feed = () => {
 
   const [restaurants, setRestaurants] = useState([]);
   const [categoryRestaurants, setCategoryRestaurants] = useState([]);
+  const [valueCategory, setValueCategory] = useState("");
 
   const [inputText, setInputText] = useState("");
 
@@ -30,8 +31,8 @@ const Feed = () => {
       })
       .then((res) => {
         console.log(res.data);
-        setRestaurants(res.data.restaurants)
-        filterCategory(res.data.restaurants)
+        setRestaurants(res.data.restaurants);
+        filterCategory(res.data.restaurants);
       })
       .catch((err) => {
         console.log(err);
@@ -42,19 +43,31 @@ const Feed = () => {
   }, []);
 
   const filterCategory = (restaurants) => {
-    const arrayAux = []
-    restaurants && restaurants.map((res)=>{
-      arrayAux.push(res.category) 
-    })
-    const takeOutRepeat = [...new Set(arrayAux)]
-    setCategoryRestaurants(takeOutRepeat)
-  }
+    const arrayAux = [];
+    restaurants &&
+      restaurants.map((res) => {
+        arrayAux.push(res.category);
+      });
+    const takeOutRepeat = [...new Set(arrayAux)];
+    setCategoryRestaurants(takeOutRepeat);
+  };
 
-  const filterRestaurant = restaurants.filter((restaurant) => 
+  const filterRestaurant = restaurants
+    //filtro do input
+    .filter((restaurant) =>
       inputText
         ? restaurant.name.toLowerCase().includes(inputText.toLowerCase())
         : true
     )
+    //filtro da categoria
+    .filter((restaurant) =>
+      valueCategory
+        ? restaurant.category
+            .toLowerCase()
+            .includes(valueCategory.toLowerCase())
+        : true
+    )
+    //mapeando para mostrar os restaurantes
     .map((restaurant) => {
       return <CardRestaurant restaurant={restaurant} />;
     });
@@ -70,10 +83,15 @@ const Feed = () => {
         />
       </BoxInputSearch>
       <Menu>
-        {categoryRestaurants.map((category) =>{
-          return <MenuItem select={false}>{category}</MenuItem>
-        })}
-     
+        {categoryRestaurants.map((category) => (
+          <MenuItem
+            key={category}
+            select={valueCategory === category}
+            onClick={() => setValueCategory(category)}
+          >
+            {category}
+          </MenuItem>
+        ))}
       </Menu>
       <CardsRestaurant>{filterRestaurant}</CardsRestaurant>
     </ContainerFeed>
