@@ -23,6 +23,7 @@ const Feed = () => {
   const [inputText, setInputText] = useState("");
 
   const getRestaurants = () => {
+    console.log(localStorage.getItem("token"));
     axios
       .get(`${BASE_URL}/restaurants`, {
         headers: {
@@ -49,6 +50,13 @@ const Feed = () => {
         arrayAux.push(res.category);
       });
     const takeOutRepeat = [...new Set(arrayAux)];
+    
+    const changeObjectArray = [];
+
+    takeOutRepeat.map((category) => {
+      const insertObj = { category, select: false };
+      changeObjectArray.push(insertObj);
+    });
     setCategoryRestaurants(takeOutRepeat);
   };
 
@@ -83,6 +91,7 @@ const Feed = () => {
         />
       </BoxInputSearch>
       <Menu>
+        <MenuItem onClick={() => setValueCategory("")}>Todos</MenuItem>
         {categoryRestaurants.map((category) => (
           <MenuItem
             key={category}
