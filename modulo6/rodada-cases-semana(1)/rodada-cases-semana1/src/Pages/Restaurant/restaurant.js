@@ -2,15 +2,17 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../Constants/url";
 import axios from "axios";
+import { ContainerRestaurant } from "./styled";
 
 const Restaurant = () => {
   //hook de parametro
-  const { restaurantId } = useParams();
+  const params  = useParams();
+  console.log(params);
 
   const getRestaurant = async () => {
-    const token = localStorage.getItem("token");
+    const token = window.localStorage.getItem('token');
     await axios
-      .get(`${BASE_URL}/restaurants/${restaurantId}`, {
+      .get(`${BASE_URL}/restaurants/${params.id}`, {
         headers: {
           auth: token
         }
@@ -26,6 +28,9 @@ const Restaurant = () => {
     getRestaurant();
   }, []);
 
-  return <div>Restaurant</div>;
+  return <ContainerRestaurant>
+
+
+  </ContainerRestaurant>;
 };
 export default Restaurant;
