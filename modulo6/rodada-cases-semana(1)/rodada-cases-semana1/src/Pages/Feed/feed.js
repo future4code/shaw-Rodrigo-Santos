@@ -76,7 +76,7 @@ const Feed = () => {
     )
     //mapeando para mostrar os restaurantes
     .map((restaurant) => {
-      return <CardRestaurant restaurant={restaurant} />;
+      return <CardRestaurant restaurant={restaurant} key={restaurant.id} />;
     });
 
   return (
