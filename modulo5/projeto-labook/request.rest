@@ -1,0 +1,40 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "Lemmy Killminster",
+    "email": "motorhead5@gmail.com",
+    "password": "123456"
+}
+
+#######
+
+# @name login
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "motorhead5@gmail.com",
+    "password": "123456"
+}
+
+########
+POST http://localhost:3003/post/create
+Authorization: {{ login.response.body.token }}
+Content-Type: application/json
+
+{
+    "photo": "https://www.hojeemdia.com.br/polopoly_fs/1.868622!/image/image.jpg_gen/derivatives/landscape_490/image.jpg",
+    "description": "Uma imagem do melhor time de futebol de Minas Gerais",
+    "type": "normal"
+}
+
+########
+GET http://localhost:3003/post/1c977c83-8e92-4746-9b1c-ece5c2df97b7
+Authorization: {{ login.response.body.token }}
+
+#########
+GET http://localhost:3003/post/list
+Authorization: {{ login.response.body.token }}
+
+
