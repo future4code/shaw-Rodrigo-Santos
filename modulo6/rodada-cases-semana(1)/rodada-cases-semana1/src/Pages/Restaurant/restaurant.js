@@ -1,36 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../Constants/url";
 import axios from "axios";
-import { ContainerRestaurant } from "./styled";
+import { CardsRestaurant, ContainerRestaurant } from "./styled";
+import CardRestaurantDetails from "../../Components/CardRestaurantDetails/CardsRestaurantDetails";
 
 const Restaurant = () => {
   //hook de parametro
-  const params  = useParams();
-  console.log(params);
+  const {restaurantId} = useParams();
+  const [restaurant, setRestaurant] = useState({});
 
   const getRestaurant = async () => {
-    const token = window.localStorage.getItem('token');
+    const token = window.localStorage.getItem("token");
     await axios
-      .get(`${BASE_URL}/restaurants/${params.id}`, {
+      .get(`${BASE_URL}/restaurants/${ restaurantId }`, {
         headers: {
-          auth: token
-        }
+          auth: token,
+        },
       })
       .then((res) => {
-        console.log(res.data)
+        setRestaurant(res.data.restaurant);
+        console.log(res.data);
       })
       .catch((err) => {
-        console.log(err.response.data.message)
+        console.log(err.response.data.message);
       });
   };
   useEffect(() => {
     getRestaurant();
   }, []);
 
-  return <ContainerRestaurant>
-
-
-  </ContainerRestaurant>;
+  return (
+    <ContainerRestaurant>
+      <CardsRestaurant>
+      <CardRestaurantDetails restaurant={restaurant} />
+      </CardsRestaurant>
+    </ContainerRestaurant>
+  );
 };
 export default Restaurant;
