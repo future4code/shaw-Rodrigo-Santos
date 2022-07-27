@@ -6,6 +6,10 @@ export const goToFeed = (navigate) => {
     navigate('/feed')
 }
 
+export const goToBack = (navigate) => {
+    navigate(-1)
+}
+
 export const goToSignUp = (navigate) => {
     navigate ("/signUp")
 }

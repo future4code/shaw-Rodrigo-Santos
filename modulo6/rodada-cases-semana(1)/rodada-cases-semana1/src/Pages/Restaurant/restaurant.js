@@ -10,6 +10,7 @@ import {
 } from "./styled";
 import CardRestaurantDetails from "../../Components/CardRestaurantDetails/CardsRestaurantDetails";
 import CardProduct from "../../Components/Cardproduct/CardProduct";
+import Header from "../../Components/Header/Header";
 
 const Restaurant = () => {
   //hook de parametro
@@ -53,6 +54,7 @@ const Restaurant = () => {
 
   return (
     <ContainerRestaurant>
+      <Header title={"Restaurante"} back={true}/>
       <CardsRestaurant>
         <CardRestaurantDetails restaurant={restaurant} />
 
