@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-/* import ModalSelectQuantity from "../Modal/ModalSelectQuantity"; */
+import ModalSelectQuantity from "../ModalSelectQuantity/ModalSelectQuantity";
 import {
   BoxInform,
   BoxInformPriceButton,
@@ -29,7 +29,7 @@ const CardProduct = ({ product }) => {
             Adicionar
           </InformButton>
         </BoxInformPriceButton>
-        {/* <ModalSelectQuantity open={showModal} setOpen={setShowModal} /> */}
+        <ModalSelectQuantity open={showModal} setOpen={setShowModal} />
       </BoxInform>
     </ContainerCardProduct>
   );
