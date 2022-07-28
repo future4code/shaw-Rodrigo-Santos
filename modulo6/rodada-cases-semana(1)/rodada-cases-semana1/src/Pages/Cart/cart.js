@@ -1,14 +1,58 @@
-import React from "react";
+import { CardGiftcardTwoTone } from "@mui/icons-material";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import CardCart from "../../Components/CardCart/cardCart";
 import { BASE_URL } from "../../Constants/url";
 import { useRequestData } from "../../Hooks/useRequestData";
-import { Main, MainCard, CartConfig, InfoProfile } from "./styled";
+import {
+  Main,
+  MainCard,
+  CartConfig,
+  InfoProfile,
+  InfoRestaurant,
+  CartInfo,
+  Payment,
+  Freight,
+} from "./styled";
 
 const Cart = () => {
+  const profile = useRequestData({}, `${BASE_URL}/profile`);
+  const [payment, setPayment] = useState([]);
+  const [paymentMethod, setPaymentMethod] = useState({
+    money: false,
+    creditcard: false,
+  });
 
-  const profile = useRequestData({}, `${BASE_URL}/profile`)
+  const mockData = [
+    {
+      name: "Stencil",
+      price: 40,
+      photoUrl: "https://picsum.photos/200",
+      amount: 2,
+      description: "Pão, carne, queijo, presunto, alface, tomate",
+    },
+    {
+      name: "Fritas",
+      price: 10,
+      photoUrl: "https://picsum.photos/200",
+      amount: 2,
+      description: "Crocantes",
+    },
+  ];
 
-  console.log(profile[0].user);
-  
+  const onChangePayment = (e) => {
+    const newCheck = { ...paymentMethod };
+    newCheck[e.target.name] = e.target.checked;
+
+    const result = Object.keys(newCheck).filter((pay) => {
+      if (newCheck[pay]) {
+        return [pay, ...payment];
+      }
+    });
+    setPayment(result);
+    setPaymentMethod(newCheck);
+  };
+
   return (
     <Main>
       <MainCard>
@@ -18,15 +62,40 @@ const Cart = () => {
       <CartConfig>
         <InfoProfile>
           <p>Endereço de entrega</p>
-          <p>Rua do bobo, numero </p>
+          <p>{profile[0].user && profile[0].user.address}</p>
         </InfoProfile>
+        <InfoRestaurant>
+          <p>Nome do restaurante</p>
+          <p>Rua do restaurante</p>
+          <p>30 - 45 min</p>
+        </InfoRestaurant>
 
-        <div>
-          <p>Carrinho vazio</p>
-        </div>
+        <CartInfo>
+          {mockData.length > 0 ? (
+            mockData.map((data) => {
+              return (
+                <CardCart
+                  name={data.name}
+                  price={data.price}
+                  photoUrl={data.photoUrl}
+                  amount={data.amount}
+                  description={data.description}
+                />
+              );
+            })
+          ) : (
+            <EmptyCart>Carrinho vazio</EmptyCart>
+          )}
+        </CartInfo>
 
-        <div>
-          <p>Frete R$ 0,00</p>
+        <Payment>
+          <Freight>
+            Frete
+            {new Intl.NumberFormat("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            }).format(6)}
+          </Freight>
           <div>
             <p>Subtotal</p>
             <p>R$ 0,00</p>
@@ -34,17 +103,25 @@ const Cart = () => {
 
           <h1>Forma de pagamento</h1>
           <form>
-            <label>Dinheiro</label>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label>Cartão</label>
-            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
+            {Object.keys(paymentMethod).map((key) => {
+              const checked = paymentMethod[key];
+              return (
+                <div key={key}>
+                  <input
+                    checked={checked}
+                    name={key}
+                    id={key}
+                    type={"checkbox"}
+                    onChange={onChangePayment}
+                  />
+                  <label>{key}</label>
+                </div>
+              );
+            })}
             <button>Confirmar</button>
           </form>
-
-        </div>
-
+        </Payment>
       </CartConfig>
-
     </Main>
   );
 };
