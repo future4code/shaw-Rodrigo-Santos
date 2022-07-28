@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../../Components/Header/Header";
 import { BASE_URL } from "../../Constants/url";
 import { useForm } from "../../Hooks/useForm";
 import { goToFeed } from "../../Routes/coordinator";
@@ -43,7 +44,8 @@ const SignUpAdress = () => {
 
   return (
     <Main>
-      <p>SignUpAdress</p>
+      <Header title={"Cadastrar endereço"} back/>
+      
       <form onSubmit={onSubmitFormAdress}>
         <InputMaterial
           id="outlined-basic"

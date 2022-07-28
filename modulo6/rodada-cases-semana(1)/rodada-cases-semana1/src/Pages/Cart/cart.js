@@ -1,12 +1,10 @@
-import { CardGiftcardTwoTone } from "@mui/icons-material";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import CardCart from "../../Components/CardCart/cardCart";
+import Header from "../../Components/Header/Header";
 import { BASE_URL } from "../../Constants/url";
 import { useRequestData } from "../../Hooks/useRequestData";
 import {
   Main,
-  MainCard,
   CartConfig,
   InfoProfile,
   InfoRestaurant,
@@ -55,9 +53,7 @@ const Cart = () => {
 
   return (
     <Main>
-      <MainCard>
-        <p>Meu Carrinho</p>
-      </MainCard>
+      <Header title={"Meu carrinho"} back />
 
       <CartConfig>
         <InfoProfile>
@@ -75,6 +71,7 @@ const Cart = () => {
             mockData.map((data) => {
               return (
                 <CardCart
+                  key={data.name}
                   name={data.name}
                   price={data.price}
                   photoUrl={data.photoUrl}

@@ -7,6 +7,7 @@ import { ButtonStyled, DivPassword, InputMaterial, Main } from "./styled";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/url";
 import { goToSignUpAdress } from "../../Routes/coordinator";
+import Header from "../../Components/Header/Header";
 
 const SignUp = () => {
   const { form, onChange, clean } = useForm({
@@ -76,7 +77,8 @@ const SignUp = () => {
 
   return (
     <Main>
-      <p>Cadastrar</p>
+      <Header title={"Cadastrar usuário"} back/>
+     
       <form onSubmit={onSubimitForm}>
         <InputMaterial
           id="outlined-basic"
