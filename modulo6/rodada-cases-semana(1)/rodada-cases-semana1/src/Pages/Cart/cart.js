@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CardCart from "../../Components/CardCart/cardCart";
 import Header from "../../Components/Header/Header";
+import MenuBottom from "../../Components/Menu/Menu";
 import { BASE_URL } from "../../Constants/url";
 import { useRequestData } from "../../Hooks/useRequestData";
 import {
@@ -119,6 +120,7 @@ const Cart = () => {
           </form>
         </Payment>
       </CartConfig>
+      <MenuBottom page={"cart"} />
     </Main>
   );
 };

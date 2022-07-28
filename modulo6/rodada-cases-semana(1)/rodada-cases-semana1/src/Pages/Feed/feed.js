@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CardRestaurant from "../../Components/CardRestaurant/CardRestaurant";
 import Header from "../../Components/Header/Header";
+import MenuBottom from "../../Components/Menu/Menu";
 import { BASE_URL } from "../../Constants/url";
 import { useProtectedPage } from "../../Hooks/useProtectedPage";
 import {
@@ -102,6 +103,7 @@ const Feed = () => {
         ))}
       </Menu>
       <CardsRestaurant>{filterRestaurant}</CardsRestaurant>
+      <MenuBottom page={"feed"} />
     </ContainerFeed>
   );
 };
