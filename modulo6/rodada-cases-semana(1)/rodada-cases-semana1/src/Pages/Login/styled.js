@@ -39,3 +39,9 @@ export const DivPassword = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const ImgSize = styled.img`
+  width: 45%;
+  margin-top: 10%;
+  
+`

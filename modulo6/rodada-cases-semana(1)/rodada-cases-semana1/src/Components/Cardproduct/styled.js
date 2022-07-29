@@ -5,7 +5,7 @@ export const ContainerCardProduct = styled.div`
   width: 100%;
   margin: 0.5rem 0;
   border: solid 1px gray;
-  border-radius: 7px;
+  border-radius: 8px;
 `;
 
 export const ImageProduct = styled.img`
@@ -14,16 +14,10 @@ export const ImageProduct = styled.img`
   border-radius: 7px 7px 0 0;
 `;
 
-export const QuantityProduct = styled.div`
+export const BoxNameQuantity = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border: solid 1px red;
-  width: 2.063rem;
-  height: 2.63rem;
+  justify-content: space-between;
 `;
-
-export const BoxNameQuantity = styled.div``;
 
 export const NameProduct = styled.p`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -42,7 +36,7 @@ export const BoxInform = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding: 1rem 0rem 0 1rem;
+  padding: 0rem 0rem 0 1rem;
   flex-grow: 1;
 `;
 
@@ -67,11 +61,27 @@ export const BoxInformPriceButton = styled.div`
 
 export const InformPrice = styled.p``;
 
-export const InformButton = styled.button`
+export const InformAddItemButton = styled.button`
   width: 5.625rem;
   height: 1.938rem;
   border-radius: 8px 0 8px 0;
   background-color: white;
   outline: 0;
   border: 1px black solid;
+`;
+
+export const InformRemoveItemButton = styled(InformAddItemButton)`
+  border: 1px red solid;
+  color: red;
+`;
+
+export const QuantityProduct = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px red;
+  width: 2.063rem;
+  height: 2.63rem;
+  border-radius: 0 8px 0 8px ;
+
 `;

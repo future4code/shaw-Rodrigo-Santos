@@ -1,5 +1,5 @@
-import * as React from "react";
 import Modal from "@mui/material/Modal";
+import { useState } from "react";
 import {
   BoxModal,
   ButtonAddTaCart,
@@ -7,7 +7,8 @@ import {
   TitleModal,
 } from "./styled";
 
-const ModalSelectQuantity = ({ open, setOpen }) => {
+const ModalSelectQuantity = ({ open, setOpen, choiceQuantity }) => {
+  const [quantity, setQuantity] = useState(1);
   return (
     <div>
       <Modal
@@ -20,8 +21,7 @@ const ModalSelectQuantity = ({ open, setOpen }) => {
       >
         <BoxModal>
           <TitleModal>Selecione a quantidade desejada</TitleModal>
-          <SelectQuantity>
-
+          <SelectQuantity onChange={(e) => setQuantity(e.target.value)}>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -31,9 +31,10 @@ const ModalSelectQuantity = ({ open, setOpen }) => {
             <option>7</option>
             <option>8</option>
             <option>9</option>
-            
           </SelectQuantity>
-          <ButtonAddTaCart>Adicionar ao carrinho</ButtonAddTaCart>
+          <ButtonAddTaCart onClick={() => choiceQuantity(Number(quantity))}>
+            Adicionar ao carrinho
+          </ButtonAddTaCart>
         </BoxModal>
       </Modal>
     </div>

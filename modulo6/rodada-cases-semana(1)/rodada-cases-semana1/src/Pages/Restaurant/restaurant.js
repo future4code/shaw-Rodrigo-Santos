@@ -9,14 +9,19 @@ import {
   SectionProductByCategory,
 } from "./styled";
 import CardRestaurantDetails from "../../Components/CardRestaurantDetails/CardsRestaurantDetails";
-import CardProduct from "../../Components/Cardproduct/CardProduct";
+import CardProduct from "../../Components/CardProduct/CardProduct";
 import Header from "../../Components/Header/Header";
+import MenuBottom from "../../Components/Menu/Menu";
+import { useGlobal } from "../../Context/Global/GlobalStateContext";
 
 const Restaurant = () => {
   //hook de parametro
   const { restaurantId } = useParams();
   const [restaurant, setRestaurant] = useState({});
   const [categories, setCategories] = useState([]);
+
+  const { requests } = useGlobal();
+  const { addToCart } = requests;
 
   const getRestaurant = async () => {
     const token = window.localStorage.getItem("token");
@@ -54,7 +59,7 @@ const Restaurant = () => {
 
   return (
     <ContainerRestaurant>
-      <Header title={"Restaurante"} back={true}/>
+      <Header title={"Restaurante"} back={true} />
       <CardsRestaurant>
         <CardRestaurantDetails restaurant={restaurant} />
 
@@ -68,12 +73,20 @@ const Restaurant = () => {
                     return product.category === category;
                   })
                   .map((product) => {
-                    return <CardProduct product={product} key={product.id} />;
+                    return (
+                      <CardProduct
+                        product={product}
+                        key={product.id}
+                        addToCart={addToCart}
+                        restaurant={restaurant}
+                      />
+                    );
                   })}
               </SectionProductByCategory>
             );
           })}
       </CardsRestaurant>
+      <MenuBottom page={""} />
     </ContainerRestaurant>
   );
 };
