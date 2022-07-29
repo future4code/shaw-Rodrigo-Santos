@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import CardCart from "../../Components/CardCart/cardCart";
+import { Button } from "@mui/material";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import CardProduct from "../../Components/CardProduct/CardProduct";
 import Header from "../../Components/Header/Header";
 import MenuBottom from "../../Components/Menu/Menu";
 import { BASE_URL } from "../../Constants/url";
+import { useGlobal } from "../../Context/Global/GlobalStateContext";
 import { useRequestData } from "../../Hooks/useRequestData";
 import {
   Main,
@@ -12,72 +15,90 @@ import {
   CartInfo,
   Payment,
   Freight,
+  EmptyCart,
+  Total,
+  Form,
 } from "./styled";
 
 const Cart = () => {
   const profile = useRequestData({}, `${BASE_URL}/profile`);
-  const [payment, setPayment] = useState([]);
-  const [paymentMethod, setPaymentMethod] = useState({
-    money: false,
-    creditcard: false,
-  });
+  const [payment, setPayment] = useState("");
+  const [fullPrice, setFullPrice] = useState(0);
+  const [paymentMethod] = useState(["money", "creditcard"]);
 
-  const mockData = [
-    {
-      name: "Stencil",
-      price: 40,
-      photoUrl: "https://picsum.photos/200",
-      amount: 2,
-      description: "Pão, carne, queijo, presunto, alface, tomate",
-    },
-    {
-      name: "Fritas",
-      price: 10,
-      photoUrl: "https://picsum.photos/200",
-      amount: 2,
-      description: "Crocantes",
-    },
-  ];
+  const { setters, states } = useGlobal();
+  const { setOrder } = setters;
+  const { cart, restaurant, order } = states;
 
-  const onChangePayment = (e) => {
-    const newCheck = { ...paymentMethod };
-    newCheck[e.target.name] = e.target.checked;
+  const onChangePayment = (event) => {
+    setPayment(event.target.value);
+  };
 
-    const result = Object.keys(newCheck).filter((pay) => {
-      if (newCheck[pay]) {
-        return [pay, ...payment];
-      }
-    });
-    setPayment(result);
-    setPaymentMethod(newCheck);
+  const totalPrice = () => {
+    let totPrice = 0;
+    for (const product of cart) {
+      totPrice += product.price * product.quantity;
+    }
+    setFullPrice(totPrice);
+  };
+
+  useEffect(() => {
+    totalPrice();
+  }, []);
+
+  const placeOrder = async () => {
+    const body = {
+      products: cart.map((product) => {
+        return ({
+          id: product.id,
+          quantity: product.quantity,
+        })
+      }),
+      paymentMethod: payment,
+    };
+
+    await axios
+      .post(`${BASE_URL}/restaurants/${restaurant.id}/order`, body, {
+        headers: {
+          auth: window.localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setOrder(res.data.order);
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
+  };
+
+  const onSubmitPlaceOrder = (e) => {
+    e.preventDefault();
+    placeOrder();
   };
 
   return (
     <Main>
       <Header title={"Meu carrinho"} back />
-
       <CartConfig>
         <InfoProfile>
           <p>Endereço de entrega</p>
           <p>{profile[0].user && profile[0].user.address}</p>
         </InfoProfile>
+
         <InfoRestaurant>
-          <p>Nome do restaurante</p>
-          <p>Rua do restaurante</p>
-          <p>30 - 45 min</p>
+          <p>{restaurant.name}</p>
+          <p>{restaurant.address}</p>
+          <p>{restaurant.deliveryTime + "min"}</p>
         </InfoRestaurant>
 
         <CartInfo>
-          {mockData.length > 0 ? (
-            mockData.map((data) => {
+          {cart.length > 0 ? (
+            cart.map((product) => {
               return (
-                <CardCart
-                  key={data.name}
-                  name={data.name}
-                  price={data.price}
-                  photoUrl={data.photoUrl}
-                  amount={data.amount}
-                  description={data.description}
+                <CardProduct
+                  product={product}
+                  key={product.id}
+                  restaurant={restaurant}
                 />
               );
             })
@@ -92,32 +113,38 @@ const Cart = () => {
             {new Intl.NumberFormat("pt-BR", {
               style: "currency",
               currency: "BRL",
-            }).format(6)}
+            }).format(restaurant.shipping ? restaurant.shipping : 0)}
           </Freight>
-          <div>
+
+          <Total>
             <p>Subtotal</p>
-            <p>R$ 0,00</p>
-          </div>
+            <p>
+              {new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              }).format(fullPrice)}
+            </p>
+          </Total>
 
           <h1>Forma de pagamento</h1>
-          <form>
-            {Object.keys(paymentMethod).map((key) => {
-              const checked = paymentMethod[key];
+          <Form onSubmit={onSubmitPlaceOrder}>
+            {paymentMethod.map((key) => {
               return (
                 <div key={key}>
                   <input
-                    checked={checked}
-                    name={key}
+                    checked={payment === key}
+                    name={"paymentMethod"}
                     id={key}
-                    type={"checkbox"}
+                    type={"radio"}
                     onChange={onChangePayment}
+                    value={key}
                   />
-                  <label>{key}</label>
+                  <label htmlFor={key}>{key}</label>
                 </div>
               );
             })}
-            <button>Confirmar</button>
-          </form>
+            <Button type="submit">Confimar</Button>
+          </Form>
         </Payment>
       </CartConfig>
       <MenuBottom page={"cart"} />
