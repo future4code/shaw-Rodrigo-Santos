@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/urls";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
@@ -71,6 +71,14 @@ const FeedPage = () => {
     postCreatePost(form, clear, setIsLoading, getFeed );
   };
 
+  useEffect(() => {
+    getFeed();
+  }
+  , [feed]);
+
+  console.log(feed);
+
+
   return (
     <div>
       <NewPostFather>
@@ -91,9 +99,9 @@ const FeedPage = () => {
               placeholder="Escreva seu post..."
             />
             <PostButton>
-              {isLoading ? (
+              {/* isLoading ? (
                 <CircularProgress color={"white"} />
-              ) : (
+              ) :  */(
                 <ButtonLetter>Postar</ButtonLetter>
               )}
             </PostButton>
