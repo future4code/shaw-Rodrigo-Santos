@@ -22,7 +22,7 @@ const useRequestData = (initialData, url) => {
 
   useEffect(() => {
     getData();
-  }, [url]);
+  }, [url, data]);
   return [data, getData];
 };
 export default useRequestData;

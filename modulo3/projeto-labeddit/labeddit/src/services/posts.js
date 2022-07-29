@@ -14,11 +14,11 @@ export const postCreatePost = (body, clear, setIsLoading, getComment) => {
       alert(res.data);
       clear();
       getComment();
-      setIsLoading(false);
+      /* setIsLoading(false); */
     })
     .catch((err) => {
       alert(err.response.data.message);
-      setIsLoading(false);
+      /* setIsLoading(false); */
     });
 };
 

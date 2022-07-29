@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+📄 LabEddit : Social bookmarks baseado no reedit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🎯 Objetivo do projeto
 
-## Available Scripts
+Último projeto individual da trilha front-end do bootcamp de desenvolvimento web fullstack da Labenu. 
 
-In the project directory, you can run:
+Seu intuito é rever todos os conteúdos do curso de maneira prática e fazer uma aplicação completa. É importante destacar que esse é uma aplicação do tipo Mobile First.
 
-### `npm start`
+🔹 Os requisitos do projeto são:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Login
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Ao efetuar o login, o usuário deve ser redirecionado para a página de feed
 
-### `npm test`
+Também devera ter um botão que leva a página de cadastro
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+O token deve ser salvo no LocalStorage
 
-### `npm run build`
+Cadastro
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Após cadastrar, o usuário deverá ser redirecionado para a página de feed
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+O token deve ser salvo no LocalStorage
+Feed
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Deve mostrar todos os posts
 
-### `npm run eject`
+Deve permitir a criação de um novo post
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Só pode ser acessada por usuários logados
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Quando o usuário clicar em um post, ele deverá ser redirecionado para a página do respectivo post.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Quando um usuário clicar em votar (positiva ou negativamente), uma requisição deverá ser feita indicando a "direção" do voto.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Post
 
-## Learn More
+Mostra as informações do post que foi clicado
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Deve permitir a criação de comentários
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Só pode ser acessada por usuários logados
 
-### Code Splitting
+Deve mostrar todos os comentários do post
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Cada comentário também deverá ter a lógica dos votos
 
-### Analyzing the Bundle Size
+✔️ Funcionalidades
+Navegação entre as páginas utilizando o react-router-dom
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Autenticação e Proteção das páginas privadas
 
-### Making a Progressive Web App
+Usuários não logados são redirecionados para a página de login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Pessoas autenticadas (logadas) conseguem acessar as páginas de feed e post
 
-### Advanced Configuration
+Loadings nas telas que fazem as requisições
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Formulários com validações
 
-### Deployment
+A lógica dos votos nos post e comentários
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Realizar a votação ou a criação de um novo post ou comentário a lista com todos são atualizadas
 
-### `npm run build` fails to minify
+Paginação no feed e nos comentários
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Botão de logout
+
+Responsividade
+
+📚 Bibliotecas utilizadas
+styled-components
+axios
+react-router-dom
+
+🔗 Link Surge
+
+amusing-finger.surge.sh
+
+Login
+
+<img width="188" alt="image" src="https://user-images.githubusercontent.com/93896739/181771452-05b49662-7cb3-45ed-84d8-77f015fbc6d9.png">
+
+Cadastrar
+
+<img width="186" alt="image" src="https://user-images.githubusercontent.com/93896739/181771655-7a4e9d62-52e0-4e7f-9366-0f69e32985ae.png">
+
+Feed
+
+<img width="187" alt="image" src="https://user-images.githubusercontent.com/93896739/181771764-5a1ae76e-0d15-44d2-a8be-00ee21657f26.png">
+
+Pagina do Post
+
+<img width="188" alt="image" src="https://user-images.githubusercontent.com/93896739/181772048-78453fbf-01a4-44dc-ac42-de85f05b6ddb.png">
+
+
