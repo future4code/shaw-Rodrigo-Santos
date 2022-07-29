@@ -79,6 +79,18 @@ amusing-finger.surge.sh
 
 Login
 
-image.png
+<img width="188" alt="image" src="https://user-images.githubusercontent.com/93896739/181771452-05b49662-7cb3-45ed-84d8-77f015fbc6d9.png">
+
+Cadastrar
+
+<img width="186" alt="image" src="https://user-images.githubusercontent.com/93896739/181771655-7a4e9d62-52e0-4e7f-9366-0f69e32985ae.png">
+
+Feed
+
+<img width="187" alt="image" src="https://user-images.githubusercontent.com/93896739/181771764-5a1ae76e-0d15-44d2-a8be-00ee21657f26.png">
+
+Pagina do Post
+
+<img width="188" alt="image" src="https://user-images.githubusercontent.com/93896739/181772048-78453fbf-01a4-44dc-ac42-de85f05b6ddb.png">
 
 
