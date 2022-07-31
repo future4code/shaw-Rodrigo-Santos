@@ -5,19 +5,19 @@ export const Main = styled.div`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   height: 100vh;
   display: flex;
-  /*  flex-direction: column; */
+  flex-direction: column;
 `;
 
 export const Perfil = styled.div`
   text-align: center;
-  height: 100%;
+  height: 5%;
   border-bottom: 1px solid black;
 `;
 
 export const Informações = styled.div`
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid black;
+  height: 100%;
 `;
 
 export const PerfilPessoa = styled.div`
