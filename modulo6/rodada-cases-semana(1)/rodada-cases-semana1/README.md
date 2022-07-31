@@ -1,12 +1,16 @@
 UaiFood
 
+Site/app de delivery de comida inspirado no Ifood
+
+Tecnologias utilizadas:
+
+JavaScrit - React - HTML - CSS
+
 ### O que funciona
 Site de compra de comidas mineiras
 
-### O que não funciona
-- DESCREVA O QUE NÃO FUNCIONA NO SEU PROJETO
-
 ### Link Surge 
+https://attractive-jail.surge.sh
 
 
 ### Imagens
