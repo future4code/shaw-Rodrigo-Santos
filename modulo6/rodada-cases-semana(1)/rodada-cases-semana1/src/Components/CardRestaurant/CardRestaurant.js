@@ -15,7 +15,7 @@ const CardRestaurant = ({ restaurant }) => {
       <ImageRestaurant src={restaurant.logoUrl} alt={`Logo ${restaurant.name}`}/>
       <NameRestaurant>{restaurant.name} </NameRestaurant>
       <BoxInformTimePrice>
-        <InformTimePrice>{restaurant.deliveryTime}</InformTimePrice>
+        <InformTimePrice>{restaurant.deliveryTime} min</InformTimePrice>
         <InformTimePrice>{restaurant.shipping}</InformTimePrice>
       </BoxInformTimePrice>
     </ContainerCardRestaurant>

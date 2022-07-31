@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import CardRestaurant from "../../Components/CardRestaurant/CardRestaurant";
 import Header from "../../Components/Header/Header";
 import MenuBottom from "../../Components/Menu/Menu";
+import Order from "../../Components/Order/order";
 import { BASE_URL } from "../../Constants/url";
+import { useGlobal } from "../../Context/Global/GlobalStateContext";
 import { useProtectedPage } from "../../Hooks/useProtectedPage";
 import {
   BoxInputSearch,
@@ -22,6 +24,34 @@ const Feed = () => {
   const [valueCategory, setValueCategory] = useState("");
 
   const [inputText, setInputText] = useState("");
+
+  const { setters, states } = useGlobal();
+  const { setOrder } = setters;
+  const { order } = states;
+
+  const getOrder = () => {
+    axios
+      .get(`${BASE_URL}/active-order`, {
+        headers: {
+          auth: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setOrder(res.data.order);
+        
+        const expiresAt = res.data.order.expiresAt;
+        setTimeout(() => {
+          getOrder();
+        }, expiresAt - new Date().getTime());
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getRestaurants();
+    getOrder();
+  }, []);
 
   const getRestaurants = () => {
     axios
@@ -104,6 +134,12 @@ const Feed = () => {
       </Menu>
       <CardsRestaurant>{filterRestaurant}</CardsRestaurant>
       <MenuBottom page={"feed"} />
+      {order && (
+        <Order
+          restaurantName={order.restaurantName}
+          totalPrice={order.totalPrice}
+        />
+      )}
     </ContainerFeed>
   );
 };

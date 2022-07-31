@@ -1,15 +1,25 @@
 import {
-  CartStyled,
-  HomeStyled,
+  BoxInform,
+  ClockStyled,
   OrderContainer,
   OrderContainerSpace,
-  UserStyled,
+  RestaurantName,
+  Title,
+  TotalPrice,
+ 
 } from "./styled";
 
-const Order = () => {
+const Order = ({totalPrice, restaurantName}) => {
   return (
     <>
-      <OrderContainer></OrderContainer>
+      <OrderContainer>
+        <ClockStyled />
+        <BoxInform>
+          <Title>Pedido em andamento</Title>
+          <RestaurantName>{restaurantName}</RestaurantName>
+          <TotalPrice>Subtotal R$ {totalPrice},00</TotalPrice>
+        </BoxInform>
+      </OrderContainer>
       <OrderContainerSpace />
     </>
   );
