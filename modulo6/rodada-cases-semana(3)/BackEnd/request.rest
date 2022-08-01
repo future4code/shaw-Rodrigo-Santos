@@ -1,0 +1,20 @@
+##SIGNUP
+
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "Ozzy",
+    "password": "123456",
+}
+
+#######LOGIN
+
+# @name login
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "bren@labe.com",
+    "password": "123456"
+}
