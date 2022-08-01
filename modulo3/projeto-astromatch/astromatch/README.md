@@ -32,7 +32,8 @@ Estamos fornecendo uma API específica para esse projeto, cuja documentação se
 
 ## :camera: Imagens
 ![image](https://user-images.githubusercontent.com/93896739/164999867-aa06f450-ec22-46da-9ab8-c3af4762c674.png)
-![image](https://user-images.githubusercontent.com/93896739/164999893-45144dba-4479-4496-b7b8-687813e845c6.png)
+![image](https://user-images.githubusercontent.com/96388423/182052399-1dbbe609-4071-45b5-8723-e09d554f6466.png)
+
 
 
 ## :black_nib: Autor
