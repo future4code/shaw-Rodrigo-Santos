@@ -45,3 +45,14 @@ export const ImgSize = styled.img`
   margin-top: 10%;
   
 `
+
+export const SignUpButton = styled.button`
+  width: 90%;
+  height: 8vh;
+  padding: 12px 16px;
+  
+  background-color: white;
+  border: none;
+  margin: 2%;
+`;
+
