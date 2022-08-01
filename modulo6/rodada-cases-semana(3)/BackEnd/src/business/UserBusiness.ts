@@ -1,79 +1,34 @@
-/* import UserData from "../data/UserData";
-import { User } from "../model/User";
-import { Authenticator } from "../services/Authenticator";
-import { HashManager } from "../services/HashManager";
-import { IdGenerator } from "../services/idGenerator";
-import { loginInputDTO } from "../types/loginInputDTO";
-import { signupInputDTO } from "../types/signupInputDTO";
+import UserData from "../data/UserData";
+import { user } from "../types/user";
+
+const userDB = new UserData();
 
 export class UserBusiness {
-  //injeção de dependência, assim obrigamos a entregar os  objetos
-  constructor(
-    private userData: UserData,
-    private idGenerator: IdGenerator,
-    private hashManager: HashManager,
-    private authenticator: Authenticator
-  ) {}
+  async createUser(user: user) {
+    try {
+      if (!user.first_name || !user.last_name || !user.participation) {
+        throw new Error("Preencha todos os campos");
+      }
 
-  signup = async (input: signupInputDTO) => {
-    //validação dos dados
-    const { name, password } = input;
-    if (!name || !password ) {
-      throw new Error("Campos inválidos!");
+      if (Number.isInteger(user.participation) === false) {
+        throw new Error("Participação deve ser um número");
+      }
+
+      return await userDB.createUser(
+        user.first_name,
+        user.last_name,
+        user.participation
+      );
+    } catch (error: any) {
+      throw new Error(error.message || "Erro ao criar usuário");
     }
+  }
 
-    //conferir se o usuários existe
-    const registeredUser = await this.userData.findByName(name);
-    if (registeredUser) {
-      throw new Error("Email já cadastrado");
+  async getUsers() {
+    try {
+      return await userDB.getUsers();
+    } catch (error: any) {
+      throw new Error(error.message || "Erro ao buscar usuário");
     }
-
-    //fazer uma id pro usuário
-    const id = this.idGenerator.generate();
-
-    //hashear o password (criptografar)
-    const hashedPassword = await this.hashManager.hash(password);
-
-    //criar o usuário no banco
-    const user = new User(id, name, hashedPassword );
-    await this.userData.insert(user);
-
-    //criar o token
-    const token = this.authenticator.generateToken({ id });
-
-    //retornar o token
-    return token;
-  };
-
-  login = async (input: loginInputDTO) => {
-    //validação dos dados
-    const { name, password } = input;
-    if (!name || !password) {
-      throw new Error("Campos inválidos!");
-    }
-
-    //conferir se o usuários existe
-    const registeredUserLogin = await this.userData.findByName(name);
-    if (!registeredUserLogin) {
-      throw new Error("Nome já cadastrado");
-    }
-
-    //verificar se o password está correto
-    const isPasswordCorrect = await this.hashManager.compare(
-      password,
-      registeredUserLogin.password
-    );
-    if (!isPasswordCorrect) {
-      throw new Error("Senha incorreta");
-    }
-
-    //criar o token
-    const token = this.authenticator.generateToken({
-      id: registeredUserLogin.id,
-    });
-
-    //retornar o token
-    return token;
-  };
+  }
 }
- */

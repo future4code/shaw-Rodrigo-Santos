@@ -1,37 +1,33 @@
-/* import { User } from "../model/User";
-import { FindByEmailResponse } from "../types/findByEmailResponse";
-import { BaseDataBase } from "./BaseDataBase";
+import { BaseDatabase } from "./BaseDataBase";
 
-export default class UserData extends BaseDataBase {
-  protected TABLE_NAME = "Pizza_clientes";
+const TABLE_NAME = "PARTICIPANTES";
 
-  insert = async (user: User) => {
+export default class UserData extends BaseDatabase {
+  public createUser = async (
+    first_name: string,
+    last_name: string,
+    participation: number
+  ): Promise<void> => {
     try {
-      await this.connection(this.TABLE_NAME).insert(user);
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      } else {
-        throw new Error("Erro ao buscar usuário no banco!");
-      }
+      await this.getConnection()
+        .insert({
+          first_name,
+          last_name,
+          participation,
+        })
+        .into(TABLE_NAME);
+    } catch (error: any) {
+      throw new Error(error.sqlMessage || error.message);
     }
   };
 
-  findByName = async (name: string) => {
+  public getUsers = async (): Promise<any> => {
     try {
-      const queryResult: FindByEmailResponse = await this.connection(
-        this.TABLE_NAME
-      )
-        .select()
-        .where({ name });
+      const result = await this.getConnection().select("*").from(TABLE_NAME);
 
-      return queryResult[0];
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      } else {
-        throw new Error("Erro ao buscar usuário no banco!");
-      }
+      return result[0];
+    } catch (error: any) {
+      throw new Error(error.sqlMessage || error.message);
     }
   };
-} */
+}

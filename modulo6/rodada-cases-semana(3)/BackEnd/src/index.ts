@@ -1,6 +1,6 @@
 
 import { app } from "./controller/app";
-/* import UserController from "./controller/UserController";
+import UserController from "./controller/UserController";
 import { UserBusiness } from "./business/UserBusiness";
 import UserData from "./data/UserData";
 import { Authenticator } from "./services/Authenticator";
@@ -17,4 +17,4 @@ const userBusiness = new UserBusiness(
 const userController = new UserController(userBusiness);
 
 app.post("/user/signup", userController.signup);
-app.post("/user/login", userController.login); */
+app.post("/user/login", userController.login);
