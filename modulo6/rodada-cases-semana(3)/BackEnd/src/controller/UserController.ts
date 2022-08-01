@@ -16,36 +16,30 @@ export class UserController {
         participation,
       };
 
-      const resp = await this.userBusiness.createUser(input);
+      await this.userBusiness.createUser(input);
 
       res.status(200).send({
         message: "Usuário criado com sucesso",
-        resp,
       });
     } catch (error) {
       if (error instanceof Error) {
-        res.status(400).send({
-          message: error.message,
-        });
+        return res.status(400).send(error.message);
       }
-      return res.status(400).send("Erro no signup");
+      res.status(500).send("Erro no registro");
     }
-    await BaseDatabase.destroyConnection()
+    await BaseDatabase.destroyConnection();
   };
 
   getUsers = async (req: Request, res: Response) => {
     try {
-      const result = await this.userBusiness.getUsers();
-      res.status(200).send(result);
-
+      const resp = await this.userBusiness.getUsers();
+      res.status(200).send(resp);
     } catch (error) {
       if (error instanceof Error) {
-        res.status(400).send({
-          message: error.message,
-        });
+        return res.status(400).send(error.message);
       }
-      return res.status(400).send("Erro na solicitação");
+      res.status(500).send("Erro na solicitação");
     }
-    await BaseDatabase.destroyConnection()
+    await BaseDatabase.destroyConnection();
   };
 }

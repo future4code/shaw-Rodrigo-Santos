@@ -1,22 +1,22 @@
 import UserData from "../data/UserData";
+import { BaseError } from "../error/BaseError";
 import { user } from "../types/user";
 
 const userDB = new UserData();
 
 export class UserBusiness {
+  constructor(private userData: UserData) {}
 
-  constructor(
-    private userData: UserData,
-
-  ) {}
   async createUser(user: user) {
     try {
-      if (!user.first_name || !user.last_name || !user.participation) {
-        throw new Error("Preencha todos os campos");
+      const { first_name, last_name, participation } = user;
+
+      if (!first_name || !last_name || !participation) {
+        throw new BaseError(422, "Por favor preencha todos os campos");
       }
 
       if (Number.isInteger(user.participation) === false) {
-        throw new Error("Participação deve ser um número");
+        throw new BaseError(422, "Insira um valor sem pontos ou vírgulas");
       }
 
       return await userDB.createUser(
@@ -30,10 +30,8 @@ export class UserBusiness {
   }
 
   async getUsers() {
-    try {
-      return await userDB.getUsers();
-    } catch (error: any) {
-      throw new Error(error.message || "Erro ao buscar usuário");
-    }
+    const usersFromDB = await userDB.getUsers();
+
+    return usersFromDB;
   }
 }

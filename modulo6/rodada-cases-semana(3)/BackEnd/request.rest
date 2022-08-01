@@ -1,16 +1,13 @@
-##CREATOR
-
 POST http://localhost:3003/user/register
 Content-Type: application/json
 
 {
-   "first_name": "John",
-    "last_name": "Doe",
-    "participation": 40
+    "first_name": "Matheus",
+    "last_name": "Santos",
+    "participation": 45
 }
 
-####GET
+#######
 
-GET http://localhost:3003/user/getUser
+GET http://localhost:3003/user/getUsers
 Content-Type: application/json
-

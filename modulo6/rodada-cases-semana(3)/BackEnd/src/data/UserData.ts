@@ -23,9 +23,17 @@ export default class UserData extends BaseDatabase {
 
   public getUsers = async (): Promise<any> => {
     try {
-      const result = await this.getConnection().select("*").from(TABLE_NAME);
 
-      return result[0];
+      const result = await this.getConnection()
+      .select("*")
+      .from(TABLE_NAME);
+
+      if(!result[0]){
+        throw new Error("Sem usuários registrados");
+      }
+
+      return result;
+      
     } catch (error: any) {
       throw new Error(error.sqlMessage || error.message);
     }

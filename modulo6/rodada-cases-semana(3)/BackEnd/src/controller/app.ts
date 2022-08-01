@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+/* import dotenv from "dotenv";
 import express, { Express } from "express";
 import cors from "cors";
 import {AddressInfo} from "net";
@@ -16,4 +16,4 @@ const server = app.listen(3003, () => {
   } else {
     console.log("Server is not available");
   }
-});
+}); */
