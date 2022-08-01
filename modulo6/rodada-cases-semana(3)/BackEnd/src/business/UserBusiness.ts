@@ -4,6 +4,11 @@ import { user } from "../types/user";
 const userDB = new UserData();
 
 export class UserBusiness {
+
+  constructor(
+    private userData: UserData,
+
+  ) {}
   async createUser(user: user) {
     try {
       if (!user.first_name || !user.last_name || !user.participation) {
