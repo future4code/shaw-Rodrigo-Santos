@@ -1,13 +1,13 @@
-POST http://localhost:3003/user/register
+POST https://backend-cubo.herokuapp.com/user/register
 Content-Type: application/json
 
 {
-    "first_name": "Matheus",
-    "last_name": "Santos",
-    "participation": 45
+    "first_name": "Servulin",
+    "last_name": "Silva",
+    "participation": 70
 }
 
 #######
 
-GET http://localhost:3003/user/getUsers
+GET https://backend-cubo.herokuapp.com/user/getUsers
 Content-Type: application/json
