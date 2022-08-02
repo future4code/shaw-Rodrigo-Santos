@@ -9,6 +9,14 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  form {
+    margin-top: 50px;
+    display: flex;
+    width: 90%;
+    height: 50%;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
   p {
     font-size: 1rem;
   }
@@ -39,20 +47,3 @@ export const DivPassword = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-
-export const ImgSize = styled.img`
-  width: 45%;
-  margin-top: 10%;
-  
-`
-
-export const SignUpButton = styled.button`
-  width: 90%;
-  height: 8vh;
-  padding: 12px 16px;
-  
-  background-color: white;
-  border: none;
-  margin: 2%;
-`;
-

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Main, Form, ButtonStyled, DivPassword, InputMaterial } from "./styled";
+import { Main, Form, ButtonStyled, DivPassword, InputMaterial, ImgSize, SignUpButton } from "./styled";
 import { IconButton } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/url";
 import { useNavigate } from "react-router-dom";
-import { goToFeed } from "../../Routes/coordinator";
+import { goToFeed, goToSignUp } from "../../Routes/coordinator";
+import logo from "../../Assets/logo.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -61,7 +62,7 @@ const Login = () => {
 
   return (
     <Main>
-      <p>Entrar</p>
+      <ImgSize src={logo} alt="logo" />
       <Form onSubmit={onSubimitLogin}>
         <InputMaterial
           error={checkErrEmail}
@@ -104,6 +105,7 @@ const Login = () => {
 
         <ButtonStyled type="submit"> Entrar </ButtonStyled>
       </Form>
+      <SignUpButton onClick={() => goToSignUp(navigate)}><strong>Não possui cadastro? Clique aqui</strong></SignUpButton>
     </Main>
   );
 };

@@ -7,6 +7,7 @@ import { ButtonStyled, DivPassword, InputMaterial, Main } from "./styled";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/url";
 import { goToSignUpAdress } from "../../Routes/coordinator";
+import Header from "../../Components/Header/Header";
 
 const SignUp = () => {
   const { form, onChange, clean } = useForm({
@@ -23,7 +24,7 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showCheckPass, setShowCheckPass] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   //Máscara de cpf regex para CPF
   const cpfMask = (value) => {
@@ -68,13 +69,16 @@ const SignUp = () => {
       })
       .catch((err) => {
         console.log("Erro", err);
-        alert("Erro no cadastro!", err.data);
+        alert(err.response.data.message);
+        clean();
+        setConfirmPassword("");
       });
   };
 
   return (
     <Main>
-      <p>Cadastrar</p>
+      <Header title={"Cadastrar usuário"} back/>
+     
       <form onSubmit={onSubimitForm}>
         <InputMaterial
           id="outlined-basic"
