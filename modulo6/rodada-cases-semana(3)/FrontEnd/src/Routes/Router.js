@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Cart from "../Pages/Cart/cart";
+/* import Cart from "../Pages/Cart/cart";
 import Feed from "../Pages/Feed/feed";
 import Login from "../Pages/Login/login"
 import Profile from "../Pages/Profile/profile";
 import Restaurant from "../Pages/Restaurant/restaurant";
 import SignUp from "../Pages/SignUp/signUp"
-import SignUpAdress from "../Pages/SignUpAdress/signUpAdress";
+import SignUpAdress from "../Pages/SignUpAdress/signUpAdress"; */
 
 const Router = () => {
   return (

@@ -15,9 +15,9 @@ export class UserBusiness {
         throw new BaseError(422, "Por favor preencha todos os campos");
       }
 
-      if (Number.isInteger(user.participation) === false) {
+    /*   if (Number.isInteger(user.participation) === false) {
         throw new BaseError(422, "Insira um valor sem pontos ou vírgulas");
-      }
+      } */
 
       return await userDB.createUser(
         user.first_name,
