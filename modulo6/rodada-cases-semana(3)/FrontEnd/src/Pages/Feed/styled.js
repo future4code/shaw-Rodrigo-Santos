@@ -1,56 +1,72 @@
 import styled from "styled-components";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 
-export const Main = styled.div`
-  padding: 10px;
-  width: 100%;
-  height: 100vh;
+export const Maincontainer = styled.div`
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-seriff;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+`;
+export const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 20vh;
+  background-color: #2ed0e1;
+  justify-content: center;
   align-items: center;
-  p {
-    font-size: 1rem;
+  form {
+    input {
+      padding: 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 3px;
+    }
+    button {
+      padding: 18px;
+      margin: 10px;
+      border: 3px solid white;
+      border-radius: 3px;
+      background-color: inherit;
+      color: white;
+    }
   }
 `;
 
-export const Form = styled.form`
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  height: 30%;
   width: 80%;
-  justify-content: space-evenly;
-`;
-
-export const ButtonStyled = styled(Button)`
-  && {
-    color: #000;
-    background-color: #e8222e;
-    width: 100%;
-  }
-`;
-
-export const InputMaterial = styled(TextField)`
-  width: 100%;
-`;
-
-export const DivPassword = styled.div`
-  display: flex;
+  margin: 50px;
+  justify-content: center;
   align-items: center;
+`;
+
+export const Graphics = styled.div`
+  display: flex;
+  width: 100%;
+  margin: 50px;
   justify-content: space-between;
+  align-items: center;
 `;
 
-export const ImgSize = styled.img`
-  width: 45%;
-  margin-top: 10%;
+export const Table = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.8);
 `;
 
-export const SignUpButton = styled.button`
-  width: 90%;
-  height: 8vh;
-  padding: 12px 16px;
+export const TableHead = styled.div`
+  display: grid;
+  grid-template-columns: 9.5% 30.16% 30.16% 30.16%;
+`;
+export const TableRows = styled.div`
+  display: grid;
+  grid-template-columns: 9.5% 30.16% 30.16% 30.16%;
+`;
 
-  background-color: white;
-  border: none;
-  margin: 2%;
+export const ItemTable = styled.div`
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  text-align: center;
 `;
