@@ -1,0 +1,13 @@
+POST https://backend-cubo.herokuapp.com/user/register
+Content-Type: application/json
+
+{
+    "first_name": "Servulin",
+    "last_name": "Silva",
+    "participation": 70
+}
+
+#######
+
+GET https://backend-cubo.herokuapp.com/user/getUsers
+Content-Type: application/json
